@@ -1,0 +1,53 @@
+{
+"bones": [
+	{ "name": "root" },
+	{ "name": "loader", "parent": "root", "length": 51.83, "x": 100.0, "y": -100.0 }
+],
+"slots": [
+	{ "name": "black", "bone": "root", "attachment": "black" },
+	{ "name": "loader", "bone": "loader", "attachment": "loader" }
+],
+"skins": {
+	"default": {
+		"loader": {
+			"loader": { "x": -1.08, "y": 6.47, "width": 41, "height": 41 }
+		}
+	}
+},
+"animations": {
+	"onTransitionIn": {
+		"slots": {
+			"loader": {
+				"color": [
+					{ "time": 0, "color": "ffffffff" },
+					{ "time": 0.5, "color": "ffffff00" }
+				]
+			}
+		}
+	},
+	"onTransitionOut": {
+		"slots": {
+			"loader": {
+				"color": [
+					{ "time": 0, "color": "ffffff00", "curve": "stepped" },
+					{ "time": 0.25, "color": "ffffff00" },
+					{ "time": 0.5, "color": "ffffffff" }
+				]
+			}
+		}
+	},
+	"transitionLoop": {
+		"bones": {
+			"loader": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 0.1666, "angle": 270 },
+					{ "time": 0.3333, "angle": 180 },
+					{ "time": 0.5, "angle": 90 },
+					{ "time": 0.6666, "angle": 0 }
+				]
+			}
+		}
+	}
+}
+}

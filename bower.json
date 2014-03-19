@@ -1,0 +1,21 @@
+{
+    "name": "cloudkid-states",
+    "version": "1.0.0",
+    "main": "deploy/cloudkid-states-createjs.min.js",
+    "dependencies": {
+        "cloudkid-os" : "*",
+        "cloudkid-animation" : "*",
+        "cloudkid-audio" : "*"
+    },
+    "ignore": [
+        ".svn",
+        "build.xml",
+        "build.properties",
+        "examples",
+        "docs",
+        "libs",
+        "src",
+        "src.pixi.order",
+        "src.createjs.order"
+    ]
+}
