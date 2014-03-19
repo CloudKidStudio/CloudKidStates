@@ -1,7 +1,7 @@
 {
     "name": "cloudkid-states",
     "version": "1.0.0",
-    "main": "deploy/cloudkid-states-createjs.min.js",
+    "main": "dist/cloudkid-states-createjs.min.js",
     "dependencies": {
         "cloudkid-os" : "*",
         "cloudkid-animation" : "*",
