@@ -3,6 +3,10 @@ CloudKid States
 
 Game state manager for CloudKidOS
 
+##Documentation##
+
+http://cloudkidstudio.github.io/CloudKidStates/
+
 ##Installation##
 
 CloudKid States can be install using Bower.
