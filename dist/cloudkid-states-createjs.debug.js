@@ -29,13 +29,12 @@
         this._enabled = !1, this._active = !0, this._canceled = !1, this._onEnterStateProceed = proceed, 
         this.enterState(), this._onEnterStateProceed && (this._onEnterStateProceed(), this._onEnterStateProceed = null);
     }, p.loadingStart = function() {
-        return this._isLoading ? (Debug.warn("loadingStart() was called while we're already loading"), 
-        void 0) : (this._isLoading = !0, this.manager.loadingStart(), this._onLoadingComplete = this._onEnterStateProceed, 
-        this._onEnterStateProceed = null, void 0);
+        return this._isLoading ? void Debug.warn("loadingStart() was called while we're already loading") : (this._isLoading = !0, 
+        this.manager.loadingStart(), this._onLoadingComplete = this._onEnterStateProceed, 
+        void (this._onEnterStateProceed = null));
     }, p.loadingDone = function() {
-        return this._isLoading ? (this._isLoading = !1, this.manager.loadingDone(), this._onLoadingComplete && (this._onLoadingComplete(), 
-        this._onLoadingComplete = null), void 0) : (Debug.warn("loadingDone() was called without a load started, call loadingStart() first"), 
-        void 0);
+        return this._isLoading ? (this._isLoading = !1, this.manager.loadingDone(), void (this._onLoadingComplete && (this._onLoadingComplete(), 
+        this._onLoadingComplete = null))) : void Debug.warn("loadingDone() was called without a load started, call loadingStart() first");
     }, p._internalCancel = function() {
         this._active = !1, this._canceled = !0, this._isLoading = !1, this._internalExitState(), 
         this.cancel();
@@ -77,7 +76,8 @@
         this.currentState = currentState;
     }, namespace("cloudkid").StateEvent = StateEvent;
 }(), function(undefined) {
-    var Audio = cloudkid.Audio || cloudkid.Sound, OS = cloudkid.OS, AudioAnimation = cloudkid.AudioAnimation, Animator = cloudkid.Animator, BaseState = cloudkid.BaseState, StateEvent = (cloudkid.PixiAnimator, 
+    var Audio = cloudkid.Audio || cloudkid.Sound, OS = cloudkid.OS, Animator = (cloudkid.AudioAnimation, 
+    cloudkid.Animator), BaseState = cloudkid.BaseState, StateEvent = (cloudkid.PixiAnimator, 
     cloudkid.StateEvent), EventDispatcher = createjs.EventDispatcher, MovieClip = createjs.MovieClip, Touch = createjs.Touch;
     StateManager = function(transition, audio) {
         this.initialize(transition, audio);
@@ -85,8 +85,7 @@
     var p = StateManager.prototype;
     p.addEventListener = null, p.removeEventListener = null, p.removeAllEventListeners = null, 
     p.dispatchEvent = null, p.hasEventListener = null, p._listeners = null, EventDispatcher && EventDispatcher.initialize(p), 
-    StateManager.VERSION = "1.0.0", p._transition = null, p._transitionSounds = null, 
-    p._curSound = null, p._canPlayAudio = !1, p._inSoundAnim = null, p._outSoundAnim = null, 
+    StateManager.VERSION = "1.1.0", p._transition = null, p._transitionSounds = null, 
     p._states = null, p._state = null, p._stateId = null, p._oldState = null, p._isLoading = !1, 
     p._isTransitioning = !1, p._destroyed = !1, p._queueStateId = null, StateManager.TRANSITION_IN = "onTransitionIn", 
     StateManager.TRANSITION_IN_DONE = "onTransitionInDone", StateManager.TRANSITION_OUT = "onTransitionOut", 
@@ -96,8 +95,8 @@
     StateManager.TRANSITION_INIT_DONE = "onInitDone", StateManager.LOADING_START = "onLoadingStart", 
     StateManager.LOADING_DONE = "onLoadingDone", p.initialize = function(transition, transitionSounds) {
         Debug.assert(transition instanceof MovieClip, "transition needs to subclass createjs.MovieClip"), 
-        this._transition = transition, this._transition.stop(), transitionSounds && (this._transitionSounds = transitionSounds), 
-        Audio && transitionSounds && (this._canPlayAudio = !0), this.hideBlocker(), this._states = {};
+        this._transition = transition, this._transition.stop(), this.hideBlocker(), this._states = {}, 
+        this._transitionSounds = transitionSounds || null, this._loopTransition = this._loopTransition.bind(this);
     }, p.addState = function(id, state) {
         Debug.assert(state instanceof BaseState, "State (" + id + ") needs to subclass cloudkid.BaseState"), 
         this._states[id] = state, state.stateId = id, state.manager = this, state._internalExitState();
@@ -127,7 +126,7 @@
         Debug.assert(!!this._state, "No current state to refresh!"), this.setState(this._stateId);
     }, p.setState = function(id) {
         if (Debug.assert(this._states[id] !== undefined, "No current state mattching id '" + id + "'"), 
-        this._isTransitioning) return this._queueStateId = id, void 0;
+        this._isTransitioning) return void (this._queueStateId = id);
         this._stateId = id, this.showBlocker(), this._oldState = this._state, this._state = this._states[id];
         var sm;
         this._oldState ? this._isLoading ? (this._oldState._internalCancel(), this._isLoading = !1, 
@@ -140,9 +139,8 @@
                 sm._oldState.panel.visible = !1, sm._oldState._internalExitState(), sm._oldState = null, 
                 sm._processQueue() || (sm._isLoading = !0, sm._state._internalEnterState(sm._onStateLoaded.bind(sm)));
             });
-        })) : (this._isTransitioning = !0, this._transition.visible = !0, sm = this, this._transition.gotoAndStop(StateManager.TRANSITION_IN), 
-        Animator.play(sm._transition, "transitionloop", null, !0), sm.dispatchEvent(StateManager.TRANSITION_INIT_DONE), 
-        sm._isLoading = !0, sm._state._internalEnterState(sm._onStateLoaded.bind(sm)));
+        })) : (this._isTransitioning = !0, this._transition.visible = !0, sm = this, this._loopTransition(), 
+        sm.dispatchEvent(StateManager.TRANSITION_INIT_DONE), sm._isLoading = !0, sm._state._internalEnterState(sm._onStateLoaded.bind(sm)));
     }, p._onStateLoaded = function() {
         this._isLoading = !1, this._isTransitioning = !0, this.dispatchEvent(new StateEvent(StateEvent.VISIBLE, this._state)), 
         this._state.panel.visible = !0, this.dispatchEvent(StateManager.TRANSITION_IN);
@@ -160,9 +158,16 @@
             return this._queueStateId = null, this.setState(queueStateId), !0;
         }
         return !1;
+    }, p._loopTransition = function() {
+        var audio;
+        this._transitionSounds && (audio = this._transitionSounds.loop, Audio.instance.soundLoaded === !1 && (audio = null)), 
+        Animator.play(this._transition, "transitionLoop", this._loopTransition, null, null, null, audio);
     }, p.showTransitionOut = function(callback) {
         this.showBlocker();
-        this._transitioning(StateManager.TRANSITION_OUT, callback);
+        var sm = this, func = function() {
+            sm._loopTransition(), callback && callback();
+        };
+        this._transitioning(StateManager.TRANSITION_OUT, func);
     }, p.showTransitionIn = function(callback) {
         var sm = this;
         this._transitioning(StateManager.TRANSITION_IN, function() {
@@ -171,15 +176,9 @@
     }, p._transitioning = function(event, callback) {
         var clip = this._transition;
         clip.visible = !0;
-        if (this._canPlayAudio && (this._transitionSounds && Audio.instance && (this._transitionSounds.inSound && (this._inSoundAnim = new AudioAnimation(this._transition, this._transitionSounds.inSound, StateManager.TRANSITION_IN, 1, this._transitionSounds.inSoundStart)), 
-        this._transitionSounds.outSound && (this._outSoundAnim = new AudioAnimation(this._transition, this._transitionSounds.outSound, StateManager.TRANSITION_OUT, 1, this._transitionSounds.outSoundStart)), 
-        this._transitionSounds = null), Audio.instance.soundLoaded)) {
-            if (this._inSoundAnim && event == StateManager.TRANSITION_IN) return this._inSoundAnim.play(callback), 
-            void 0;
-            if (this._outSoundAnim && event == StateManager.TRANSITION_OUT) return this._outSoundAnim.play(callback), 
-            void 0;
-        }
-        Animator.play(clip, event, callback);
+        var audio;
+        this._transitionSounds && (audio = event == StateManager.TRANSITION_IN ? this._transitionSounds.in : this._transitionSounds.out, 
+        Audio.instance.soundLoaded === !1 && (audio = null)), Animator.play(this._transition, StateManager.TRANSITION_IN, callback, null, null, null, audio);
     }, p.update = function(elapsed) {
         this._state && this._state.update(elapsed);
     }, p.destroy = function() {

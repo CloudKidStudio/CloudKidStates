@@ -594,7 +594,7 @@
 	*  @class cloudkid.StateManager
 	*  @constructor
 	*  @param {createjs.MovieClip|PIXI.MovieClip|PIXI.Spine} transition The transition MovieClip to play between transitions
-	*  @param {object} audio Data object with aliases and start frames for transition in and out sounds: inSound, inSoundStart, outSound, outSoundStart
+	*  @param {object} audio Data object with aliases and start times (seconds) for transition in, loop and out sounds: {in:{alias:"myAlias", start:0.2}}
 	*/
 
 	StateManager = function(transition, audio)
@@ -674,40 +674,6 @@
 	* @private
 	*/
 	p._transitionSounds = null;
-	
-	/**
-	* [Pixi Only] The current sound
-	* 
-	* @property {createjs.SoundInstance} _curSound
-	* @private
-	*/
-	p._curSound = null;
-	
-	if(false)
-	{
-		/**
-		* [CreateJS Only] Transition Sound Stuff
-		* 
-		* @property {bool} _canPlayAudio
-		* @private
-		*/
-		p._canPlayAudio = false;
-
-		/**
-		* [CreateJS Only] Sound to play on transitioning in
-		* 
-		* @property {cloudkid.AudioAnimation} _inSoundAnim
-		* @private
-		*/
-		p._inSoundAnim = null;
-		/**
-		* [CreateJS Only] Sound to play on transitioning out
-		* 
-		* @property {cloudkid.AudioAnimation} _inSoundAnim
-		* @private
-		*/
-		p._outSoundAnim = null;
-	}
 	
 	/**
 	* The collection of states map
@@ -862,7 +828,7 @@
 	*  
 	*  @function intialize
 	*  @param {createjs.MovieClip|PIXI.MovieClip|PIXI.Spine} transition The transition MovieClip to play between transitions
-	*  @param {object} transitionSounds Data object with aliases and start frames for transition in and out sounds: inSound, inSoundStart, outSound, outSoundStart
+	*  @param {object} transitionSounds Data object with aliases and start times (seconds) for transition in, loop and out sounds: {in:{alias:"myAlias", start:0.2}}
 	*/
 	p.initialize = function(transition, transitionSounds)
 	{
@@ -876,23 +842,14 @@
 		if(false) 
 		{
 			this._transition.stop();
-			
-			if(transitionSounds)
-				this._transitionSounds = transitionSounds;
-			
-			if(Audio && transitionSounds)
-				this._canPlayAudio = true;
 		}
 		
 		this.hideBlocker();
 		this._states = {};
 		
-		if(true) 
-		{
-			if(!Audio && cloudkid.Sound)
-				Audio = cloudkid.Sound;//library doesn't exist as a library that can be loaded before States yet
-			this._transitionSounds = transitionSounds || null;
-		}
+		this._transitionSounds = transitionSounds || null;
+
+		this._loopTransition = this._loopTransition.bind(this);
 	};
 	
 	/**
@@ -998,14 +955,7 @@
 		
 		if(true)
 		{
-			PixiAnimator.instance.play(this._transition, "transitionLoop", null, true);
-			if(this._curSound)
-			{
-				this._curSound.stop();
-				this._curSound = null;
-			}
-			if(this._transitionSounds && this._transitionSounds.loop)
-				this._curSound = Audio.instance.play(this._transitionSounds.loop, "none", 0, 0, -1);
+			this._loopTransition();
 		}
 	};
 	
@@ -1114,21 +1064,7 @@
 			this._isTransitioning = true;
 			this._transition.visible = true;
 			sm = this;
-			if(false)
-			{
-				this._transition.gotoAndStop(StateManager.TRANSITION_IN);
-				
-				Animator.play(sm._transition, "transitionloop", null, true);
-			}
-			else if(true)
-			{
-				PixiAnimator.instance.play(sm._transition, "transitionLoop", null, true);
-				
-				if(sm._transitionSounds && sm._transitionSounds.loop)
-				{
-					sm._curSound = Audio.instance.play(sm._transitionSounds.loop, "none", 0, 0, -1);
-				}
-			}	
+			this._loopTransition();
 			sm.dispatchEvent(StateManager.TRANSITION_INIT_DONE);
 			sm._isLoading = true;
 			sm._state._internalEnterState(sm._onStateLoaded.bind(sm));
@@ -1156,11 +1092,7 @@
 					{
 						sm.dispatchEvent(new StateEvent(StateEvent.TRANSITION_OUT_DONE, sm._state, sm._oldState));
 						sm.dispatchEvent(StateManager.TRANSITION_OUT);
-						/*if(true)
-						{
-							if(sm._transitionSounds && sm._transitionSounds.out)
-								Audio.instance.play(sm._transitionSounds.out);
-						}*/
+						
 						sm._transitioning(
 							StateManager.TRANSITION_OUT,
 							function()
@@ -1249,6 +1181,40 @@
 		}
 		return false;
 	};
+
+	/**
+	*  Plays the animation "transitionLoop" on the transition. Also serves as the animation callback.
+	*  Manually looping the animation allows the animation to be synced to the audio as well as loop.
+	*  
+	*  @function _loopTransition
+	*  @private
+	*/
+	p._loopTransition = function()
+	{
+		var audio;
+		if(this._transitionSounds)
+		{
+			audio = this._transitionSounds.loop;
+			if(Audio.instance.soundLoaded === false)//if soundLoaded is defined and false, then the AudioSprite is not yet loaded
+				audio = null;
+		}
+		if(false)
+		{
+			Animator.play(this._transition, "transitionLoop", this._loopTransition, null, null, null, audio);
+		}
+		else if(true)
+		{
+			PixiAnimator.instance.play(
+				this._transition,
+				"transitionLoop", 
+				this._loopTransition,
+				false,
+				1,
+				0,
+				audio
+			);
+		}
+	};
 	
 	/**
 	 * Displays the transition out animation, without changing states.
@@ -1259,29 +1225,15 @@
 	p.showTransitionOut = function(callback)
 	{
 		this.showBlocker();
-		if(false) this._transitioning(StateManager.TRANSITION_OUT, callback);
-		else if(true)
-		{
-			var func;
-			if(this._transition instanceof PIXI.Spine)
-			{
-				var sm = this;
-				func = function() {
-					
-					if(sm._transitionSounds && sm._transitionSounds.loop)
-						sm._curSound = Audio.instance.play(sm._transitionSounds.loop, "none", 0, 0, -1);
-					PixiAnimator.instance.play(sm._transition, "transitionLoop", null, true);
+		var sm = this;
+		var func = function() {
+			
+			sm._loopTransition();
 
-					if(callback)
-						callback();
-				};
-			}
-			else
-				func = callback;
-			this._transitioning(StateManager.TRANSITION_OUT, func);
-			if(this._transitionSounds && this._transitionSounds.out)
-				Audio.instance.play(this._transitionSounds.out);
-		}
+			if(callback)
+				callback();
+		};
+		this._transitioning(StateManager.TRANSITION_OUT, func);
 	};
 
 	/**
@@ -1292,16 +1244,6 @@
 	 */
 	p.showTransitionIn = function(callback)
 	{
-		if(true)
-		{
-			if(this._curSound)
-			{
-				this._curSound.stop();
-				this._curSound = null;
-			}
-			if(this._transitionSounds && this._transitionSounds.in)
-				Audio.instance.play(this._transitionSounds.in);
-		}
 		var sm = this;
 		this._transitioning(StateManager.TRANSITION_IN, function() { sm.hideBlocker(); if(callback) callback(); });
 	};
@@ -1318,70 +1260,19 @@
 	{
 		var clip = this._transition;
 		clip.visible = true;
+		var audio;
+		if(this._transitionSounds)
+		{
+			audio = event == StateManager.TRANSITION_IN ? this._transitionSounds.in : this._transitionSounds.out;
+			if(Audio.instance.soundLoaded === false)//if soundLoaded is defined and false, then the AudioSprite is not yet loaded
+				audio = null;
+		}
 		if(false)
 		{
-			if(this._canPlayAudio)
-			{
-				if(this._transitionSounds && Audio.instance)//setup SoundAnimations
-				{
-					if(this._transitionSounds.inSound)
-					{
-						this._inSoundAnim = new AudioAnimation(
-							this._transition, 
-							this._transitionSounds.inSound, 
-							StateManager.TRANSITION_IN, 
-							1, 
-							this._transitionSounds.inSoundStart
-							);
-					}
-					if(this._transitionSounds.outSound)
-					{
-						this._outSoundAnim = new AudioAnimation(
-							this._transition, 
-							this._transitionSounds.outSound, 
-							StateManager.TRANSITION_OUT, 
-							1, 
-							this._transitionSounds.outSoundStart
-							);
-					}
-					this._transitionSounds = null;
-				}
-
-				if(Audio.instance.soundLoaded)
-				{
-					if(this._inSoundAnim && event == StateManager.TRANSITION_IN)
-					{
-						this._inSoundAnim.play(callback);
-						return;
-					}
-					else if(this._outSoundAnim && event == StateManager.TRANSITION_OUT)
-					{
-						this._outSoundAnim.play(callback);
-						return;
-					}
-				}
-			}
-
-			//if no sound
-			Animator.play(
-				clip,
-				event, 
-				callback
-			);
+			Animator.play(this._transition, StateManager.TRANSITION_IN, callback, null, null, null, audio);
 		}
 		else if(true)
 		{
-			if(this._curSound)
-			{
-				this._curSound.stop();
-				this._curSound = null;
-			}
-			//if no sound
-			var audio;
-			if(this._transitionSounds)
-			{
-				audio = event == StateManager.TRANSITION_IN ? this._transitionSounds.in : this._transitionSounds.out;
-			}
 			PixiAnimator.instance.play(
 				clip,
 				event, 
