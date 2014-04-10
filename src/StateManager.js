@@ -628,7 +628,8 @@
 		}
 		if(CONFIG_CREATEJS)
 		{
-			Animator.play(this._transition, "transitionLoop", this._loopTransition, null, null, null, audio);
+			if(Animator.instanceHasAnimation(this._transition, "transitionLoop"))
+				Animator.play(this._transition, "transitionLoop", this._loopTransition, null, null, null, audio);
 		}
 		else if(CONFIG_PIXI)
 		{
@@ -697,7 +698,7 @@
 		}
 		if(CONFIG_CREATEJS)
 		{
-			Animator.play(this._transition, StateManager.TRANSITION_IN, callback, null, null, null, audio);
+			Animator.play(this._transition, event, callback, null, null, null, audio);
 		}
 		else if(CONFIG_PIXI)
 		{

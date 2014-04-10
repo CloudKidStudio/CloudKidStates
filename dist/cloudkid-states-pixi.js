@@ -574,7 +574,6 @@
 	// Imports
 	var Audio = cloudkid.Audio || cloudkid.Sound,
 		OS = cloudkid.OS,
-		AudioAnimation = cloudkid.AudioAnimation,
 		Animator = cloudkid.Animator,
 		BaseState = cloudkid.BaseState,
 		PixiAnimator = cloudkid.PixiAnimator,
@@ -1200,7 +1199,8 @@
 		}
 		if(false)
 		{
-			Animator.play(this._transition, "transitionLoop", this._loopTransition, null, null, null, audio);
+			if(Animator.instanceHasAnimation(this._transition, "transitionLoop"))
+				Animator.play(this._transition, "transitionLoop", this._loopTransition, null, null, null, audio);
 		}
 		else if(true)
 		{
@@ -1269,7 +1269,7 @@
 		}
 		if(false)
 		{
-			Animator.play(this._transition, StateManager.TRANSITION_IN, callback, null, null, null, audio);
+			Animator.play(this._transition, event, callback, null, null, null, audio);
 		}
 		else if(true)
 		{

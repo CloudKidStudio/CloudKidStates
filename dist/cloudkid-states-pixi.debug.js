@@ -76,8 +76,8 @@
         this.currentState = currentState;
     }, namespace("cloudkid").StateEvent = StateEvent;
 }(), function(undefined) {
-    var Audio = cloudkid.Audio || cloudkid.Sound, OS = cloudkid.OS, BaseState = (cloudkid.AudioAnimation, 
-    cloudkid.Animator, cloudkid.BaseState), PixiAnimator = cloudkid.PixiAnimator, StateEvent = cloudkid.StateEvent, EventDispatcher = createjs.EventDispatcher;
+    var Audio = cloudkid.Audio || cloudkid.Sound, OS = cloudkid.OS, BaseState = (cloudkid.Animator, 
+    cloudkid.BaseState), PixiAnimator = cloudkid.PixiAnimator, StateEvent = cloudkid.StateEvent, EventDispatcher = createjs.EventDispatcher;
     StateManager = function(transition, audio) {
         this.initialize(transition, audio);
     };

@@ -76,8 +76,7 @@
         this.currentState = currentState;
     }, namespace("cloudkid").StateEvent = StateEvent;
 }(), function(undefined) {
-    var Audio = cloudkid.Audio || cloudkid.Sound, OS = cloudkid.OS, Animator = (cloudkid.AudioAnimation, 
-    cloudkid.Animator), BaseState = cloudkid.BaseState, StateEvent = (cloudkid.PixiAnimator, 
+    var Audio = cloudkid.Audio || cloudkid.Sound, OS = cloudkid.OS, Animator = cloudkid.Animator, BaseState = cloudkid.BaseState, StateEvent = (cloudkid.PixiAnimator, 
     cloudkid.StateEvent), EventDispatcher = createjs.EventDispatcher, MovieClip = createjs.MovieClip, Touch = createjs.Touch;
     StateManager = function(transition, audio) {
         this.initialize(transition, audio);
@@ -161,7 +160,7 @@
     }, p._loopTransition = function() {
         var audio;
         this._transitionSounds && (audio = this._transitionSounds.loop, Audio.instance.soundLoaded === !1 && (audio = null)), 
-        Animator.play(this._transition, "transitionLoop", this._loopTransition, null, null, null, audio);
+        Animator.instanceHasAnimation(this._transition, "transitionLoop") && Animator.play(this._transition, "transitionLoop", this._loopTransition, null, null, null, audio);
     }, p.showTransitionOut = function(callback) {
         this.showBlocker();
         var sm = this, func = function() {
@@ -178,7 +177,7 @@
         clip.visible = !0;
         var audio;
         this._transitionSounds && (audio = event == StateManager.TRANSITION_IN ? this._transitionSounds.in : this._transitionSounds.out, 
-        Audio.instance.soundLoaded === !1 && (audio = null)), Animator.play(this._transition, StateManager.TRANSITION_IN, callback, null, null, null, audio);
+        Audio.instance.soundLoaded === !1 && (audio = null)), Animator.play(this._transition, event, callback, null, null, null, audio);
     }, p.update = function(elapsed) {
         this._state && this._state.update(elapsed);
     }, p.destroy = function() {
