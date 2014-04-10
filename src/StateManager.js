@@ -3,7 +3,6 @@
 	// Imports
 	var Audio = cloudkid.Audio || cloudkid.Sound,
 		OS = cloudkid.OS,
-		AudioAnimation = cloudkid.AudioAnimation,
 		Animator = cloudkid.Animator,
 		BaseState = cloudkid.BaseState,
 		PixiAnimator = cloudkid.PixiAnimator,

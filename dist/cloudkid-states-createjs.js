@@ -1184,7 +1184,7 @@
 
 	/**
 	*  Plays the animation "transitionLoop" on the transition. Also serves as the animation callback.
-	*  Manually looping the animation allows the animation to be synced to the audio as well as loop.
+	*  Manually looping the animation allows the animation to be synced to the audio while looping.
 	*  
 	*  @function _loopTransition
 	*  @private
