@@ -633,15 +633,18 @@
 		}
 		else if(CONFIG_PIXI)
 		{
-			PixiAnimator.instance.play(
-				this._transition,
-				"transitionLoop", 
-				this._loopTransition,
-				false,
-				1,
-				0,
-				audio
-			);
+			if(PixiAnimator.instance.instanceHasAnimation(this._transition, "transitionLoop"))
+			{
+				PixiAnimator.instance.play(
+					this._transition,
+					"transitionLoop", 
+					this._loopTransition,
+					false,
+					1,
+					0,
+					audio
+				);
+			}
 		}
 	};
 	

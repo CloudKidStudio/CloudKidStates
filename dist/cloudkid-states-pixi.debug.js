@@ -158,7 +158,7 @@
     }, p._loopTransition = function() {
         var audio;
         this._transitionSounds && (audio = this._transitionSounds.loop, Audio.instance.soundLoaded === !1 && (audio = null)), 
-        PixiAnimator.instance.play(this._transition, "transitionLoop", this._loopTransition, !1, 1, 0, audio);
+        PixiAnimator.instance.instanceHasAnimation(this._transition, "transitionLoop") && PixiAnimator.instance.play(this._transition, "transitionLoop", this._loopTransition, !1, 1, 0, audio);
     }, p.showTransitionOut = function(callback) {
         this.showBlocker();
         var sm = this, func = function() {
