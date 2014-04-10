@@ -19,7 +19,7 @@
             
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: 1.0.0</em>
+            <em>API Docs for: 1.1.0</em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -94,7 +94,7 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/src_StateManager.js.html#l20"><code>src&#x2F;StateManager.js:20</code></a>
+            Defined in: <a href="../files/src_StateManager.js.html#l19"><code>src&#x2F;StateManager.js:19</code></a>
         </div>
     
 
@@ -161,7 +161,7 @@
             
         
         
-        <a href="../files/src_StateManager.js.html#l20"><code>src&#x2F;StateManager.js:20</code></a>
+        <a href="../files/src_StateManager.js.html#l19"><code>src&#x2F;StateManager.js:19</code></a>
         
         </p>
 
@@ -206,7 +206,7 @@
                     
 
                     <div class="param-description">
-                        <p>Data object with aliases and start frames for transition in and out sounds: inSound, inSoundStart, outSound, outSoundStart</p>
+                        <p>Data object with aliases and start times (seconds) for transition in, loop and out sounds: {in:{alias:&quot;myAlias&quot;, start:0.2}}</p>
 
                     </div>
 
@@ -250,6 +250,13 @@
                     <h3>Methods</h3>
 
                     <ul class="index-list methods">
+                        
+                            <li class="index-item method private">
+                                <a href="#method__loopTransition">_loopTransition</a>
+
+                                
+                                
+                            </li>
                         
                             <li class="index-item method private">
                                 <a href="#method__onStateLoaded">_onStateLoaded</a>
@@ -437,35 +444,7 @@
                     <ul class="index-list properties">
                         
                             <li class="index-item property private">
-                                <a href="#property__canPlayAudio">_canPlayAudio</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item property private">
-                                <a href="#property__curSound">_curSound</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item property private">
                                 <a href="#property__destroyed">_destroyed</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item property private">
-                                <a href="#property__inSoundAnim">_inSoundAnim</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item property private">
-                                <a href="#property__inSoundAnim">_inSoundAnim</a>
 
                                 
                                 
@@ -656,6 +635,64 @@
                 <h2 class="off-left">Methods</h2>
 
                 
+                    <div id="method__loopTransition" class="method item private">
+    <h3 class="name"><code>_loopTransition</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+        <span class="flag private">private</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_StateManager.js.html#l613"><code>src&#x2F;StateManager.js:613</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Plays the animation &quot;transitionLoop&quot; on the transition. Also serves as the animation callback.
+Manually looping the animation allows the animation to be synced to the audio while looping.</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
                     <div id="method__onStateLoaded" class="method item private">
     <h3 class="name"><code>_onStateLoaded</code></h3>
 
@@ -690,7 +727,7 @@
             
         
         
-        <a href="../files/src_StateManager.js.html#l619"><code>src&#x2F;StateManager.js:619</code></a>
+        <a href="../files/src_StateManager.js.html#l550"><code>src&#x2F;StateManager.js:550</code></a>
         
         </p>
 
@@ -752,7 +789,7 @@ this should be treated as an asyncronous process</p>
             
         
         
-        <a href="../files/src_StateManager.js.html#l660"><code>src&#x2F;StateManager.js:660</code></a>
+        <a href="../files/src_StateManager.js.html#l591"><code>src&#x2F;StateManager.js:591</code></a>
         
         </p>
 
@@ -837,7 +874,7 @@ this should be treated as an asyncronous process</p>
             
         
         
-        <a href="../files/src_StateManager.js.html#l738"><code>src&#x2F;StateManager.js:738</code></a>
+        <a href="../files/src_StateManager.js.html#l683"><code>src&#x2F;StateManager.js:683</code></a>
         
         </p>
 
@@ -952,7 +989,7 @@ this should be treated as an asyncronous process</p>
             
         
         
-        <a href="../files/src_StateManager.js.html#l36"><code>src&#x2F;StateManager.js:36</code></a>
+        <a href="../files/src_StateManager.js.html#l35"><code>src&#x2F;StateManager.js:35</code></a>
         
         </p>
 
@@ -1077,7 +1114,7 @@ this should be treated as an asyncronous process</p>
             
         
         
-        <a href="../files/src_StateManager.js.html#l327"><code>src&#x2F;StateManager.js:327</code></a>
+        <a href="../files/src_StateManager.js.html#l283"><code>src&#x2F;StateManager.js:283</code></a>
         
         </p>
 
@@ -1182,7 +1219,7 @@ this should be treated as an asyncronous process</p>
             
         
         
-        <a href="../files/src_StateManager.js.html#l354"><code>src&#x2F;StateManager.js:354</code></a>
+        <a href="../files/src_StateManager.js.html#l310"><code>src&#x2F;StateManager.js:310</code></a>
         
         </p>
 
@@ -1261,7 +1298,7 @@ this should be treated as an asyncronous process</p>
             
         
         
-        <a href="../files/src_StateManager.js.html#l840"><code>src&#x2F;StateManager.js:840</code></a>
+        <a href="../files/src_StateManager.js.html#l734"><code>src&#x2F;StateManager.js:734</code></a>
         
         </p>
 
@@ -1336,7 +1373,7 @@ this should be treated as an asyncronous process</p>
             
         
         
-        <a href="../files/src_StateManager.js.html#l57"><code>src&#x2F;StateManager.js:57</code></a>
+        <a href="../files/src_StateManager.js.html#l56"><code>src&#x2F;StateManager.js:56</code></a>
         
         </p>
 
@@ -1449,7 +1486,7 @@ this should be treated as an asyncronous process</p>
             
         
         
-        <a href="../files/src_StateManager.js.html#l380"><code>src&#x2F;StateManager.js:380</code></a>
+        <a href="../files/src_StateManager.js.html#l336"><code>src&#x2F;StateManager.js:336</code></a>
         
         </p>
 
@@ -1522,7 +1559,7 @@ this should be treated as an asyncronous process</p>
             
         
         
-        <a href="../files/src_StateManager.js.html#l369"><code>src&#x2F;StateManager.js:369</code></a>
+        <a href="../files/src_StateManager.js.html#l325"><code>src&#x2F;StateManager.js:325</code></a>
         
         </p>
 
@@ -1605,7 +1642,7 @@ this should be treated as an asyncronous process</p>
             
         
         
-        <a href="../files/src_StateManager.js.html#l391"><code>src&#x2F;StateManager.js:391</code></a>
+        <a href="../files/src_StateManager.js.html#l347"><code>src&#x2F;StateManager.js:347</code></a>
         
         </p>
 
@@ -1712,7 +1749,7 @@ this should be treated as an asyncronous process</p>
             
         
         
-        <a href="../files/src_StateManager.js.html#l65"><code>src&#x2F;StateManager.js:65</code></a>
+        <a href="../files/src_StateManager.js.html#l64"><code>src&#x2F;StateManager.js:64</code></a>
         
         </p>
 
@@ -1805,7 +1842,7 @@ this should be treated as an asyncronous process</p>
             
         
         
-        <a href="../files/src_StateManager.js.html#l480"><code>src&#x2F;StateManager.js:480</code></a>
+        <a href="../files/src_StateManager.js.html#l429"><code>src&#x2F;StateManager.js:429</code></a>
         
         </p>
 
@@ -1876,7 +1913,7 @@ this should be treated as an asyncronous process</p>
             
         
         
-        <a href="../files/src_StateManager.js.html#l289"><code>src&#x2F;StateManager.js:289</code></a>
+        <a href="../files/src_StateManager.js.html#l254"><code>src&#x2F;StateManager.js:254</code></a>
         
         </p>
 
@@ -1922,7 +1959,7 @@ this should be treated as an asyncronous process</p>
                     
 
                     <div class="param-description">
-                        <p>Data object with aliases and start frames for transition in and out sounds: inSound, inSoundStart, outSound, outSoundStart</p>
+                        <p>Data object with aliases and start times (seconds) for transition in, loop and out sounds: {in:{alias:&quot;myAlias&quot;, start:0.2}}</p>
 
                     </div>
 
@@ -1975,7 +2012,7 @@ this should be treated as an asyncronous process</p>
             
         
         
-        <a href="../files/src_StateManager.js.html#l404"><code>src&#x2F;StateManager.js:404</code></a>
+        <a href="../files/src_StateManager.js.html#l360"><code>src&#x2F;StateManager.js:360</code></a>
         
         </p>
 
@@ -2044,7 +2081,7 @@ this should be treated as an asyncronous process</p>
             
         
         
-        <a href="../files/src_StateManager.js.html#l441"><code>src&#x2F;StateManager.js:441</code></a>
+        <a href="../files/src_StateManager.js.html#l390"><code>src&#x2F;StateManager.js:390</code></a>
         
         </p>
 
@@ -2100,7 +2137,7 @@ Lets enter the state</p>
             
         
         
-        <a href="../files/src_StateManager.js.html#l415"><code>src&#x2F;StateManager.js:415</code></a>
+        <a href="../files/src_StateManager.js.html#l371"><code>src&#x2F;StateManager.js:371</code></a>
         
         </p>
 
@@ -2156,7 +2193,7 @@ The state can tell the manager to stop the animation</p>
             
         
         
-        <a href="../files/src_StateManager.js.html#l501"><code>src&#x2F;StateManager.js:501</code></a>
+        <a href="../files/src_StateManager.js.html#l450"><code>src&#x2F;StateManager.js:450</code></a>
         
         </p>
 
@@ -2222,7 +2259,7 @@ enters it again. Can be useful for clearing a state</p>
             
         
         
-        <a href="../files/src_StateManager.js.html#l51"><code>src&#x2F;StateManager.js:51</code></a>
+        <a href="../files/src_StateManager.js.html#l50"><code>src&#x2F;StateManager.js:50</code></a>
         
         </p>
 
@@ -2317,7 +2354,7 @@ enters it again. Can be useful for clearing a state</p>
             
         
         
-        <a href="../files/src_StateManager.js.html#l44"><code>src&#x2F;StateManager.js:44</code></a>
+        <a href="../files/src_StateManager.js.html#l43"><code>src&#x2F;StateManager.js:43</code></a>
         
         </p>
 
@@ -2422,7 +2459,7 @@ enters it again. Can be useful for clearing a state</p>
             
         
         
-        <a href="../files/src_StateManager.js.html#l513"><code>src&#x2F;StateManager.js:513</code></a>
+        <a href="../files/src_StateManager.js.html#l462"><code>src&#x2F;StateManager.js:462</code></a>
         
         </p>
 
@@ -2501,7 +2538,7 @@ enters it again. Can be useful for clearing a state</p>
             
         
         
-        <a href="../files/src_StateManager.js.html#l455"><code>src&#x2F;StateManager.js:455</code></a>
+        <a href="../files/src_StateManager.js.html#l404"><code>src&#x2F;StateManager.js:404</code></a>
         
         </p>
 
@@ -2566,7 +2603,7 @@ enters it again. Can be useful for clearing a state</p>
             
         
         
-        <a href="../files/src_StateManager.js.html#l716"><code>src&#x2F;StateManager.js:716</code></a>
+        <a href="../files/src_StateManager.js.html#l671"><code>src&#x2F;StateManager.js:671</code></a>
         
         </p>
 
@@ -2655,7 +2692,7 @@ enters it again. Can be useful for clearing a state</p>
             
         
         
-        <a href="../files/src_StateManager.js.html#l682"><code>src&#x2F;StateManager.js:682</code></a>
+        <a href="../files/src_StateManager.js.html#l651"><code>src&#x2F;StateManager.js:651</code></a>
         
         </p>
 
@@ -2744,7 +2781,7 @@ enters it again. Can be useful for clearing a state</p>
             
         
         
-        <a href="../files/src_StateManager.js.html#l826"><code>src&#x2F;StateManager.js:826</code></a>
+        <a href="../files/src_StateManager.js.html#l720"><code>src&#x2F;StateManager.js:720</code></a>
         
         </p>
 
@@ -2799,100 +2836,6 @@ enters it again. Can be useful for clearing a state</p>
                 <h2 class="off-left">Properties</h2>
 
                 
-                    <div id="property__canPlayAudio" class="property item private">
-    <h3 class="name"><code>_canPlayAudio</code></h3>
-    <span class="type">Bool</span>
-
-    
-
-    
-        <span class="flag private">private</span>
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_StateManager.js.html#l117"><code>src&#x2F;StateManager.js:117</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>[CreateJS Only] Transition Sound Stuff</p>
-
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="property__curSound" class="property item private">
-    <h3 class="name"><code>_curSound</code></h3>
-    <span class="type">createjs.SoundInstance</span>
-
-    
-
-    
-        <span class="flag private">private</span>
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_StateManager.js.html#l107"><code>src&#x2F;StateManager.js:107</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>[Pixi Only] The current sound</p>
-
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
                     <div id="property__destroyed" class="property item private">
     <h3 class="name"><code>_destroyed</code></h3>
     <span class="type">Bool</span>
@@ -2918,7 +2861,7 @@ enters it again. Can be useful for clearing a state</p>
             
         
         
-        <a href="../files/src_StateManager.js.html#l189"><code>src&#x2F;StateManager.js:189</code></a>
+        <a href="../files/src_StateManager.js.html#l154"><code>src&#x2F;StateManager.js:154</code></a>
         
         </p>
 
@@ -2929,100 +2872,6 @@ enters it again. Can be useful for clearing a state</p>
 
     <div class="description">
         <p>If the current object is destroyed</p>
-
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="property__inSoundAnim" class="property item private">
-    <h3 class="name"><code>_inSoundAnim</code></h3>
-    <span class="type">cloudkid.AudioAnimation</span>
-
-    
-
-    
-        <span class="flag private">private</span>
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_StateManager.js.html#l125"><code>src&#x2F;StateManager.js:125</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>[CreateJS Only] Sound to play on transitioning in</p>
-
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="property__inSoundAnim" class="property item private">
-    <h3 class="name"><code>_inSoundAnim</code></h3>
-    <span class="type">cloudkid.AudioAnimation</span>
-
-    
-
-    
-        <span class="flag private">private</span>
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_StateManager.js.html#l132"><code>src&#x2F;StateManager.js:132</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>[CreateJS Only] Sound to play on transitioning out</p>
 
     </div>
 
@@ -3059,7 +2908,7 @@ enters it again. Can be useful for clearing a state</p>
             
         
         
-        <a href="../files/src_StateManager.js.html#l181"><code>src&#x2F;StateManager.js:181</code></a>
+        <a href="../files/src_StateManager.js.html#l146"><code>src&#x2F;StateManager.js:146</code></a>
         
         </p>
 
@@ -3106,7 +2955,7 @@ enters it again. Can be useful for clearing a state</p>
             
         
         
-        <a href="../files/src_StateManager.js.html#l72"><code>src&#x2F;StateManager.js:72</code></a>
+        <a href="../files/src_StateManager.js.html#l71"><code>src&#x2F;StateManager.js:71</code></a>
         
         </p>
 
@@ -3153,7 +3002,7 @@ enters it again. Can be useful for clearing a state</p>
             
         
         
-        <a href="../files/src_StateManager.js.html#l165"><code>src&#x2F;StateManager.js:165</code></a>
+        <a href="../files/src_StateManager.js.html#l130"><code>src&#x2F;StateManager.js:130</code></a>
         
         </p>
 
@@ -3200,7 +3049,7 @@ enters it again. Can be useful for clearing a state</p>
             
         
         
-        <a href="../files/src_StateManager.js.html#l197"><code>src&#x2F;StateManager.js:197</code></a>
+        <a href="../files/src_StateManager.js.html#l162"><code>src&#x2F;StateManager.js:162</code></a>
         
         </p>
 
@@ -3247,7 +3096,7 @@ enters it again. Can be useful for clearing a state</p>
             
         
         
-        <a href="../files/src_StateManager.js.html#l149"><code>src&#x2F;StateManager.js:149</code></a>
+        <a href="../files/src_StateManager.js.html#l114"><code>src&#x2F;StateManager.js:114</code></a>
         
         </p>
 
@@ -3294,7 +3143,7 @@ enters it again. Can be useful for clearing a state</p>
             
         
         
-        <a href="../files/src_StateManager.js.html#l157"><code>src&#x2F;StateManager.js:157</code></a>
+        <a href="../files/src_StateManager.js.html#l122"><code>src&#x2F;StateManager.js:122</code></a>
         
         </p>
 
@@ -3341,7 +3190,7 @@ enters it again. Can be useful for clearing a state</p>
             
         
         
-        <a href="../files/src_StateManager.js.html#l141"><code>src&#x2F;StateManager.js:141</code></a>
+        <a href="../files/src_StateManager.js.html#l106"><code>src&#x2F;StateManager.js:106</code></a>
         
         </p>
 
@@ -3388,7 +3237,7 @@ enters it again. Can be useful for clearing a state</p>
             
         
         
-        <a href="../files/src_StateManager.js.html#l91"><code>src&#x2F;StateManager.js:91</code></a>
+        <a href="../files/src_StateManager.js.html#l90"><code>src&#x2F;StateManager.js:90</code></a>
         
         </p>
 
@@ -3435,7 +3284,7 @@ enters it again. Can be useful for clearing a state</p>
             
         
         
-        <a href="../files/src_StateManager.js.html#l99"><code>src&#x2F;StateManager.js:99</code></a>
+        <a href="../files/src_StateManager.js.html#l98"><code>src&#x2F;StateManager.js:98</code></a>
         
         </p>
 
@@ -3482,7 +3331,7 @@ enters it again. Can be useful for clearing a state</p>
             
         
         
-        <a href="../files/src_StateManager.js.html#l173"><code>src&#x2F;StateManager.js:173</code></a>
+        <a href="../files/src_StateManager.js.html#l138"><code>src&#x2F;StateManager.js:138</code></a>
         
         </p>
 
@@ -3531,7 +3380,7 @@ enters it again. Can be useful for clearing a state</p>
             
         
         
-        <a href="../files/src_StateManager.js.html#l82"><code>src&#x2F;StateManager.js:82</code></a>
+        <a href="../files/src_StateManager.js.html#l81"><code>src&#x2F;StateManager.js:81</code></a>
         
         </p>
 
@@ -3586,7 +3435,7 @@ enters it again. Can be useful for clearing a state</p>
             
         
         
-        <a href="../files/src_StateManager.js.html#l247"><code>src&#x2F;StateManager.js:247</code></a>
+        <a href="../files/src_StateManager.js.html#l212"><code>src&#x2F;StateManager.js:212</code></a>
         
         </p>
 
@@ -3630,7 +3479,7 @@ enters it again. Can be useful for clearing a state</p>
             
         
         
-        <a href="../files/src_StateManager.js.html#l254"><code>src&#x2F;StateManager.js:254</code></a>
+        <a href="../files/src_StateManager.js.html#l219"><code>src&#x2F;StateManager.js:219</code></a>
         
         </p>
 
@@ -3674,7 +3523,7 @@ enters it again. Can be useful for clearing a state</p>
             
         
         
-        <a href="../files/src_StateManager.js.html#l233"><code>src&#x2F;StateManager.js:233</code></a>
+        <a href="../files/src_StateManager.js.html#l198"><code>src&#x2F;StateManager.js:198</code></a>
         
         </p>
 
@@ -3718,7 +3567,7 @@ enters it again. Can be useful for clearing a state</p>
             
         
         
-        <a href="../files/src_StateManager.js.html#l240"><code>src&#x2F;StateManager.js:240</code></a>
+        <a href="../files/src_StateManager.js.html#l205"><code>src&#x2F;StateManager.js:205</code></a>
         
         </p>
 
@@ -3762,7 +3611,7 @@ enters it again. Can be useful for clearing a state</p>
             
         
         
-        <a href="../files/src_StateManager.js.html#l261"><code>src&#x2F;StateManager.js:261</code></a>
+        <a href="../files/src_StateManager.js.html#l226"><code>src&#x2F;StateManager.js:226</code></a>
         
         </p>
 
@@ -3806,7 +3655,7 @@ enters it again. Can be useful for clearing a state</p>
             
         
         
-        <a href="../files/src_StateManager.js.html#l268"><code>src&#x2F;StateManager.js:268</code></a>
+        <a href="../files/src_StateManager.js.html#l233"><code>src&#x2F;StateManager.js:233</code></a>
         
         </p>
 
@@ -3850,7 +3699,7 @@ enters it again. Can be useful for clearing a state</p>
             
         
         
-        <a href="../files/src_StateManager.js.html#l282"><code>src&#x2F;StateManager.js:282</code></a>
+        <a href="../files/src_StateManager.js.html#l247"><code>src&#x2F;StateManager.js:247</code></a>
         
         </p>
 
@@ -3894,7 +3743,7 @@ enters it again. Can be useful for clearing a state</p>
             
         
         
-        <a href="../files/src_StateManager.js.html#l275"><code>src&#x2F;StateManager.js:275</code></a>
+        <a href="../files/src_StateManager.js.html#l240"><code>src&#x2F;StateManager.js:240</code></a>
         
         </p>
 
@@ -3938,7 +3787,7 @@ enters it again. Can be useful for clearing a state</p>
             
         
         
-        <a href="../files/src_StateManager.js.html#l205"><code>src&#x2F;StateManager.js:205</code></a>
+        <a href="../files/src_StateManager.js.html#l170"><code>src&#x2F;StateManager.js:170</code></a>
         
         </p>
 
@@ -3982,7 +3831,7 @@ enters it again. Can be useful for clearing a state</p>
             
         
         
-        <a href="../files/src_StateManager.js.html#l212"><code>src&#x2F;StateManager.js:212</code></a>
+        <a href="../files/src_StateManager.js.html#l177"><code>src&#x2F;StateManager.js:177</code></a>
         
         </p>
 
@@ -4026,7 +3875,7 @@ enters it again. Can be useful for clearing a state</p>
             
         
         
-        <a href="../files/src_StateManager.js.html#l219"><code>src&#x2F;StateManager.js:219</code></a>
+        <a href="../files/src_StateManager.js.html#l184"><code>src&#x2F;StateManager.js:184</code></a>
         
         </p>
 
@@ -4070,7 +3919,7 @@ enters it again. Can be useful for clearing a state</p>
             
         
         
-        <a href="../files/src_StateManager.js.html#l226"><code>src&#x2F;StateManager.js:226</code></a>
+        <a href="../files/src_StateManager.js.html#l191"><code>src&#x2F;StateManager.js:191</code></a>
         
         </p>
 

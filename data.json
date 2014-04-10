@@ -2,7 +2,7 @@
     "project": {
         "name": "CloudKid States API",
         "description": "CloudKid States API: a library providing base classes for making various gamestates",
-        "version": "1.0.0",
+        "version": "1.1.0",
         "logo": "cloudkid.png"
     },
     "files": {
@@ -95,7 +95,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "src/StateManager.js",
-            "line": 20,
+            "line": 19,
             "description": "The State Manager used for manaing the different states of a game or site",
             "is_constructor": 1,
             "params": [
@@ -106,7 +106,7 @@
                 },
                 {
                     "name": "audio",
-                    "description": "Data object with aliases and start frames for transition in and out sounds: inSound, inSoundStart, outSound, outSoundStart",
+                    "description": "Data object with aliases and start times (seconds) for transition in, loop and out sounds: {in:{alias:\"myAlias\", start:0.2}}",
                     "type": "Object"
                 }
             ]
@@ -689,7 +689,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 36,
+            "line": 35,
             "description": "Adds the specified event listener",
             "itemtype": "method",
             "name": "addEventListener",
@@ -713,7 +713,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 44,
+            "line": 43,
             "description": "Removes the specified event listener",
             "itemtype": "method",
             "name": "removeEventListener",
@@ -733,7 +733,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 51,
+            "line": 50,
             "description": "Removes all listeners for the specified type, or all listeners of all types",
             "itemtype": "method",
             "name": "removeAllEventListeners",
@@ -748,7 +748,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 57,
+            "line": 56,
             "description": "Dispatches the specified event",
             "itemtype": "method",
             "name": "dispatchEvent",
@@ -772,7 +772,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 65,
+            "line": 64,
             "description": "Indicates whether there is at least one listener for the specified event type",
             "itemtype": "method",
             "name": "hasEventListener",
@@ -791,7 +791,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 72,
+            "line": 71,
             "description": "Createjs EventDispatcher method",
             "itemtype": "property",
             "name": "_listeners description",
@@ -802,7 +802,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 82,
+            "line": 81,
             "description": "The current version of the state manager",
             "itemtype": "property",
             "name": "VERSION",
@@ -813,7 +813,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 91,
+            "line": 90,
             "description": "The click to play in between transitioning states",
             "itemtype": "property",
             "name": "_transition",
@@ -824,7 +824,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 99,
+            "line": 98,
             "description": "The sounds for the transition",
             "itemtype": "property",
             "name": "_transitionSounds",
@@ -835,51 +835,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 107,
-            "description": "[Pixi Only] The current sound",
-            "itemtype": "property",
-            "name": "_curSound",
-            "type": "createjs.SoundInstance",
-            "access": "private",
-            "tagname": "",
-            "class": "cloudkid.StateManager"
-        },
-        {
-            "file": "src/StateManager.js",
-            "line": 117,
-            "description": "[CreateJS Only] Transition Sound Stuff",
-            "itemtype": "property",
-            "name": "_canPlayAudio",
-            "type": "Bool",
-            "access": "private",
-            "tagname": "",
-            "class": "cloudkid.StateManager"
-        },
-        {
-            "file": "src/StateManager.js",
-            "line": 125,
-            "description": "[CreateJS Only] Sound to play on transitioning in",
-            "itemtype": "property",
-            "name": "_inSoundAnim",
-            "type": "cloudkid.AudioAnimation",
-            "access": "private",
-            "tagname": "",
-            "class": "cloudkid.StateManager"
-        },
-        {
-            "file": "src/StateManager.js",
-            "line": 132,
-            "description": "[CreateJS Only] Sound to play on transitioning out",
-            "itemtype": "property",
-            "name": "_inSoundAnim",
-            "type": "cloudkid.AudioAnimation",
-            "access": "private",
-            "tagname": "",
-            "class": "cloudkid.StateManager"
-        },
-        {
-            "file": "src/StateManager.js",
-            "line": 141,
+            "line": 106,
             "description": "The collection of states map",
             "itemtype": "property",
             "name": "_states",
@@ -890,7 +846,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 149,
+            "line": 114,
             "description": "The currently selected state",
             "itemtype": "property",
             "name": "_state",
@@ -901,7 +857,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 157,
+            "line": 122,
             "description": "The currently selected state id",
             "itemtype": "property",
             "name": "_stateID",
@@ -912,7 +868,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 165,
+            "line": 130,
             "description": "The old state",
             "itemtype": "property",
             "name": "_oldState",
@@ -923,7 +879,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 173,
+            "line": 138,
             "description": "If the manager is loading a state",
             "itemtype": "property",
             "name": "name description",
@@ -934,7 +890,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 181,
+            "line": 146,
             "description": "If the state or manager is current transitioning",
             "itemtype": "property",
             "name": "_isTransitioning",
@@ -945,7 +901,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 189,
+            "line": 154,
             "description": "If the current object is destroyed",
             "itemtype": "property",
             "name": "_destroyed",
@@ -956,7 +912,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 197,
+            "line": 162,
             "description": "If we're transitioning the state, the queue the id of the next one",
             "itemtype": "property",
             "name": "_queueStateId",
@@ -967,7 +923,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 205,
+            "line": 170,
             "description": "The name of the Animator label and event for transitioning state in",
             "itemtype": "event",
             "name": "onTransitionIn",
@@ -975,7 +931,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 212,
+            "line": 177,
             "description": "The name of the event for done with transitioning state in",
             "itemtype": "event",
             "name": "onTransitionInDone",
@@ -983,7 +939,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 219,
+            "line": 184,
             "description": "The name of the Animator label and event for transitioning state out",
             "itemtype": "event",
             "name": "onTransitionOut",
@@ -991,7 +947,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 226,
+            "line": 191,
             "description": "The name of the event for done with transitioning state out",
             "itemtype": "event",
             "name": "onTransitionOutDone",
@@ -999,7 +955,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 233,
+            "line": 198,
             "description": "The name of the Animator label for showing the blocker",
             "itemtype": "event",
             "name": "onBlockerShow",
@@ -1007,7 +963,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 240,
+            "line": 205,
             "description": "The name of the Animator label for showing the blocker",
             "itemtype": "event",
             "name": "onBlockerShowDone",
@@ -1015,7 +971,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 247,
+            "line": 212,
             "description": "The name of the Animator label and event for hiding the blocker",
             "itemtype": "event",
             "name": "onBlockerHide",
@@ -1023,7 +979,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 254,
+            "line": 219,
             "description": "The name of the Animator label and event for hiding the blocker",
             "itemtype": "event",
             "name": "onBlockerHideDone",
@@ -1031,7 +987,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 261,
+            "line": 226,
             "description": "The name of the Animator label and event for initializing",
             "itemtype": "event",
             "name": "onInit",
@@ -1039,7 +995,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 268,
+            "line": 233,
             "description": "The name of the event for done with initializing",
             "itemtype": "event",
             "name": "onInitDone",
@@ -1047,7 +1003,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 275,
+            "line": 240,
             "description": "Event when the state transitions the first time",
             "itemtype": "event",
             "name": "onLoadingStart",
@@ -1055,7 +1011,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 282,
+            "line": 247,
             "description": "Event when the state transitions the first time",
             "itemtype": "event",
             "name": "onLoadingDone",
@@ -1063,7 +1019,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 289,
+            "line": 254,
             "description": "Initialize the State Manager",
             "itemtype": "method",
             "name": "intialize",
@@ -1075,7 +1031,7 @@
                 },
                 {
                     "name": "transitionSounds",
-                    "description": "Data object with aliases and start frames for transition in and out sounds: inSound, inSoundStart, outSound, outSoundStart",
+                    "description": "Data object with aliases and start times (seconds) for transition in, loop and out sounds: {in:{alias:\"myAlias\", start:0.2}}",
                     "type": "Object"
                 }
             ],
@@ -1083,7 +1039,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 327,
+            "line": 283,
             "description": "Register a state with the state manager, done initially",
             "itemtype": "method",
             "name": "addState",
@@ -1103,7 +1059,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 354,
+            "line": 310,
             "description": "Dynamically change the transition",
             "itemtype": "method",
             "name": "changeTransition",
@@ -1118,7 +1074,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 369,
+            "line": 325,
             "description": "Get the currently selected state",
             "itemtype": "method",
             "name": "getState",
@@ -1130,7 +1086,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 380,
+            "line": 336,
             "description": "Get the current selected state (state object)",
             "itemtype": "method",
             "name": "getCurrentState",
@@ -1142,7 +1098,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 391,
+            "line": 347,
             "description": "Access a certain state by the ID",
             "itemtype": "method",
             "name": "getStateById",
@@ -1161,7 +1117,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 404,
+            "line": 360,
             "description": "If the StateManager is busy because it is currently loading or transitioning.",
             "itemtype": "method",
             "name": "isBusy",
@@ -1173,7 +1129,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 415,
+            "line": 371,
             "description": "If the state needs to do some asyncronous tasks,\nThe state can tell the manager to stop the animation",
             "itemtype": "method",
             "name": "loadingStart",
@@ -1181,7 +1137,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 441,
+            "line": 390,
             "description": "If the state has finished it's asyncronous task loading\nLets enter the state",
             "itemtype": "method",
             "name": "loadingDone",
@@ -1189,7 +1145,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 455,
+            "line": 404,
             "description": "Show, enable the blocker clip to disable mouse clicks",
             "itemtype": "method",
             "name": "showBlocker",
@@ -1197,7 +1153,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 480,
+            "line": 429,
             "description": "Re-enable interaction with the stage",
             "itemtype": "method",
             "name": "hideBlocker",
@@ -1205,7 +1161,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 501,
+            "line": 450,
             "description": "This transitions out of the current state and \nenters it again. Can be useful for clearing a state",
             "itemtype": "method",
             "name": "refresh",
@@ -1213,7 +1169,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 513,
+            "line": 462,
             "description": "Set the current State",
             "itemtype": "method",
             "name": "setState",
@@ -1228,7 +1184,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 619,
+            "line": 550,
             "description": "When the state has completed it's loading sequence\nthis should be treated as an asyncronous process",
             "itemtype": "method",
             "name": "_onStateLoaded",
@@ -1238,7 +1194,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 660,
+            "line": 591,
             "description": "Process the state queue",
             "itemtype": "method",
             "name": "_processQueue",
@@ -1251,7 +1207,17 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 682,
+            "line": 613,
+            "description": "Plays the animation \"transitionLoop\" on the transition. Also serves as the animation callback.\nManually looping the animation allows the animation to be synced to the audio while looping.",
+            "itemtype": "method",
+            "name": "_loopTransition",
+            "access": "private",
+            "tagname": "",
+            "class": "cloudkid.StateManager"
+        },
+        {
+            "file": "src/StateManager.js",
+            "line": 651,
             "description": "Displays the transition out animation, without changing states.",
             "itemtype": "method",
             "name": "showTransitionOut",
@@ -1266,7 +1232,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 716,
+            "line": 671,
             "description": "Displays the transition in animation, without changing states.",
             "itemtype": "method",
             "name": "showTransitionIn",
@@ -1281,7 +1247,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 738,
+            "line": 683,
             "description": "Generalized function for transitioning with the manager",
             "itemtype": "method",
             "name": "_transitioning",
@@ -1303,7 +1269,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 826,
+            "line": 720,
             "description": "The frame update function",
             "itemtype": "method",
             "name": "update",
@@ -1318,7 +1284,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 840,
+            "line": 734,
             "description": "Remove the state manager",
             "itemtype": "method",
             "name": "destroy",
@@ -1444,47 +1410,59 @@
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src/StateManager.js:36"
+            "line": " src/StateManager.js:35"
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src/StateManager.js:44"
+            "line": " src/StateManager.js:43"
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src/StateManager.js:51"
+            "line": " src/StateManager.js:50"
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src/StateManager.js:57"
+            "line": " src/StateManager.js:56"
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src/StateManager.js:65"
+            "line": " src/StateManager.js:64"
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src/StateManager.js:289"
+            "line": " src/StateManager.js:254"
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src/StateManager.js:327"
+            "line": " src/StateManager.js:283"
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src/StateManager.js:354"
+            "line": " src/StateManager.js:310"
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src/StateManager.js:369"
+            "line": " src/StateManager.js:325"
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src/StateManager.js:380"
+            "line": " src/StateManager.js:336"
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src/StateManager.js:391"
+            "line": " src/StateManager.js:347"
+        },
+        {
+            "message": "replacing incorrect tag: function with method",
+            "line": " src/StateManager.js:360"
+        },
+        {
+            "message": "replacing incorrect tag: function with method",
+            "line": " src/StateManager.js:371"
+        },
+        {
+            "message": "replacing incorrect tag: function with method",
+            "line": " src/StateManager.js:390"
         },
         {
             "message": "replacing incorrect tag: function with method",
@@ -1492,55 +1470,47 @@
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src/StateManager.js:415"
+            "line": " src/StateManager.js:429"
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src/StateManager.js:441"
+            "line": " src/StateManager.js:450"
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src/StateManager.js:455"
+            "line": " src/StateManager.js:462"
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src/StateManager.js:480"
+            "line": " src/StateManager.js:550"
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src/StateManager.js:501"
+            "line": " src/StateManager.js:591"
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src/StateManager.js:513"
+            "line": " src/StateManager.js:613"
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src/StateManager.js:619"
+            "line": " src/StateManager.js:651"
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src/StateManager.js:660"
+            "line": " src/StateManager.js:671"
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src/StateManager.js:682"
+            "line": " src/StateManager.js:683"
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src/StateManager.js:716"
+            "line": " src/StateManager.js:720"
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src/StateManager.js:738"
-        },
-        {
-            "message": "replacing incorrect tag: function with method",
-            "line": " src/StateManager.js:826"
-        },
-        {
-            "message": "replacing incorrect tag: function with method",
-            "line": " src/StateManager.js:840"
+            "line": " src/StateManager.js:734"
         }
     ]
 }
