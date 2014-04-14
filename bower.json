@@ -1,10 +1,10 @@
 {
     "name": "cloudkid-states",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "main": "dist/cloudkid-states-createjs.min.js",
     "dependencies": {
         "cloudkid-os" : "*",
-        "cloudkid-animation" : "~2.0.0",
+        "cloudkid-animation" : "^2.0.0",
         "cloudkid-audio" : "*",
         "cloudkid-sound" : "*"
     },

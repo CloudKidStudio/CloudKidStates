@@ -84,7 +84,7 @@
     var p = StateManager.prototype;
     p.addEventListener = null, p.removeEventListener = null, p.removeAllEventListeners = null, 
     p.dispatchEvent = null, p.hasEventListener = null, p._listeners = null, EventDispatcher && EventDispatcher.initialize(p), 
-    StateManager.VERSION = "1.1.0", p._transition = null, p._transitionSounds = null, 
+    StateManager.VERSION = "1.1.1", p._transition = null, p._transitionSounds = null, 
     p._states = null, p._state = null, p._stateId = null, p._oldState = null, p._isLoading = !1, 
     p._isTransitioning = !1, p._destroyed = !1, p._queueStateId = null, StateManager.TRANSITION_IN = "onTransitionIn", 
     StateManager.TRANSITION_IN_DONE = "onTransitionInDone", StateManager.TRANSITION_OUT = "onTransitionOut", 
