@@ -106,7 +106,7 @@
                 },
                 {
                     "name": "audio",
-                    "description": "Data object with aliases and start times (seconds) for transition in, loop and out sounds: {in:{alias:\"myAlias\", start:0.2}}",
+                    "description": "Data object with aliases and start times (seconds) for transition in, loop and out sounds: {in:{alias:\"myAlias\", start:0.2}}.\n\t\tThese objects are in the format for Animator or PixiAnimator from CloudKidAnimation, so they can be the alias instead of an object.",
                     "type": "Object"
                 }
             ]
@@ -689,7 +689,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 35,
+            "line": 36,
             "description": "Adds the specified event listener",
             "itemtype": "method",
             "name": "addEventListener",
@@ -713,7 +713,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 43,
+            "line": 44,
             "description": "Removes the specified event listener",
             "itemtype": "method",
             "name": "removeEventListener",
@@ -733,7 +733,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 50,
+            "line": 51,
             "description": "Removes all listeners for the specified type, or all listeners of all types",
             "itemtype": "method",
             "name": "removeAllEventListeners",
@@ -748,7 +748,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 56,
+            "line": 57,
             "description": "Dispatches the specified event",
             "itemtype": "method",
             "name": "dispatchEvent",
@@ -772,7 +772,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 64,
+            "line": 65,
             "description": "Indicates whether there is at least one listener for the specified event type",
             "itemtype": "method",
             "name": "hasEventListener",
@@ -791,7 +791,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 71,
+            "line": 72,
             "description": "Createjs EventDispatcher method",
             "itemtype": "property",
             "name": "_listeners description",
@@ -802,7 +802,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 81,
+            "line": 82,
             "description": "The current version of the state manager",
             "itemtype": "property",
             "name": "VERSION",
@@ -813,7 +813,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 90,
+            "line": 91,
             "description": "The click to play in between transitioning states",
             "itemtype": "property",
             "name": "_transition",
@@ -824,7 +824,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 98,
+            "line": 99,
             "description": "The sounds for the transition",
             "itemtype": "property",
             "name": "_transitionSounds",
@@ -835,7 +835,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 106,
+            "line": 107,
             "description": "The collection of states map",
             "itemtype": "property",
             "name": "_states",
@@ -846,7 +846,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 114,
+            "line": 115,
             "description": "The currently selected state",
             "itemtype": "property",
             "name": "_state",
@@ -857,7 +857,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 122,
+            "line": 123,
             "description": "The currently selected state id",
             "itemtype": "property",
             "name": "_stateID",
@@ -868,7 +868,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 130,
+            "line": 131,
             "description": "The old state",
             "itemtype": "property",
             "name": "_oldState",
@@ -879,7 +879,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 138,
+            "line": 139,
             "description": "If the manager is loading a state",
             "itemtype": "property",
             "name": "name description",
@@ -890,7 +890,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 146,
+            "line": 147,
             "description": "If the state or manager is current transitioning",
             "itemtype": "property",
             "name": "_isTransitioning",
@@ -901,7 +901,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 154,
+            "line": 155,
             "description": "If the current object is destroyed",
             "itemtype": "property",
             "name": "_destroyed",
@@ -912,7 +912,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 162,
+            "line": 163,
             "description": "If we're transitioning the state, the queue the id of the next one",
             "itemtype": "property",
             "name": "_queueStateId",
@@ -923,7 +923,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 170,
+            "line": 171,
             "description": "The name of the Animator label and event for transitioning state in",
             "itemtype": "event",
             "name": "onTransitionIn",
@@ -931,7 +931,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 177,
+            "line": 178,
             "description": "The name of the event for done with transitioning state in",
             "itemtype": "event",
             "name": "onTransitionInDone",
@@ -939,7 +939,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 184,
+            "line": 185,
             "description": "The name of the Animator label and event for transitioning state out",
             "itemtype": "event",
             "name": "onTransitionOut",
@@ -947,7 +947,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 191,
+            "line": 192,
             "description": "The name of the event for done with transitioning state out",
             "itemtype": "event",
             "name": "onTransitionOutDone",
@@ -955,7 +955,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 198,
+            "line": 199,
             "description": "The name of the Animator label for showing the blocker",
             "itemtype": "event",
             "name": "onBlockerShow",
@@ -963,7 +963,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 205,
+            "line": 206,
             "description": "The name of the Animator label for showing the blocker",
             "itemtype": "event",
             "name": "onBlockerShowDone",
@@ -971,7 +971,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 212,
+            "line": 213,
             "description": "The name of the Animator label and event for hiding the blocker",
             "itemtype": "event",
             "name": "onBlockerHide",
@@ -979,7 +979,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 219,
+            "line": 220,
             "description": "The name of the Animator label and event for hiding the blocker",
             "itemtype": "event",
             "name": "onBlockerHideDone",
@@ -987,7 +987,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 226,
+            "line": 227,
             "description": "The name of the Animator label and event for initializing",
             "itemtype": "event",
             "name": "onInit",
@@ -995,7 +995,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 233,
+            "line": 234,
             "description": "The name of the event for done with initializing",
             "itemtype": "event",
             "name": "onInitDone",
@@ -1003,7 +1003,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 240,
+            "line": 241,
             "description": "Event when the state transitions the first time",
             "itemtype": "event",
             "name": "onLoadingStart",
@@ -1011,7 +1011,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 247,
+            "line": 248,
             "description": "Event when the state transitions the first time",
             "itemtype": "event",
             "name": "onLoadingDone",
@@ -1019,7 +1019,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 254,
+            "line": 255,
             "description": "Initialize the State Manager",
             "itemtype": "method",
             "name": "intialize",
@@ -1039,7 +1039,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 283,
+            "line": 284,
             "description": "Register a state with the state manager, done initially",
             "itemtype": "method",
             "name": "addState",
@@ -1059,7 +1059,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 310,
+            "line": 311,
             "description": "Dynamically change the transition",
             "itemtype": "method",
             "name": "changeTransition",
@@ -1074,7 +1074,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 325,
+            "line": 326,
             "description": "Get the currently selected state",
             "itemtype": "method",
             "name": "getState",
@@ -1086,7 +1086,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 336,
+            "line": 337,
             "description": "Get the current selected state (state object)",
             "itemtype": "method",
             "name": "getCurrentState",
@@ -1098,7 +1098,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 347,
+            "line": 348,
             "description": "Access a certain state by the ID",
             "itemtype": "method",
             "name": "getStateById",
@@ -1117,7 +1117,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 360,
+            "line": 361,
             "description": "If the StateManager is busy because it is currently loading or transitioning.",
             "itemtype": "method",
             "name": "isBusy",
@@ -1129,7 +1129,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 371,
+            "line": 372,
             "description": "If the state needs to do some asyncronous tasks,\nThe state can tell the manager to stop the animation",
             "itemtype": "method",
             "name": "loadingStart",
@@ -1137,7 +1137,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 390,
+            "line": 391,
             "description": "If the state has finished it's asyncronous task loading\nLets enter the state",
             "itemtype": "method",
             "name": "loadingDone",
@@ -1145,7 +1145,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 404,
+            "line": 405,
             "description": "Show, enable the blocker clip to disable mouse clicks",
             "itemtype": "method",
             "name": "showBlocker",
@@ -1153,7 +1153,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 429,
+            "line": 430,
             "description": "Re-enable interaction with the stage",
             "itemtype": "method",
             "name": "hideBlocker",
@@ -1161,7 +1161,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 450,
+            "line": 451,
             "description": "This transitions out of the current state and \nenters it again. Can be useful for clearing a state",
             "itemtype": "method",
             "name": "refresh",
@@ -1169,7 +1169,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 462,
+            "line": 463,
             "description": "Set the current State",
             "itemtype": "method",
             "name": "setState",
@@ -1184,7 +1184,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 550,
+            "line": 551,
             "description": "When the state has completed it's loading sequence\nthis should be treated as an asyncronous process",
             "itemtype": "method",
             "name": "_onStateLoaded",
@@ -1194,7 +1194,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 591,
+            "line": 592,
             "description": "Process the state queue",
             "itemtype": "method",
             "name": "_processQueue",
@@ -1207,7 +1207,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 613,
+            "line": 614,
             "description": "Plays the animation \"transitionLoop\" on the transition. Also serves as the animation callback.\nManually looping the animation allows the animation to be synced to the audio while looping.",
             "itemtype": "method",
             "name": "_loopTransition",
@@ -1217,7 +1217,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 651,
+            "line": 652,
             "description": "Displays the transition out animation, without changing states.",
             "itemtype": "method",
             "name": "showTransitionOut",
@@ -1232,7 +1232,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 671,
+            "line": 672,
             "description": "Displays the transition in animation, without changing states.",
             "itemtype": "method",
             "name": "showTransitionIn",
@@ -1247,7 +1247,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 683,
+            "line": 684,
             "description": "Generalized function for transitioning with the manager",
             "itemtype": "method",
             "name": "_transitioning",
@@ -1269,7 +1269,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 720,
+            "line": 721,
             "description": "The frame update function",
             "itemtype": "method",
             "name": "update",
@@ -1284,7 +1284,7 @@
         },
         {
             "file": "src/StateManager.js",
-            "line": 734,
+            "line": 735,
             "description": "Remove the state manager",
             "itemtype": "method",
             "name": "destroy",
@@ -1410,107 +1410,107 @@
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src/StateManager.js:35"
+            "line": " src/StateManager.js:36"
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src/StateManager.js:43"
+            "line": " src/StateManager.js:44"
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src/StateManager.js:50"
+            "line": " src/StateManager.js:51"
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src/StateManager.js:56"
+            "line": " src/StateManager.js:57"
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src/StateManager.js:64"
+            "line": " src/StateManager.js:65"
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src/StateManager.js:254"
+            "line": " src/StateManager.js:255"
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src/StateManager.js:283"
+            "line": " src/StateManager.js:284"
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src/StateManager.js:310"
+            "line": " src/StateManager.js:311"
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src/StateManager.js:325"
+            "line": " src/StateManager.js:326"
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src/StateManager.js:336"
+            "line": " src/StateManager.js:337"
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src/StateManager.js:347"
+            "line": " src/StateManager.js:348"
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src/StateManager.js:360"
+            "line": " src/StateManager.js:361"
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src/StateManager.js:371"
+            "line": " src/StateManager.js:372"
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src/StateManager.js:390"
+            "line": " src/StateManager.js:391"
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src/StateManager.js:404"
+            "line": " src/StateManager.js:405"
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src/StateManager.js:429"
+            "line": " src/StateManager.js:430"
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src/StateManager.js:450"
+            "line": " src/StateManager.js:451"
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src/StateManager.js:462"
+            "line": " src/StateManager.js:463"
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src/StateManager.js:550"
+            "line": " src/StateManager.js:551"
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src/StateManager.js:591"
+            "line": " src/StateManager.js:592"
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src/StateManager.js:613"
+            "line": " src/StateManager.js:614"
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src/StateManager.js:651"
+            "line": " src/StateManager.js:652"
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src/StateManager.js:671"
+            "line": " src/StateManager.js:672"
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src/StateManager.js:683"
+            "line": " src/StateManager.js:684"
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src/StateManager.js:720"
+            "line": " src/StateManager.js:721"
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src/StateManager.js:734"
+            "line": " src/StateManager.js:735"
         }
     ]
 }
