@@ -1005,11 +1005,12 @@
 	*/
 	p.hideBlocker = function()
 	{
-		var stage = OS.instance.stage;
+		var os = OS.instance;
+		var stage = os.stage;
 		
 		if(false) 
 		{
-			stage.enableMouseOver(true);
+			stage.enableMouseOver(os.options.mouseOverRate);
 			stage.enableDOMEvents(true);
 			Touch.enable(stage);
 		}
