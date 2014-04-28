@@ -1,5 +1,7 @@
 (function(){
 	
+	"use strict";
+
 	// Imports
 	var Animator = cloudkid.Animator,
 		PixiAnimator = cloudkid.PixiAnimator,
@@ -7,9 +9,10 @@
 	
 	/**
 	*  Defines the base functionality for a state used by the state manager
-	*  
-	*  @class cloudkid.BaseState
-	*  @constructor0.
+	*
+	*  @module cloudkid
+	*  @class BaseState
+	*  @constructor
 	*  @param {createjs.MovieClip|PIXI.DisplayObjectContainer} panel The panel to associate with this panel
 	*/
 	var BaseState = function(panel)
@@ -27,6 +30,7 @@
 	* @return {function|object} Returns the listener for chaining or assignment
 	*/
 	p.addEventListener = null;
+
 	/**
 	* Removes the specified event listener
 	* @function removeEventListener
@@ -34,12 +38,14 @@
 	* @param {function|object} listener The listener function or object
 	*/
 	p.removeEventListener = null;
+
 	/**
 	* Removes all listeners for the specified type, or all listeners of all types
 	* @function removeAllEventListeners
 	* @param {String} type The string type of the event. If omitted, all listeners for all types will be removed.
 	*/
 	p.removeAllEventListeners = null;
+
 	/**
 	* Dispatches the specified event
 	* @function dispatchEvent
@@ -48,6 +54,7 @@
 	* @return {bool} Returns true if any listener returned true
 	*/
 	p.dispatchEvent = null;
+
 	/**
 	* Indicates whether there is at least one listener for the specified event type
 	* @function hasEventListener
@@ -55,6 +62,7 @@
 	* @return {bool} Returns true if there is at least one listener for the specified event
 	*/
 	p.hasEventListener = null;
+
 	/**
 	* Createjs EventDispatcher method
 	* @property {Array} _listeners description
@@ -75,7 +83,7 @@
 	/**
 	* A reference to the state manager
 	* 
-	* @property {cloudkid.StateManager} manager
+	* @property {StateManager} manager
 	*/
 	p.manager = null;
 	
@@ -382,7 +390,7 @@
 		
 		animator.play(
 			this.panel, 
-			cloudkid.StateManager.TRANSITION_IN,
+			StateManager.TRANSITION_IN,
 			function()
 			{
 				s._isTransitioning = false;
@@ -408,7 +416,7 @@
 		
 		animator.play(
 			this.panel, 
-			cloudkid.StateManager.TRANSITION_OUT,
+			StateManager.TRANSITION_OUT,
 			function()
 			{
 				s._isTransitioning = false;

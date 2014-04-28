@@ -1,13 +1,16 @@
 (function(undefined){
 	
+	"use strict";
+
 	/**
-	*   A gamestate-related event
+	*   A state-related event used by the State Manager
 	*   
-	*   @class cloudkid.StateEvent
+	*   @module cloudkid
+	*   @class StateEvent
 	*   @constructor
-	*   @param {String} type See flash.events.Event
-	*   @param {cloudkid.BaseState} currentState The currentState of the state manager
-	*   @param {cloudkid.BaseState} visibleState The current state being transitioned or changing visibility, default to currentState
+	*   @param {String} type See createjs.Event
+	*   @param {BaseState} currentState The currentState of the state manager
+	*   @param {BaseState} visibleState The current state being transitioned or changing visibility, default to currentState
 	*/
 	var StateEvent = function(type, currentState, visibleState)
 	{
@@ -61,14 +64,14 @@
 	/**
 	* A reference to the current state of the state manager
 	* 
-	* @property {cloudkid.BaseState} currentState
+	* @property {BaseState} currentState
 	*/
 	p.currentState = null;
 	
 	/**
 	* A reference to the state who's actually being transitioned or being changed
 	* 
-	* @property {cloudkid.BaseState} visibleState
+	* @property {BaseState} visibleState
 	*/
 	p.visibleState = null;
 	
@@ -83,8 +86,8 @@
 	*  
 	*  @function initialize
 	*  @param {String} type The type of event
-	*  @param {cloudkid.BaseState} currentState The currentState of the state manager
-	*  @param {cloudkid.BaseState} visibleState The current state being transitioned or changing visibility
+	*  @param {BaseState} currentState The currentState of the state manager
+	*  @param {BaseState} visibleState The current state being transitioned or changing visibility
 	*/
 	p.initialize = function(type, currentState, visibleState)
 	{
