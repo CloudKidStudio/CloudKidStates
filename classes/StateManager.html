@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
     <link rel="shortcut icon" type="image/png" href="../assets/favicon.ico">
     <script src="http://yui.yahooapis.com/3.10.1/build/yui/yui-min.js"></script>
-	<title>CloudKid States API v1.1.2 API Documentation : cloudkid.StateManager</title>  
+	<title>CloudKid States API v1.1.2 API Documentation : StateManager</title>  
 </head>
 <body class="yui3-skin-sam">
 
@@ -39,15 +39,17 @@
         <div id="api-tabview-panel">
             <ul id="api-classes" class="apis classes">
             
-                <li><a href="../classes/cloudkid.BaseState.html">cloudkid.BaseState</a></li>
+                <li><a href="../classes/BaseState.html">BaseState</a></li>
             
-                <li><a href="../classes/cloudkid.StateEvent.html">cloudkid.StateEvent</a></li>
+                <li><a href="../classes/StateEvent.html">StateEvent</a></li>
             
-                <li><a href="../classes/cloudkid.StateManager.html">cloudkid.StateManager</a></li>
+                <li><a href="../classes/StateManager.html">StateManager</a></li>
             
             </ul>
 
             <ul id="api-modules" class="apis modules">
+            
+                <li><a href="../modules/cloudkid.html">cloudkid</a></li>
             
             </ul>
         </div>
@@ -82,7 +84,7 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>cloudkid.StateManager Class</h1>
+                        <h1>StateManager Class</h1>
 <div class="box meta">
     
 
@@ -90,10 +92,14 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/src_StateManager.js.html#l19"><code>cloudkid.StateManager:19</code></a>
+            Defined in: <a href="../files/src_StateManager.js.html#l21"><code>StateManager:21</code></a>
         </div>
     
 
+    
+        
+            Namespace: <a href="../modules/cloudkid.html">cloudkid</a>
+        
     
 
     
@@ -106,120 +112,6 @@
 
 </div>
 
-
-    <div class="constructor">
-        <h2>Constructor</h2>
-        <div id="method_cloudkid.StateManager" class="method item">
-    <h3 class="name"><code>cloudkid.StateManager</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>transition</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>audio</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_StateManager.js.html#l19"><code>cloudkid.StateManager:19</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">transition</code>
-                        <span class="type">createjs.MovieClip | PIXI.MovieClip | PIXI.Spine</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>The transition MovieClip to play between transitions</p>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">audio</code>
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>Data object with aliases and start times (seconds) for transition in, loop and out sounds: {in:{alias:"myAlias", start:0.2}}.
-        These objects are in the format for Animator or PixiAnimator from CloudKidAnimation, so they can be the alias instead of an object.</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-
-    
-</div>
-
-    </div>
 
 
 <div id="classdocs" class="tabview">
@@ -666,7 +558,7 @@
             
         
         
-        <a href="../files/src_StateManager.js.html#l615"><code>_loopTransition:615</code></a>
+        <a href="../files/src_StateManager.js.html#l623"><code>_loopTransition:623</code></a>
         
         </p>
 
@@ -724,7 +616,7 @@ Manually looping the animation allows the animation to be synced to the audio wh
             
         
         
-        <a href="../files/src_StateManager.js.html#l552"><code>_onStateLoaded:552</code></a>
+        <a href="../files/src_StateManager.js.html#l560"><code>_onStateLoaded:560</code></a>
         
         </p>
 
@@ -786,7 +678,7 @@ this should be treated as an asyncronous process</p>
             
         
         
-        <a href="../files/src_StateManager.js.html#l593"><code>_processQueue:593</code></a>
+        <a href="../files/src_StateManager.js.html#l601"><code>_processQueue:601</code></a>
         
         </p>
 
@@ -871,7 +763,7 @@ this should be treated as an asyncronous process</p>
             
         
         
-        <a href="../files/src_StateManager.js.html#l685"><code>_transitioning:685</code></a>
+        <a href="../files/src_StateManager.js.html#l693"><code>_transitioning:693</code></a>
         
         </p>
 
@@ -986,7 +878,7 @@ this should be treated as an asyncronous process</p>
             
         
         
-        <a href="../files/src_StateManager.js.html#l36"><code>addEventListener:36</code></a>
+        <a href="../files/src_StateManager.js.html#l39"><code>addEventListener:39</code></a>
         
         </p>
 
@@ -1111,7 +1003,7 @@ this should be treated as an asyncronous process</p>
             
         
         
-        <a href="../files/src_StateManager.js.html#l284"><code>addState:284</code></a>
+        <a href="../files/src_StateManager.js.html#l292"><code>addState:292</code></a>
         
         </p>
 
@@ -1151,7 +1043,7 @@ this should be treated as an asyncronous process</p>
                 <li class="param">
                     
                         <code class="param-name">state</code>
-                        <span class="type"><a href="../classes/cloudkid.BaseState.html" class="crosslink">cloudkid.BaseState</a></span>
+                        <span class="type"><a href="../classes/BaseState.html" class="crosslink">BaseState</a></span>
                     
 
                     
@@ -1216,7 +1108,7 @@ this should be treated as an asyncronous process</p>
             
         
         
-        <a href="../files/src_StateManager.js.html#l311"><code>changeTransition:311</code></a>
+        <a href="../files/src_StateManager.js.html#l319"><code>changeTransition:319</code></a>
         
         </p>
 
@@ -1295,7 +1187,7 @@ this should be treated as an asyncronous process</p>
             
         
         
-        <a href="../files/src_StateManager.js.html#l736"><code>destroy:736</code></a>
+        <a href="../files/src_StateManager.js.html#l744"><code>destroy:744</code></a>
         
         </p>
 
@@ -1370,7 +1262,7 @@ this should be treated as an asyncronous process</p>
             
         
         
-        <a href="../files/src_StateManager.js.html#l57"><code>dispatchEvent:57</code></a>
+        <a href="../files/src_StateManager.js.html#l63"><code>dispatchEvent:63</code></a>
         
         </p>
 
@@ -1456,7 +1348,7 @@ this should be treated as an asyncronous process</p>
 
     
         <span class="returns-inline">
-            <span class="type"><a href="../classes/cloudkid.BaseState.html" class="crosslink">cloudkid.BaseState</a></span>
+            <span class="type"><a href="../classes/BaseState.html" class="crosslink">BaseState</a></span>
         </span>
     
 
@@ -1483,7 +1375,7 @@ this should be treated as an asyncronous process</p>
             
         
         
-        <a href="../files/src_StateManager.js.html#l337"><code>getCurrentState:337</code></a>
+        <a href="../files/src_StateManager.js.html#l345"><code>getCurrentState:345</code></a>
         
         </p>
 
@@ -1507,7 +1399,7 @@ this should be treated as an asyncronous process</p>
             <div class="returns-description">
                 
                     
-                        <span class="type"><a href="../classes/cloudkid.BaseState.html" class="crosslink">cloudkid.BaseState</a></span>:
+                        <span class="type"><a href="../classes/BaseState.html" class="crosslink">BaseState</a></span>:
                     
                     <p>The Base State object</p>
 
@@ -1556,7 +1448,7 @@ this should be treated as an asyncronous process</p>
             
         
         
-        <a href="../files/src_StateManager.js.html#l326"><code>getState:326</code></a>
+        <a href="../files/src_StateManager.js.html#l334"><code>getState:334</code></a>
         
         </p>
 
@@ -1612,7 +1504,7 @@ this should be treated as an asyncronous process</p>
 
     
         <span class="returns-inline">
-            <span class="type"><a href="../classes/cloudkid.BaseState.html" class="crosslink">cloudkid.BaseState</a></span>
+            <span class="type"><a href="../classes/BaseState.html" class="crosslink">BaseState</a></span>
         </span>
     
 
@@ -1639,7 +1531,7 @@ this should be treated as an asyncronous process</p>
             
         
         
-        <a href="../files/src_StateManager.js.html#l348"><code>getStateById:348</code></a>
+        <a href="../files/src_StateManager.js.html#l356"><code>getStateById:356</code></a>
         
         </p>
 
@@ -1687,7 +1579,7 @@ this should be treated as an asyncronous process</p>
             <div class="returns-description">
                 
                     
-                        <span class="type"><a href="../classes/cloudkid.BaseState.html" class="crosslink">cloudkid.BaseState</a></span>:
+                        <span class="type"><a href="../classes/BaseState.html" class="crosslink">BaseState</a></span>:
                     
                     <p>The base State object</p>
 
@@ -1746,7 +1638,7 @@ this should be treated as an asyncronous process</p>
             
         
         
-        <a href="../files/src_StateManager.js.html#l65"><code>hasEventListener:65</code></a>
+        <a href="../files/src_StateManager.js.html#l72"><code>hasEventListener:72</code></a>
         
         </p>
 
@@ -1839,7 +1731,7 @@ this should be treated as an asyncronous process</p>
             
         
         
-        <a href="../files/src_StateManager.js.html#l430"><code>hideBlocker:430</code></a>
+        <a href="../files/src_StateManager.js.html#l438"><code>hideBlocker:438</code></a>
         
         </p>
 
@@ -1910,7 +1802,7 @@ this should be treated as an asyncronous process</p>
             
         
         
-        <a href="../files/src_StateManager.js.html#l255"><code>intialize:255</code></a>
+        <a href="../files/src_StateManager.js.html#l263"><code>intialize:263</code></a>
         
         </p>
 
@@ -2009,7 +1901,7 @@ this should be treated as an asyncronous process</p>
             
         
         
-        <a href="../files/src_StateManager.js.html#l361"><code>isBusy:361</code></a>
+        <a href="../files/src_StateManager.js.html#l369"><code>isBusy:369</code></a>
         
         </p>
 
@@ -2078,7 +1970,7 @@ this should be treated as an asyncronous process</p>
             
         
         
-        <a href="../files/src_StateManager.js.html#l391"><code>loadingDone:391</code></a>
+        <a href="../files/src_StateManager.js.html#l399"><code>loadingDone:399</code></a>
         
         </p>
 
@@ -2134,7 +2026,7 @@ Lets enter the state</p>
             
         
         
-        <a href="../files/src_StateManager.js.html#l372"><code>loadingStart:372</code></a>
+        <a href="../files/src_StateManager.js.html#l380"><code>loadingStart:380</code></a>
         
         </p>
 
@@ -2190,7 +2082,7 @@ The state can tell the manager to stop the animation</p>
             
         
         
-        <a href="../files/src_StateManager.js.html#l452"><code>refresh:452</code></a>
+        <a href="../files/src_StateManager.js.html#l460"><code>refresh:460</code></a>
         
         </p>
 
@@ -2256,7 +2148,7 @@ enters it again. Can be useful for clearing a state</p>
             
         
         
-        <a href="../files/src_StateManager.js.html#l51"><code>removeAllEventListeners:51</code></a>
+        <a href="../files/src_StateManager.js.html#l56"><code>removeAllEventListeners:56</code></a>
         
         </p>
 
@@ -2351,7 +2243,7 @@ enters it again. Can be useful for clearing a state</p>
             
         
         
-        <a href="../files/src_StateManager.js.html#l44"><code>removeEventListener:44</code></a>
+        <a href="../files/src_StateManager.js.html#l48"><code>removeEventListener:48</code></a>
         
         </p>
 
@@ -2456,7 +2348,7 @@ enters it again. Can be useful for clearing a state</p>
             
         
         
-        <a href="../files/src_StateManager.js.html#l464"><code>setState:464</code></a>
+        <a href="../files/src_StateManager.js.html#l472"><code>setState:472</code></a>
         
         </p>
 
@@ -2535,7 +2427,7 @@ enters it again. Can be useful for clearing a state</p>
             
         
         
-        <a href="../files/src_StateManager.js.html#l405"><code>showBlocker:405</code></a>
+        <a href="../files/src_StateManager.js.html#l413"><code>showBlocker:413</code></a>
         
         </p>
 
@@ -2600,7 +2492,7 @@ enters it again. Can be useful for clearing a state</p>
             
         
         
-        <a href="../files/src_StateManager.js.html#l673"><code>showTransitionIn:673</code></a>
+        <a href="../files/src_StateManager.js.html#l681"><code>showTransitionIn:681</code></a>
         
         </p>
 
@@ -2689,7 +2581,7 @@ enters it again. Can be useful for clearing a state</p>
             
         
         
-        <a href="../files/src_StateManager.js.html#l653"><code>showTransitionOut:653</code></a>
+        <a href="../files/src_StateManager.js.html#l661"><code>showTransitionOut:661</code></a>
         
         </p>
 
@@ -2778,7 +2670,7 @@ enters it again. Can be useful for clearing a state</p>
             
         
         
-        <a href="../files/src_StateManager.js.html#l722"><code>update:722</code></a>
+        <a href="../files/src_StateManager.js.html#l730"><code>update:730</code></a>
         
         </p>
 
@@ -2858,7 +2750,7 @@ enters it again. Can be useful for clearing a state</p>
             
         
         
-        <a href="../files/src_StateManager.js.html#l155"><code>_destroyed:155</code></a>
+        <a href="../files/src_StateManager.js.html#l163"><code>_destroyed:163</code></a>
         
         </p>
 
@@ -2905,7 +2797,7 @@ enters it again. Can be useful for clearing a state</p>
             
         
         
-        <a href="../files/src_StateManager.js.html#l147"><code>_isTransitioning:147</code></a>
+        <a href="../files/src_StateManager.js.html#l155"><code>_isTransitioning:155</code></a>
         
         </p>
 
@@ -2952,7 +2844,7 @@ enters it again. Can be useful for clearing a state</p>
             
         
         
-        <a href="../files/src_StateManager.js.html#l72"><code>_listeners description:72</code></a>
+        <a href="../files/src_StateManager.js.html#l80"><code>_listeners description:80</code></a>
         
         </p>
 
@@ -2976,7 +2868,7 @@ enters it again. Can be useful for clearing a state</p>
                 
                     <div id="property__oldState" class="property item private">
     <h3 class="name"><code>_oldState</code></h3>
-    <span class="type"><a href="../classes/cloudkid.BaseState.html" class="crosslink">cloudkid.BaseState</a></span>
+    <span class="type"><a href="../classes/BaseState.html" class="crosslink">BaseState</a></span>
 
     
 
@@ -2999,7 +2891,7 @@ enters it again. Can be useful for clearing a state</p>
             
         
         
-        <a href="../files/src_StateManager.js.html#l131"><code>_oldState:131</code></a>
+        <a href="../files/src_StateManager.js.html#l139"><code>_oldState:139</code></a>
         
         </p>
 
@@ -3046,7 +2938,7 @@ enters it again. Can be useful for clearing a state</p>
             
         
         
-        <a href="../files/src_StateManager.js.html#l163"><code>_queueStateId:163</code></a>
+        <a href="../files/src_StateManager.js.html#l171"><code>_queueStateId:171</code></a>
         
         </p>
 
@@ -3070,7 +2962,7 @@ enters it again. Can be useful for clearing a state</p>
                 
                     <div id="property__state" class="property item private">
     <h3 class="name"><code>_state</code></h3>
-    <span class="type"><a href="../classes/cloudkid.BaseState.html" class="crosslink">cloudkid.BaseState</a></span>
+    <span class="type"><a href="../classes/BaseState.html" class="crosslink">BaseState</a></span>
 
     
 
@@ -3093,7 +2985,7 @@ enters it again. Can be useful for clearing a state</p>
             
         
         
-        <a href="../files/src_StateManager.js.html#l115"><code>_state:115</code></a>
+        <a href="../files/src_StateManager.js.html#l123"><code>_state:123</code></a>
         
         </p>
 
@@ -3140,7 +3032,7 @@ enters it again. Can be useful for clearing a state</p>
             
         
         
-        <a href="../files/src_StateManager.js.html#l123"><code>_stateID:123</code></a>
+        <a href="../files/src_StateManager.js.html#l131"><code>_stateID:131</code></a>
         
         </p>
 
@@ -3187,7 +3079,7 @@ enters it again. Can be useful for clearing a state</p>
             
         
         
-        <a href="../files/src_StateManager.js.html#l107"><code>_states:107</code></a>
+        <a href="../files/src_StateManager.js.html#l115"><code>_states:115</code></a>
         
         </p>
 
@@ -3234,7 +3126,7 @@ enters it again. Can be useful for clearing a state</p>
             
         
         
-        <a href="../files/src_StateManager.js.html#l91"><code>_transition:91</code></a>
+        <a href="../files/src_StateManager.js.html#l99"><code>_transition:99</code></a>
         
         </p>
 
@@ -3281,7 +3173,7 @@ enters it again. Can be useful for clearing a state</p>
             
         
         
-        <a href="../files/src_StateManager.js.html#l99"><code>_transitionSounds:99</code></a>
+        <a href="../files/src_StateManager.js.html#l107"><code>_transitionSounds:107</code></a>
         
         </p>
 
@@ -3328,7 +3220,7 @@ enters it again. Can be useful for clearing a state</p>
             
         
         
-        <a href="../files/src_StateManager.js.html#l139"><code>name description:139</code></a>
+        <a href="../files/src_StateManager.js.html#l147"><code>name description:147</code></a>
         
         </p>
 
@@ -3377,7 +3269,7 @@ enters it again. Can be useful for clearing a state</p>
             
         
         
-        <a href="../files/src_StateManager.js.html#l82"><code>VERSION:82</code></a>
+        <a href="../files/src_StateManager.js.html#l90"><code>VERSION:90</code></a>
         
         </p>
 
@@ -3432,7 +3324,7 @@ enters it again. Can be useful for clearing a state</p>
             
         
         
-        <a href="../files/src_StateManager.js.html#l213"><code>onBlockerHide:213</code></a>
+        <a href="../files/src_StateManager.js.html#l221"><code>onBlockerHide:221</code></a>
         
         </p>
 
@@ -3476,7 +3368,7 @@ enters it again. Can be useful for clearing a state</p>
             
         
         
-        <a href="../files/src_StateManager.js.html#l220"><code>onBlockerHideDone:220</code></a>
+        <a href="../files/src_StateManager.js.html#l228"><code>onBlockerHideDone:228</code></a>
         
         </p>
 
@@ -3520,7 +3412,7 @@ enters it again. Can be useful for clearing a state</p>
             
         
         
-        <a href="../files/src_StateManager.js.html#l199"><code>onBlockerShow:199</code></a>
+        <a href="../files/src_StateManager.js.html#l207"><code>onBlockerShow:207</code></a>
         
         </p>
 
@@ -3564,7 +3456,7 @@ enters it again. Can be useful for clearing a state</p>
             
         
         
-        <a href="../files/src_StateManager.js.html#l206"><code>onBlockerShowDone:206</code></a>
+        <a href="../files/src_StateManager.js.html#l214"><code>onBlockerShowDone:214</code></a>
         
         </p>
 
@@ -3608,7 +3500,7 @@ enters it again. Can be useful for clearing a state</p>
             
         
         
-        <a href="../files/src_StateManager.js.html#l227"><code>onInit:227</code></a>
+        <a href="../files/src_StateManager.js.html#l235"><code>onInit:235</code></a>
         
         </p>
 
@@ -3652,7 +3544,7 @@ enters it again. Can be useful for clearing a state</p>
             
         
         
-        <a href="../files/src_StateManager.js.html#l234"><code>onInitDone:234</code></a>
+        <a href="../files/src_StateManager.js.html#l242"><code>onInitDone:242</code></a>
         
         </p>
 
@@ -3696,7 +3588,7 @@ enters it again. Can be useful for clearing a state</p>
             
         
         
-        <a href="../files/src_StateManager.js.html#l248"><code>onLoadingDone:248</code></a>
+        <a href="../files/src_StateManager.js.html#l256"><code>onLoadingDone:256</code></a>
         
         </p>
 
@@ -3740,7 +3632,7 @@ enters it again. Can be useful for clearing a state</p>
             
         
         
-        <a href="../files/src_StateManager.js.html#l241"><code>onLoadingStart:241</code></a>
+        <a href="../files/src_StateManager.js.html#l249"><code>onLoadingStart:249</code></a>
         
         </p>
 
@@ -3784,7 +3676,7 @@ enters it again. Can be useful for clearing a state</p>
             
         
         
-        <a href="../files/src_StateManager.js.html#l171"><code>onTransitionIn:171</code></a>
+        <a href="../files/src_StateManager.js.html#l179"><code>onTransitionIn:179</code></a>
         
         </p>
 
@@ -3828,7 +3720,7 @@ enters it again. Can be useful for clearing a state</p>
             
         
         
-        <a href="../files/src_StateManager.js.html#l178"><code>onTransitionInDone:178</code></a>
+        <a href="../files/src_StateManager.js.html#l186"><code>onTransitionInDone:186</code></a>
         
         </p>
 
@@ -3872,7 +3764,7 @@ enters it again. Can be useful for clearing a state</p>
             
         
         
-        <a href="../files/src_StateManager.js.html#l185"><code>onTransitionOut:185</code></a>
+        <a href="../files/src_StateManager.js.html#l193"><code>onTransitionOut:193</code></a>
         
         </p>
 
@@ -3916,7 +3808,7 @@ enters it again. Can be useful for clearing a state</p>
             
         
         
-        <a href="../files/src_StateManager.js.html#l192"><code>onTransitionOutDone:192</code></a>
+        <a href="../files/src_StateManager.js.html#l200"><code>onTransitionOutDone:200</code></a>
         
         </p>
 

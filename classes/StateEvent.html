@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
     <link rel="shortcut icon" type="image/png" href="../assets/favicon.ico">
     <script src="http://yui.yahooapis.com/3.10.1/build/yui/yui-min.js"></script>
-	<title>CloudKid States API v1.1.2 API Documentation : cloudkid.StateEvent</title>  
+	<title>CloudKid States API v1.1.2 API Documentation : StateEvent</title>  
 </head>
 <body class="yui3-skin-sam">
 
@@ -39,15 +39,17 @@
         <div id="api-tabview-panel">
             <ul id="api-classes" class="apis classes">
             
-                <li><a href="../classes/cloudkid.BaseState.html">cloudkid.BaseState</a></li>
+                <li><a href="../classes/BaseState.html">BaseState</a></li>
             
-                <li><a href="../classes/cloudkid.StateEvent.html">cloudkid.StateEvent</a></li>
+                <li><a href="../classes/StateEvent.html">StateEvent</a></li>
             
-                <li><a href="../classes/cloudkid.StateManager.html">cloudkid.StateManager</a></li>
+                <li><a href="../classes/StateManager.html">StateManager</a></li>
             
             </ul>
 
             <ul id="api-modules" class="apis modules">
+            
+                <li><a href="../modules/cloudkid.html">cloudkid</a></li>
             
             </ul>
         </div>
@@ -82,7 +84,7 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>cloudkid.StateEvent Class</h1>
+                        <h1>StateEvent Class</h1>
 <div class="box meta">
     
 
@@ -90,10 +92,14 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/src_StateEvent.js.html#l3"><code>cloudkid.StateEvent:3</code></a>
+            Defined in: <a href="../files/src_StateEvent.js.html#l5"><code>StateEvent:5</code></a>
         </div>
     
 
+    
+        
+            Namespace: <a href="../modules/cloudkid.html">cloudkid</a>
+        
     
 
     
@@ -102,145 +108,10 @@
 
 
 <div class="box intro">
-    <p>A gamestate-related event</p>
+    <p>A state-related event used by the State Manager</p>
 
 </div>
 
-
-    <div class="constructor">
-        <h2>Constructor</h2>
-        <div id="method_cloudkid.StateEvent" class="method item">
-    <h3 class="name"><code>cloudkid.StateEvent</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>type</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>currentState</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>visibleState</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_StateEvent.js.html#l3"><code>cloudkid.StateEvent:3</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">type</code>
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>See flash.events.Event</p>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">currentState</code>
-                        <span class="type"><a href="../classes/cloudkid.BaseState.html" class="crosslink">cloudkid.BaseState</a></span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>The currentState of the state manager</p>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">visibleState</code>
-                        <span class="type"><a href="../classes/cloudkid.BaseState.html" class="crosslink">cloudkid.BaseState</a></span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>The current state being transitioned or changing visibility, default to currentState</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-
-    
-</div>
-
-    </div>
 
 
 <div id="classdocs" class="tabview">
@@ -425,7 +296,7 @@
             
         
         
-        <a href="../files/src_StateEvent.js.html#l81"><code>initialize:81</code></a>
+        <a href="../files/src_StateEvent.js.html#l84"><code>initialize:84</code></a>
         
         </p>
 
@@ -465,7 +336,7 @@
                 <li class="param">
                     
                         <code class="param-name">currentState</code>
-                        <span class="type"><a href="../classes/cloudkid.BaseState.html" class="crosslink">cloudkid.BaseState</a></span>
+                        <span class="type"><a href="../classes/BaseState.html" class="crosslink">BaseState</a></span>
                     
 
                     
@@ -481,7 +352,7 @@
                 <li class="param">
                     
                         <code class="param-name">visibleState</code>
-                        <span class="type"><a href="../classes/cloudkid.BaseState.html" class="crosslink">cloudkid.BaseState</a></span>
+                        <span class="type"><a href="../classes/BaseState.html" class="crosslink">BaseState</a></span>
                     
 
                     
@@ -514,7 +385,7 @@
                 
                     <div id="property_currentState" class="property item">
     <h3 class="name"><code>currentState</code></h3>
-    <span class="type"><a href="../classes/cloudkid.BaseState.html" class="crosslink">cloudkid.BaseState</a></span>
+    <span class="type"><a href="../classes/BaseState.html" class="crosslink">BaseState</a></span>
 
     
 
@@ -535,7 +406,7 @@
             
         
         
-        <a href="../files/src_StateEvent.js.html#l61"><code>currentState:61</code></a>
+        <a href="../files/src_StateEvent.js.html#l64"><code>currentState:64</code></a>
         
         </p>
 
@@ -580,7 +451,7 @@
             
         
         
-        <a href="../files/src_StateEvent.js.html#l75"><code>type:75</code></a>
+        <a href="../files/src_StateEvent.js.html#l78"><code>type:78</code></a>
         
         </p>
 
@@ -603,7 +474,7 @@
                 
                     <div id="property_visibleState" class="property item">
     <h3 class="name"><code>visibleState</code></h3>
-    <span class="type"><a href="../classes/cloudkid.BaseState.html" class="crosslink">cloudkid.BaseState</a></span>
+    <span class="type"><a href="../classes/BaseState.html" class="crosslink">BaseState</a></span>
 
     
 
@@ -624,7 +495,7 @@
             
         
         
-        <a href="../files/src_StateEvent.js.html#l68"><code>visibleState:68</code></a>
+        <a href="../files/src_StateEvent.js.html#l71"><code>visibleState:71</code></a>
         
         </p>
 
@@ -679,7 +550,7 @@
             
         
         
-        <a href="../files/src_StateEvent.js.html#l54"><code>onHidden:54</code></a>
+        <a href="../files/src_StateEvent.js.html#l57"><code>onHidden:57</code></a>
         
         </p>
 
@@ -723,7 +594,7 @@
             
         
         
-        <a href="../files/src_StateEvent.js.html#l19"><code>onTransitionStateIn:19</code></a>
+        <a href="../files/src_StateEvent.js.html#l22"><code>onTransitionStateIn:22</code></a>
         
         </p>
 
@@ -767,7 +638,7 @@
             
         
         
-        <a href="../files/src_StateEvent.js.html#l26"><code>onTransitionStateInDone:26</code></a>
+        <a href="../files/src_StateEvent.js.html#l29"><code>onTransitionStateInDone:29</code></a>
         
         </p>
 
@@ -811,7 +682,7 @@
             
         
         
-        <a href="../files/src_StateEvent.js.html#l33"><code>onTransitionStateOut:33</code></a>
+        <a href="../files/src_StateEvent.js.html#l36"><code>onTransitionStateOut:36</code></a>
         
         </p>
 
@@ -855,7 +726,7 @@
             
         
         
-        <a href="../files/src_StateEvent.js.html#l40"><code>onTransitionStateOutDone:40</code></a>
+        <a href="../files/src_StateEvent.js.html#l43"><code>onTransitionStateOutDone:43</code></a>
         
         </p>
 
@@ -899,7 +770,7 @@
             
         
         
-        <a href="../files/src_StateEvent.js.html#l47"><code>onVisible:47</code></a>
+        <a href="../files/src_StateEvent.js.html#l50"><code>onVisible:50</code></a>
         
         </p>
 

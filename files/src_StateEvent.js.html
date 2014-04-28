@@ -39,15 +39,17 @@
         <div id="api-tabview-panel">
             <ul id="api-classes" class="apis classes">
             
-                <li><a href="../classes/cloudkid.BaseState.html">cloudkid.BaseState</a></li>
+                <li><a href="../classes/BaseState.html">BaseState</a></li>
             
-                <li><a href="../classes/cloudkid.StateEvent.html">cloudkid.StateEvent</a></li>
+                <li><a href="../classes/StateEvent.html">StateEvent</a></li>
             
-                <li><a href="../classes/cloudkid.StateManager.html">cloudkid.StateManager</a></li>
+                <li><a href="../classes/StateManager.html">StateManager</a></li>
             
             </ul>
 
             <ul id="api-modules" class="apis modules">
+            
+                <li><a href="../modules/cloudkid.html">cloudkid</a></li>
             
             </ul>
         </div>
@@ -91,14 +93,17 @@
     <pre class="code prettyprint linenums">
 (function(undefined){
 	
+	&quot;use strict&quot;;
+
 	/**
-	*   A gamestate-related event
+	*   A state-related event used by the State Manager
 	*   
-	*   @class cloudkid.StateEvent
+	*   @module cloudkid
+	*   @class StateEvent
 	*   @constructor
-	*   @param {String} type See flash.events.Event
-	*   @param {cloudkid.BaseState} currentState The currentState of the state manager
-	*   @param {cloudkid.BaseState} visibleState The current state being transitioned or changing visibility, default to currentState
+	*   @param {String} type See createjs.Event
+	*   @param {BaseState} currentState The currentState of the state manager
+	*   @param {BaseState} visibleState The current state being transitioned or changing visibility, default to currentState
 	*/
 	var StateEvent = function(type, currentState, visibleState)
 	{
@@ -152,14 +157,14 @@
 	/**
 	* A reference to the current state of the state manager
 	* 
-	* @property {cloudkid.BaseState} currentState
+	* @property {BaseState} currentState
 	*/
 	p.currentState = null;
 	
 	/**
 	* A reference to the state who&#x27;s actually being transitioned or being changed
 	* 
-	* @property {cloudkid.BaseState} visibleState
+	* @property {BaseState} visibleState
 	*/
 	p.visibleState = null;
 	
@@ -174,8 +179,8 @@
 	*  
 	*  @function initialize
 	*  @param {String} type The type of event
-	*  @param {cloudkid.BaseState} currentState The currentState of the state manager
-	*  @param {cloudkid.BaseState} visibleState The current state being transitioned or changing visibility
+	*  @param {BaseState} currentState The currentState of the state manager
+	*  @param {BaseState} visibleState The current state being transitioned or changing visibility
 	*/
 	p.initialize = function(type, currentState, visibleState)
 	{

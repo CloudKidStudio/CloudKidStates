@@ -8,9 +8,11 @@
     "files": {
         "src/BaseState.js": {
             "name": "src/BaseState.js",
-            "modules": {},
+            "modules": {
+                "cloudkid": 1
+            },
             "classes": {
-                "cloudkid.BaseState": 1
+                "BaseState": 1
             },
             "fors": {},
             "namespaces": {}
@@ -19,7 +21,7 @@
             "name": "src/StateEvent.js",
             "modules": {},
             "classes": {
-                "cloudkid.StateEvent": 1
+                "StateEvent": 1
             },
             "fors": {},
             "namespaces": {}
@@ -28,26 +30,28 @@
             "name": "src/StateManager.js",
             "modules": {},
             "classes": {
-                "cloudkid.StateManager": 1
+                "StateManager": 1
             },
             "fors": {},
             "namespaces": {}
         }
     },
-    "modules": {},
-    "classes": {
-        "cloudkid.BaseState": {
-            "name": "cloudkid.BaseState",
-            "shortname": "cloudkid.BaseState",
-            "classitems": [],
-            "plugins": [],
-            "extensions": [],
-            "plugin_for": [],
-            "extension_for": [],
-            "file": "src/BaseState.js",
-            "line": 8,
+    "modules": {
+        "cloudkid": {
+            "name": "cloudkid",
+            "submodules": {},
+            "classes": {
+                "BaseState": 1,
+                "StateEvent": 1,
+                "StateManager": 1
+            },
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "src/StateManager.js",
+            "line": 21,
             "description": "Defines the base functionality for a state used by the state manager",
-            "constructor0": ".",
+            "is_constructor": 1,
             "params": [
                 {
                     "name": "panel",
@@ -55,67 +59,56 @@
                     "type": "createjs.MovieClip|PIXI.DisplayObjectContainer"
                 }
             ]
-        },
-        "cloudkid.StateEvent": {
-            "name": "cloudkid.StateEvent",
-            "shortname": "cloudkid.StateEvent",
+        }
+    },
+    "classes": {
+        "BaseState": {
+            "name": "BaseState",
+            "shortname": "BaseState",
             "classitems": [],
             "plugins": [],
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
+            "module": "cloudkid",
+            "namespace": "",
+            "file": "src/BaseState.js",
+            "line": 10,
+            "description": "Defines the base functionality for a state used by the state manager"
+        },
+        "StateEvent": {
+            "name": "StateEvent",
+            "shortname": "StateEvent",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "cloudkid",
+            "namespace": "",
             "file": "src/StateEvent.js",
-            "line": 3,
-            "description": "A gamestate-related event",
-            "is_constructor": 1,
-            "params": [
-                {
-                    "name": "type",
-                    "description": "See flash.events.Event",
-                    "type": "String"
-                },
-                {
-                    "name": "currentState",
-                    "description": "The currentState of the state manager",
-                    "type": "cloudkid.BaseState"
-                },
-                {
-                    "name": "visibleState",
-                    "description": "The current state being transitioned or changing visibility, default to currentState",
-                    "type": "cloudkid.BaseState"
-                }
-            ]
+            "line": 5,
+            "description": "A state-related event used by the State Manager"
         },
-        "cloudkid.StateManager": {
-            "name": "cloudkid.StateManager",
-            "shortname": "cloudkid.StateManager",
+        "StateManager": {
+            "name": "StateManager",
+            "shortname": "StateManager",
             "classitems": [],
             "plugins": [],
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
+            "module": "cloudkid",
+            "namespace": "",
             "file": "src/StateManager.js",
-            "line": 19,
-            "description": "The State Manager used for manaing the different states of a game or site",
-            "is_constructor": 1,
-            "params": [
-                {
-                    "name": "transition",
-                    "description": "The transition MovieClip to play between transitions",
-                    "type": "createjs.MovieClip|PIXI.MovieClip|PIXI.Spine"
-                },
-                {
-                    "name": "audio",
-                    "description": "Data object with aliases and start times (seconds) for transition in, loop and out sounds: {in:{alias:\"myAlias\", start:0.2}}.\n\t\tThese objects are in the format for Animator or PixiAnimator from CloudKidAnimation, so they can be the alias instead of an object.",
-                    "type": "Object"
-                }
-            ]
+            "line": 21,
+            "description": "The State Manager used for manaing the different states of a game or site"
         }
     },
     "classitems": [
         {
             "file": "src/BaseState.js",
-            "line": 22,
+            "line": 25,
             "description": "Adds the specified event listener",
             "itemtype": "method",
             "name": "addEventListener",
@@ -135,11 +128,12 @@
                 "description": "Returns the listener for chaining or assignment",
                 "type": "Function|object"
             },
-            "class": "cloudkid.BaseState"
+            "class": "BaseState",
+            "module": "cloudkid"
         },
         {
             "file": "src/BaseState.js",
-            "line": 30,
+            "line": 34,
             "description": "Removes the specified event listener",
             "itemtype": "method",
             "name": "removeEventListener",
@@ -155,11 +149,12 @@
                     "type": "Function|object"
                 }
             ],
-            "class": "cloudkid.BaseState"
+            "class": "BaseState",
+            "module": "cloudkid"
         },
         {
             "file": "src/BaseState.js",
-            "line": 37,
+            "line": 42,
             "description": "Removes all listeners for the specified type, or all listeners of all types",
             "itemtype": "method",
             "name": "removeAllEventListeners",
@@ -170,11 +165,12 @@
                     "type": "String"
                 }
             ],
-            "class": "cloudkid.BaseState"
+            "class": "BaseState",
+            "module": "cloudkid"
         },
         {
             "file": "src/BaseState.js",
-            "line": 43,
+            "line": 49,
             "description": "Dispatches the specified event",
             "itemtype": "method",
             "name": "dispatchEvent",
@@ -194,11 +190,12 @@
                 "description": "Returns true if any listener returned true",
                 "type": "Bool"
             },
-            "class": "cloudkid.BaseState"
+            "class": "BaseState",
+            "module": "cloudkid"
         },
         {
             "file": "src/BaseState.js",
-            "line": 51,
+            "line": 58,
             "description": "Indicates whether there is at least one listener for the specified event type",
             "itemtype": "method",
             "name": "hasEventListener",
@@ -213,135 +210,148 @@
                 "description": "Returns true if there is at least one listener for the specified event",
                 "type": "Bool"
             },
-            "class": "cloudkid.BaseState"
+            "class": "BaseState",
+            "module": "cloudkid"
         },
         {
             "file": "src/BaseState.js",
-            "line": 58,
+            "line": 66,
             "description": "Createjs EventDispatcher method",
             "itemtype": "property",
             "name": "_listeners description",
             "type": "Array",
             "access": "private",
             "tagname": "",
-            "class": "cloudkid.BaseState"
+            "class": "BaseState",
+            "module": "cloudkid"
         },
         {
             "file": "src/BaseState.js",
-            "line": 68,
+            "line": 76,
             "description": "The id reference",
             "itemtype": "property",
             "name": "stateID",
             "type": "String",
-            "class": "cloudkid.BaseState"
+            "class": "BaseState",
+            "module": "cloudkid"
         },
         {
             "file": "src/BaseState.js",
-            "line": 75,
+            "line": 83,
             "description": "A reference to the state manager",
             "itemtype": "property",
             "name": "manager",
-            "type": "cloudkid.StateManager",
-            "class": "cloudkid.BaseState"
+            "type": "StateManager",
+            "class": "BaseState",
+            "module": "cloudkid"
         },
         {
             "file": "src/BaseState.js",
-            "line": 82,
+            "line": 90,
             "description": "Save the panel",
             "itemtype": "property",
             "name": "panel",
             "type": "createjs.MovieClip|PIXI.DisplayObjectContainer",
-            "class": "cloudkid.BaseState"
+            "class": "BaseState",
+            "module": "cloudkid"
         },
         {
             "file": "src/BaseState.js",
-            "line": 89,
+            "line": 97,
             "description": "Check to see if we've been destroyed",
             "itemtype": "property",
             "name": "_destroyed",
             "type": "Bool",
             "access": "private",
             "tagname": "",
-            "class": "cloudkid.BaseState"
+            "class": "BaseState",
+            "module": "cloudkid"
         },
         {
             "file": "src/BaseState.js",
-            "line": 97,
+            "line": 105,
             "description": "If the manager considers this the active panel",
             "itemtype": "property",
             "name": "_active",
             "type": "Bool",
             "access": "private",
             "tagname": "",
-            "class": "cloudkid.BaseState"
+            "class": "BaseState",
+            "module": "cloudkid"
         },
         {
             "file": "src/BaseState.js",
-            "line": 105,
+            "line": 113,
             "description": "If we are pre-loading the state",
             "itemtype": "property",
             "name": "_isLoading",
             "type": "Bool",
             "access": "private",
             "tagname": "",
-            "class": "cloudkid.BaseState"
+            "class": "BaseState",
+            "module": "cloudkid"
         },
         {
             "file": "src/BaseState.js",
-            "line": 113,
+            "line": 121,
             "description": "If we canceled entering the state",
             "itemtype": "property",
             "name": "_canceled",
             "type": "Bool",
             "access": "private",
             "tagname": "",
-            "class": "cloudkid.BaseState"
+            "class": "BaseState",
+            "module": "cloudkid"
         },
         {
             "file": "src/BaseState.js",
-            "line": 121,
+            "line": 129,
             "description": "When we're finishing loading",
             "itemtype": "property",
             "name": "_onEnterStateProceed",
             "type": "Function",
             "access": "private",
             "tagname": "",
-            "class": "cloudkid.BaseState"
+            "class": "BaseState",
+            "module": "cloudkid"
         },
         {
             "file": "src/BaseState.js",
-            "line": 129,
+            "line": 137,
             "itemtype": "property",
             "name": "_onLoadingComplete",
             "type": "Function",
             "access": "private",
             "tagname": "",
-            "class": "cloudkid.BaseState"
+            "class": "BaseState",
+            "module": "cloudkid"
         },
         {
             "file": "src/BaseState.js",
-            "line": 136,
+            "line": 144,
             "itemtype": "property",
             "name": "_enabled",
             "type": "Bool",
             "access": "private",
             "tagname": "",
-            "class": "cloudkid.BaseState"
+            "class": "BaseState",
+            "module": "cloudkid"
         },
         {
             "file": "src/BaseState.js",
-            "line": 143,
+            "line": 151,
             "description": "If we are currently transitioning",
             "itemtype": "property",
             "name": "isTransitioning",
             "type": "Bool",
             "access": "private",
             "tagname": "",
-            "class": "cloudkid.BaseState"
+            "class": "BaseState",
+            "module": "cloudkid"
         },
         {
             "file": "src/BaseState.js",
-            "line": 151,
+            "line": 159,
             "description": "Initialize the Base State",
             "itemtype": "method",
             "name": "initialize",
@@ -352,11 +362,12 @@
                     "type": "createjs.MovieClip|PIXI.DisplayObjectContaner"
                 }
             ],
-            "class": "cloudkid.BaseState"
+            "class": "BaseState",
+            "module": "cloudkid"
         },
         {
             "file": "src/BaseState.js",
-            "line": 161,
+            "line": 169,
             "description": "Status of whether the panel load was canceled",
             "itemtype": "method",
             "name": "getCanceled",
@@ -364,47 +375,52 @@
                 "description": "If the load was canceled",
                 "type": "Bool"
             },
-            "class": "cloudkid.BaseState"
+            "class": "BaseState",
+            "module": "cloudkid"
         },
         {
             "file": "src/BaseState.js",
-            "line": 172,
+            "line": 180,
             "description": "This is called by the State Manager to exit the state",
             "itemtype": "method",
             "name": "_internalExitState",
             "access": "private",
             "tagname": "",
-            "class": "cloudkid.BaseState"
+            "class": "BaseState",
+            "module": "cloudkid"
         },
         {
             "file": "src/BaseState.js",
-            "line": 193,
+            "line": 201,
             "description": "When the state is exited",
             "itemtype": "method",
             "name": "exitState",
-            "class": "cloudkid.BaseState"
+            "class": "BaseState",
+            "module": "cloudkid"
         },
         {
             "file": "src/BaseState.js",
-            "line": 200,
+            "line": 208,
             "description": "Exit the state start, called by the State Manager",
             "itemtype": "method",
             "name": "_internalExitStateStart",
             "access": "private",
             "tagname": "",
-            "class": "cloudkid.BaseState"
+            "class": "BaseState",
+            "module": "cloudkid"
         },
         {
             "file": "src/BaseState.js",
-            "line": 211,
+            "line": 219,
             "description": "When the state has requested to be exit, pre-transition",
             "itemtype": "method",
             "name": "exitStateStart",
-            "class": "cloudkid.BaseState"
+            "class": "BaseState",
+            "module": "cloudkid"
         },
         {
             "file": "src/BaseState.js",
-            "line": 218,
+            "line": 226,
             "description": "Exit the state start, called by the State Manager",
             "itemtype": "method",
             "name": "_internalEnterState",
@@ -417,71 +433,79 @@
             ],
             "access": "private",
             "tagname": "",
-            "class": "cloudkid.BaseState"
+            "class": "BaseState",
+            "module": "cloudkid"
         },
         {
             "file": "src/BaseState.js",
-            "line": 249,
+            "line": 257,
             "description": "Internal function to start the preloading",
             "itemtype": "method",
             "name": "loadingStart",
-            "class": "cloudkid.BaseState"
+            "class": "BaseState",
+            "module": "cloudkid"
         },
         {
             "file": "src/BaseState.js",
-            "line": 274,
+            "line": 282,
             "description": "Internal function to finish the preloading",
             "itemtype": "method",
             "name": "loadingDone",
-            "class": "cloudkid.BaseState"
+            "class": "BaseState",
+            "module": "cloudkid"
         },
         {
             "file": "src/BaseState.js",
-            "line": 297,
+            "line": 305,
             "description": "Cancel the loading of this state",
             "itemtype": "method",
             "name": "_internalCancel",
             "access": "private",
             "tagname": "",
-            "class": "cloudkid.BaseState"
-        },
-        {
-            "file": "src/BaseState.js",
-            "line": 313,
-            "description": "Cancel the load, implementation-specific\nthis is where any async actions are removed",
-            "itemtype": "method",
-            "name": "cancel",
-            "class": "cloudkid.BaseState"
+            "class": "BaseState",
+            "module": "cloudkid"
         },
         {
             "file": "src/BaseState.js",
             "line": 321,
-            "description": "When the state is entered",
+            "description": "Cancel the load, implementation-specific\nthis is where any async actions are removed",
             "itemtype": "method",
-            "name": "enterState",
-            "class": "cloudkid.BaseState"
+            "name": "cancel",
+            "class": "BaseState",
+            "module": "cloudkid"
         },
         {
             "file": "src/BaseState.js",
-            "line": 328,
+            "line": 329,
+            "description": "When the state is entered",
+            "itemtype": "method",
+            "name": "enterState",
+            "class": "BaseState",
+            "module": "cloudkid"
+        },
+        {
+            "file": "src/BaseState.js",
+            "line": 336,
             "description": "Exit the state start, called by the State Manager",
             "itemtype": "method",
             "name": "_internalEnterStateDone",
             "access": "private",
             "tagname": "",
-            "class": "cloudkid.BaseState"
-        },
-        {
-            "file": "src/BaseState.js",
-            "line": 342,
-            "description": "When the state is visually entered fully\nthat is, after the transition is done",
-            "itemtype": "method",
-            "name": "enterStateDone",
-            "class": "cloudkid.BaseState"
+            "class": "BaseState",
+            "module": "cloudkid"
         },
         {
             "file": "src/BaseState.js",
             "line": 350,
+            "description": "When the state is visually entered fully\nthat is, after the transition is done",
+            "itemtype": "method",
+            "name": "enterStateDone",
+            "class": "BaseState",
+            "module": "cloudkid"
+        },
+        {
+            "file": "src/BaseState.js",
+            "line": 358,
             "description": "StateManager updates the state",
             "itemtype": "method",
             "name": "update",
@@ -492,11 +516,12 @@
                     "type": "Int"
                 }
             ],
-            "class": "cloudkid.BaseState"
+            "class": "BaseState",
+            "module": "cloudkid"
         },
         {
             "file": "src/BaseState.js",
-            "line": 358,
+            "line": 366,
             "description": "Get if this is the active state",
             "itemtype": "method",
             "name": "getActive",
@@ -504,11 +529,12 @@
                 "description": "If this is the active state",
                 "type": "Bool"
             },
-            "class": "cloudkid.BaseState"
+            "class": "BaseState",
+            "module": "cloudkid"
         },
         {
             "file": "src/BaseState.js",
-            "line": 369,
+            "line": 377,
             "description": "Transition the panel in",
             "itemtype": "method",
             "name": "transitionIn",
@@ -519,11 +545,12 @@
                     "type": "Function"
                 }
             ],
-            "class": "cloudkid.BaseState"
+            "class": "BaseState",
+            "module": "cloudkid"
         },
         {
             "file": "src/BaseState.js",
-            "line": 394,
+            "line": 402,
             "description": "Transition the panel out",
             "itemtype": "method",
             "name": "transitionOut",
@@ -534,11 +561,12 @@
                     "type": "Function"
                 }
             ],
-            "class": "cloudkid.BaseState"
+            "class": "BaseState",
+            "module": "cloudkid"
         },
         {
             "file": "src/BaseState.js",
-            "line": 420,
+            "line": 428,
             "description": "Get if this State has been destroyed",
             "itemtype": "method",
             "name": "getDestroyed",
@@ -546,11 +574,12 @@
                 "description": "If this has been destroyed",
                 "type": "Bool"
             },
-            "class": "cloudkid.BaseState"
+            "class": "BaseState",
+            "module": "cloudkid"
         },
         {
             "file": "src/BaseState.js",
-            "line": 431,
+            "line": 439,
             "description": "Enable this panel, true is only non-loading and non-transitioning state",
             "itemtype": "method",
             "name": "setEnabled",
@@ -561,11 +590,12 @@
                     "type": "Bool"
                 }
             ],
-            "class": "cloudkid.BaseState"
+            "class": "BaseState",
+            "module": "cloudkid"
         },
         {
             "file": "src/BaseState.js",
-            "line": 442,
+            "line": 450,
             "description": "Get the enabled status",
             "itemtype": "method",
             "name": "getEnabled",
@@ -573,98 +603,109 @@
                 "description": "If this state is enabled",
                 "type": "Bool"
             },
-            "class": "cloudkid.BaseState"
+            "class": "BaseState",
+            "module": "cloudkid"
         },
         {
             "file": "src/BaseState.js",
-            "line": 453,
+            "line": 461,
             "description": "Don't use the state object after this",
             "itemtype": "method",
             "name": "destroy",
-            "class": "cloudkid.BaseState"
+            "class": "BaseState",
+            "module": "cloudkid"
         },
         {
             "file": "src/StateEvent.js",
-            "line": 19,
+            "line": 22,
             "description": "The name of the event for when the state starts transitioning in",
             "itemtype": "event",
             "name": "onTransitionStateIn",
-            "class": "cloudkid.StateEvent"
+            "class": "StateEvent",
+            "module": "cloudkid"
         },
         {
             "file": "src/StateEvent.js",
-            "line": 26,
+            "line": 29,
             "description": "The name of the event for when the state finishes transition in",
             "itemtype": "event",
             "name": "onTransitionStateInDone",
             "type": "String",
-            "class": "cloudkid.StateEvent"
+            "class": "StateEvent",
+            "module": "cloudkid"
         },
         {
             "file": "src/StateEvent.js",
-            "line": 33,
+            "line": 36,
             "description": "The name of the event for when the state starts transitioning out",
             "itemtype": "event",
             "name": "onTransitionStateOut",
             "type": "String",
-            "class": "cloudkid.StateEvent"
+            "class": "StateEvent",
+            "module": "cloudkid"
         },
         {
             "file": "src/StateEvent.js",
-            "line": 40,
+            "line": 43,
             "description": "The name of the event for when the state is done transitioning out",
             "itemtype": "event",
             "name": "onTransitionStateOutDone",
             "type": "String",
-            "class": "cloudkid.StateEvent"
+            "class": "StateEvent",
+            "module": "cloudkid"
         },
         {
             "file": "src/StateEvent.js",
-            "line": 47,
+            "line": 50,
             "description": "When the state besome visible",
             "itemtype": "event",
             "name": "onVisible",
             "type": "String",
-            "class": "cloudkid.StateEvent"
+            "class": "StateEvent",
+            "module": "cloudkid"
         },
         {
             "file": "src/StateEvent.js",
-            "line": 54,
+            "line": 57,
             "description": "When the state becomes hidden",
             "itemtype": "event",
             "name": "onHidden",
             "type": "String",
-            "class": "cloudkid.StateEvent"
+            "class": "StateEvent",
+            "module": "cloudkid"
         },
         {
             "file": "src/StateEvent.js",
-            "line": 61,
+            "line": 64,
             "description": "A reference to the current state of the state manager",
             "itemtype": "property",
             "name": "currentState",
-            "type": "cloudkid.BaseState",
-            "class": "cloudkid.StateEvent"
+            "type": "BaseState",
+            "class": "StateEvent",
+            "module": "cloudkid"
         },
         {
             "file": "src/StateEvent.js",
-            "line": 68,
+            "line": 71,
             "description": "A reference to the state who's actually being transitioned or being changed",
             "itemtype": "property",
             "name": "visibleState",
-            "type": "cloudkid.BaseState",
-            "class": "cloudkid.StateEvent"
+            "type": "BaseState",
+            "class": "StateEvent",
+            "module": "cloudkid"
         },
         {
             "file": "src/StateEvent.js",
-            "line": 75,
+            "line": 78,
             "itemtype": "property",
             "name": "type",
             "type": "String",
-            "class": "cloudkid.StateEvent"
+            "class": "StateEvent",
+            "module": "cloudkid"
         },
         {
             "file": "src/StateEvent.js",
-            "line": 81,
+            "line": 84,
             "description": "Initialize the event",
             "itemtype": "method",
             "name": "initialize",
@@ -677,19 +718,20 @@
                 {
                     "name": "currentState",
                     "description": "The currentState of the state manager",
-                    "type": "cloudkid.BaseState"
+                    "type": "BaseState"
                 },
                 {
                     "name": "visibleState",
                     "description": "The current state being transitioned or changing visibility",
-                    "type": "cloudkid.BaseState"
+                    "type": "BaseState"
                 }
             ],
-            "class": "cloudkid.StateEvent"
+            "class": "StateEvent",
+            "module": "cloudkid"
         },
         {
             "file": "src/StateManager.js",
-            "line": 36,
+            "line": 39,
             "description": "Adds the specified event listener",
             "itemtype": "method",
             "name": "addEventListener",
@@ -709,11 +751,12 @@
                 "description": "Returns the listener for chaining or assignment",
                 "type": "Function|object"
             },
-            "class": "cloudkid.StateManager"
+            "class": "StateManager",
+            "module": "cloudkid"
         },
         {
             "file": "src/StateManager.js",
-            "line": 44,
+            "line": 48,
             "description": "Removes the specified event listener",
             "itemtype": "method",
             "name": "removeEventListener",
@@ -729,11 +772,12 @@
                     "type": "Function|object"
                 }
             ],
-            "class": "cloudkid.StateManager"
+            "class": "StateManager",
+            "module": "cloudkid"
         },
         {
             "file": "src/StateManager.js",
-            "line": 51,
+            "line": 56,
             "description": "Removes all listeners for the specified type, or all listeners of all types",
             "itemtype": "method",
             "name": "removeAllEventListeners",
@@ -744,11 +788,12 @@
                     "type": "String"
                 }
             ],
-            "class": "cloudkid.StateManager"
+            "class": "StateManager",
+            "module": "cloudkid"
         },
         {
             "file": "src/StateManager.js",
-            "line": 57,
+            "line": 63,
             "description": "Dispatches the specified event",
             "itemtype": "method",
             "name": "dispatchEvent",
@@ -768,11 +813,12 @@
                 "description": "Returns true if any listener returned true",
                 "type": "Bool"
             },
-            "class": "cloudkid.StateManager"
+            "class": "StateManager",
+            "module": "cloudkid"
         },
         {
             "file": "src/StateManager.js",
-            "line": 65,
+            "line": 72,
             "description": "Indicates whether there is at least one listener for the specified event type",
             "itemtype": "method",
             "name": "hasEventListener",
@@ -787,239 +833,264 @@
                 "description": "Returns true if there is at least one listener for the specified event",
                 "type": "Bool"
             },
-            "class": "cloudkid.StateManager"
+            "class": "StateManager",
+            "module": "cloudkid"
         },
         {
             "file": "src/StateManager.js",
-            "line": 72,
+            "line": 80,
             "description": "Createjs EventDispatcher method",
             "itemtype": "property",
             "name": "_listeners description",
             "type": "Array",
             "access": "private",
             "tagname": "",
-            "class": "cloudkid.StateManager"
+            "class": "StateManager",
+            "module": "cloudkid"
         },
         {
             "file": "src/StateManager.js",
-            "line": 82,
+            "line": 90,
             "description": "The current version of the state manager",
             "itemtype": "property",
             "name": "VERSION",
             "type": "String",
             "static": 1,
             "final": 1,
-            "class": "cloudkid.StateManager"
+            "class": "StateManager",
+            "module": "cloudkid"
         },
         {
             "file": "src/StateManager.js",
-            "line": 91,
+            "line": 99,
             "description": "The click to play in between transitioning states",
             "itemtype": "property",
             "name": "_transition",
             "type": "createjs.MovieClip",
             "access": "private",
             "tagname": "",
-            "class": "cloudkid.StateManager"
+            "class": "StateManager",
+            "module": "cloudkid"
         },
         {
             "file": "src/StateManager.js",
-            "line": 99,
+            "line": 107,
             "description": "The sounds for the transition",
             "itemtype": "property",
             "name": "_transitionSounds",
             "type": "Object",
             "access": "private",
             "tagname": "",
-            "class": "cloudkid.StateManager"
+            "class": "StateManager",
+            "module": "cloudkid"
         },
         {
             "file": "src/StateManager.js",
-            "line": 107,
+            "line": 115,
             "description": "The collection of states map",
             "itemtype": "property",
             "name": "_states",
             "type": "Array",
             "access": "private",
             "tagname": "",
-            "class": "cloudkid.StateManager"
-        },
-        {
-            "file": "src/StateManager.js",
-            "line": 115,
-            "description": "The currently selected state",
-            "itemtype": "property",
-            "name": "_state",
-            "type": "cloudkid.BaseState",
-            "access": "private",
-            "tagname": "",
-            "class": "cloudkid.StateManager"
+            "class": "StateManager",
+            "module": "cloudkid"
         },
         {
             "file": "src/StateManager.js",
             "line": 123,
+            "description": "The currently selected state",
+            "itemtype": "property",
+            "name": "_state",
+            "type": "BaseState",
+            "access": "private",
+            "tagname": "",
+            "class": "StateManager",
+            "module": "cloudkid"
+        },
+        {
+            "file": "src/StateManager.js",
+            "line": 131,
             "description": "The currently selected state id",
             "itemtype": "property",
             "name": "_stateID",
             "type": "String",
             "access": "private",
             "tagname": "",
-            "class": "cloudkid.StateManager"
-        },
-        {
-            "file": "src/StateManager.js",
-            "line": 131,
-            "description": "The old state",
-            "itemtype": "property",
-            "name": "_oldState",
-            "type": "cloudkid.BaseState",
-            "access": "private",
-            "tagname": "",
-            "class": "cloudkid.StateManager"
+            "class": "StateManager",
+            "module": "cloudkid"
         },
         {
             "file": "src/StateManager.js",
             "line": 139,
+            "description": "The old state",
+            "itemtype": "property",
+            "name": "_oldState",
+            "type": "BaseState",
+            "access": "private",
+            "tagname": "",
+            "class": "StateManager",
+            "module": "cloudkid"
+        },
+        {
+            "file": "src/StateManager.js",
+            "line": 147,
             "description": "If the manager is loading a state",
             "itemtype": "property",
             "name": "name description",
             "type": "Bool",
             "access": "private",
             "tagname": "",
-            "class": "cloudkid.StateManager"
+            "class": "StateManager",
+            "module": "cloudkid"
         },
         {
             "file": "src/StateManager.js",
-            "line": 147,
+            "line": 155,
             "description": "If the state or manager is current transitioning",
             "itemtype": "property",
             "name": "_isTransitioning",
             "type": "Bool",
             "access": "private",
             "tagname": "",
-            "class": "cloudkid.StateManager"
+            "class": "StateManager",
+            "module": "cloudkid"
         },
         {
             "file": "src/StateManager.js",
-            "line": 155,
+            "line": 163,
             "description": "If the current object is destroyed",
             "itemtype": "property",
             "name": "_destroyed",
             "type": "Bool",
             "access": "private",
             "tagname": "",
-            "class": "cloudkid.StateManager"
+            "class": "StateManager",
+            "module": "cloudkid"
         },
         {
             "file": "src/StateManager.js",
-            "line": 163,
+            "line": 171,
             "description": "If we're transitioning the state, the queue the id of the next one",
             "itemtype": "property",
             "name": "_queueStateId",
             "type": "String",
             "access": "private",
             "tagname": "",
-            "class": "cloudkid.StateManager"
+            "class": "StateManager",
+            "module": "cloudkid"
         },
         {
             "file": "src/StateManager.js",
-            "line": 171,
+            "line": 179,
             "description": "The name of the Animator label and event for transitioning state in",
             "itemtype": "event",
             "name": "onTransitionIn",
-            "class": "cloudkid.StateManager"
+            "class": "StateManager",
+            "module": "cloudkid"
         },
         {
             "file": "src/StateManager.js",
-            "line": 178,
+            "line": 186,
             "description": "The name of the event for done with transitioning state in",
             "itemtype": "event",
             "name": "onTransitionInDone",
-            "class": "cloudkid.StateManager"
+            "class": "StateManager",
+            "module": "cloudkid"
         },
         {
             "file": "src/StateManager.js",
-            "line": 185,
+            "line": 193,
             "description": "The name of the Animator label and event for transitioning state out",
             "itemtype": "event",
             "name": "onTransitionOut",
-            "class": "cloudkid.StateManager"
+            "class": "StateManager",
+            "module": "cloudkid"
         },
         {
             "file": "src/StateManager.js",
-            "line": 192,
+            "line": 200,
             "description": "The name of the event for done with transitioning state out",
             "itemtype": "event",
             "name": "onTransitionOutDone",
-            "class": "cloudkid.StateManager"
+            "class": "StateManager",
+            "module": "cloudkid"
         },
         {
             "file": "src/StateManager.js",
-            "line": 199,
+            "line": 207,
             "description": "The name of the Animator label for showing the blocker",
             "itemtype": "event",
             "name": "onBlockerShow",
-            "class": "cloudkid.StateManager"
+            "class": "StateManager",
+            "module": "cloudkid"
         },
         {
             "file": "src/StateManager.js",
-            "line": 206,
+            "line": 214,
             "description": "The name of the Animator label for showing the blocker",
             "itemtype": "event",
             "name": "onBlockerShowDone",
-            "class": "cloudkid.StateManager"
+            "class": "StateManager",
+            "module": "cloudkid"
         },
         {
             "file": "src/StateManager.js",
-            "line": 213,
+            "line": 221,
             "description": "The name of the Animator label and event for hiding the blocker",
             "itemtype": "event",
             "name": "onBlockerHide",
-            "class": "cloudkid.StateManager"
+            "class": "StateManager",
+            "module": "cloudkid"
         },
         {
             "file": "src/StateManager.js",
-            "line": 220,
+            "line": 228,
             "description": "The name of the Animator label and event for hiding the blocker",
             "itemtype": "event",
             "name": "onBlockerHideDone",
-            "class": "cloudkid.StateManager"
+            "class": "StateManager",
+            "module": "cloudkid"
         },
         {
             "file": "src/StateManager.js",
-            "line": 227,
+            "line": 235,
             "description": "The name of the Animator label and event for initializing",
             "itemtype": "event",
             "name": "onInit",
-            "class": "cloudkid.StateManager"
+            "class": "StateManager",
+            "module": "cloudkid"
         },
         {
             "file": "src/StateManager.js",
-            "line": 234,
+            "line": 242,
             "description": "The name of the event for done with initializing",
             "itemtype": "event",
             "name": "onInitDone",
-            "class": "cloudkid.StateManager"
+            "class": "StateManager",
+            "module": "cloudkid"
         },
         {
             "file": "src/StateManager.js",
-            "line": 241,
+            "line": 249,
             "description": "Event when the state transitions the first time",
             "itemtype": "event",
             "name": "onLoadingStart",
-            "class": "cloudkid.StateManager"
+            "class": "StateManager",
+            "module": "cloudkid"
         },
         {
             "file": "src/StateManager.js",
-            "line": 248,
+            "line": 256,
             "description": "Event when the state transitions the first time",
             "itemtype": "event",
             "name": "onLoadingDone",
-            "class": "cloudkid.StateManager"
+            "class": "StateManager",
+            "module": "cloudkid"
         },
         {
             "file": "src/StateManager.js",
-            "line": 255,
+            "line": 263,
             "description": "Initialize the State Manager",
             "itemtype": "method",
             "name": "intialize",
@@ -1035,11 +1106,12 @@
                     "type": "Object"
                 }
             ],
-            "class": "cloudkid.StateManager"
+            "class": "StateManager",
+            "module": "cloudkid"
         },
         {
             "file": "src/StateManager.js",
-            "line": 284,
+            "line": 292,
             "description": "Register a state with the state manager, done initially",
             "itemtype": "method",
             "name": "addState",
@@ -1052,14 +1124,15 @@
                 {
                     "name": "state",
                     "description": "State object reference",
-                    "type": "cloudkid.BaseState"
+                    "type": "BaseState"
                 }
             ],
-            "class": "cloudkid.StateManager"
+            "class": "StateManager",
+            "module": "cloudkid"
         },
         {
             "file": "src/StateManager.js",
-            "line": 311,
+            "line": 319,
             "description": "Dynamically change the transition",
             "itemtype": "method",
             "name": "changeTransition",
@@ -1070,11 +1143,12 @@
                     "type": "createjs.MovieClip|PIXI.MovieClip|PIXI.Spine"
                 }
             ],
-            "class": "cloudkid.StateManager"
+            "class": "StateManager",
+            "module": "cloudkid"
         },
         {
             "file": "src/StateManager.js",
-            "line": 326,
+            "line": 334,
             "description": "Get the currently selected state",
             "itemtype": "method",
             "name": "getState",
@@ -1082,23 +1156,25 @@
                 "description": "The id of the current state",
                 "type": "String"
             },
-            "class": "cloudkid.StateManager"
+            "class": "StateManager",
+            "module": "cloudkid"
         },
         {
             "file": "src/StateManager.js",
-            "line": 337,
+            "line": 345,
             "description": "Get the current selected state (state object)",
             "itemtype": "method",
             "name": "getCurrentState",
             "return": {
                 "description": "The Base State object",
-                "type": "cloudkid.BaseState"
+                "type": "BaseState"
             },
-            "class": "cloudkid.StateManager"
+            "class": "StateManager",
+            "module": "cloudkid"
         },
         {
             "file": "src/StateManager.js",
-            "line": 348,
+            "line": 356,
             "description": "Access a certain state by the ID",
             "itemtype": "method",
             "name": "getStateById",
@@ -1111,13 +1187,14 @@
             ],
             "return": {
                 "description": "The base State object",
-                "type": "cloudkid.BaseState"
+                "type": "BaseState"
             },
-            "class": "cloudkid.StateManager"
+            "class": "StateManager",
+            "module": "cloudkid"
         },
         {
             "file": "src/StateManager.js",
-            "line": 361,
+            "line": 369,
             "description": "If the StateManager is busy because it is currently loading or transitioning.",
             "itemtype": "method",
             "name": "isBusy",
@@ -1125,51 +1202,57 @@
                 "description": "If StateManager is busy",
                 "type": "Bool"
             },
-            "class": "cloudkid.StateManager"
+            "class": "StateManager",
+            "module": "cloudkid"
         },
         {
             "file": "src/StateManager.js",
-            "line": 372,
+            "line": 380,
             "description": "If the state needs to do some asyncronous tasks,\nThe state can tell the manager to stop the animation",
             "itemtype": "method",
             "name": "loadingStart",
-            "class": "cloudkid.StateManager"
+            "class": "StateManager",
+            "module": "cloudkid"
         },
         {
             "file": "src/StateManager.js",
-            "line": 391,
+            "line": 399,
             "description": "If the state has finished it's asyncronous task loading\nLets enter the state",
             "itemtype": "method",
             "name": "loadingDone",
-            "class": "cloudkid.StateManager"
+            "class": "StateManager",
+            "module": "cloudkid"
         },
         {
             "file": "src/StateManager.js",
-            "line": 405,
+            "line": 413,
             "description": "Show, enable the blocker clip to disable mouse clicks",
             "itemtype": "method",
             "name": "showBlocker",
-            "class": "cloudkid.StateManager"
+            "class": "StateManager",
+            "module": "cloudkid"
         },
         {
             "file": "src/StateManager.js",
-            "line": 430,
+            "line": 438,
             "description": "Re-enable interaction with the stage",
             "itemtype": "method",
             "name": "hideBlocker",
-            "class": "cloudkid.StateManager"
+            "class": "StateManager",
+            "module": "cloudkid"
         },
         {
             "file": "src/StateManager.js",
-            "line": 452,
+            "line": 460,
             "description": "This transitions out of the current state and \nenters it again. Can be useful for clearing a state",
             "itemtype": "method",
             "name": "refresh",
-            "class": "cloudkid.StateManager"
+            "class": "StateManager",
+            "module": "cloudkid"
         },
         {
             "file": "src/StateManager.js",
-            "line": 464,
+            "line": 472,
             "description": "Set the current State",
             "itemtype": "method",
             "name": "setState",
@@ -1180,21 +1263,23 @@
                     "type": "String"
                 }
             ],
-            "class": "cloudkid.StateManager"
+            "class": "StateManager",
+            "module": "cloudkid"
         },
         {
             "file": "src/StateManager.js",
-            "line": 552,
+            "line": 560,
             "description": "When the state has completed it's loading sequence\nthis should be treated as an asyncronous process",
             "itemtype": "method",
             "name": "_onStateLoaded",
             "access": "private",
             "tagname": "",
-            "class": "cloudkid.StateManager"
+            "class": "StateManager",
+            "module": "cloudkid"
         },
         {
             "file": "src/StateManager.js",
-            "line": 593,
+            "line": 601,
             "description": "Process the state queue",
             "itemtype": "method",
             "name": "_processQueue",
@@ -1203,21 +1288,23 @@
             },
             "access": "private",
             "tagname": "",
-            "class": "cloudkid.StateManager"
+            "class": "StateManager",
+            "module": "cloudkid"
         },
         {
             "file": "src/StateManager.js",
-            "line": 615,
+            "line": 623,
             "description": "Plays the animation \"transitionLoop\" on the transition. Also serves as the animation callback.\nManually looping the animation allows the animation to be synced to the audio while looping.",
             "itemtype": "method",
             "name": "_loopTransition",
             "access": "private",
             "tagname": "",
-            "class": "cloudkid.StateManager"
+            "class": "StateManager",
+            "module": "cloudkid"
         },
         {
             "file": "src/StateManager.js",
-            "line": 653,
+            "line": 661,
             "description": "Displays the transition out animation, without changing states.",
             "itemtype": "method",
             "name": "showTransitionOut",
@@ -1228,11 +1315,12 @@
                     "type": "Function"
                 }
             ],
-            "class": "cloudkid.StateManager"
+            "class": "StateManager",
+            "module": "cloudkid"
         },
         {
             "file": "src/StateManager.js",
-            "line": 673,
+            "line": 681,
             "description": "Displays the transition in animation, without changing states.",
             "itemtype": "method",
             "name": "showTransitionIn",
@@ -1243,11 +1331,12 @@
                     "type": "Function"
                 }
             ],
-            "class": "cloudkid.StateManager"
+            "class": "StateManager",
+            "module": "cloudkid"
         },
         {
             "file": "src/StateManager.js",
-            "line": 685,
+            "line": 693,
             "description": "Generalized function for transitioning with the manager",
             "itemtype": "method",
             "name": "_transitioning",
@@ -1265,11 +1354,12 @@
             ],
             "access": "private",
             "tagname": "",
-            "class": "cloudkid.StateManager"
+            "class": "StateManager",
+            "module": "cloudkid"
         },
         {
             "file": "src/StateManager.js",
-            "line": 722,
+            "line": 730,
             "description": "The frame update function",
             "itemtype": "method",
             "name": "update",
@@ -1280,85 +1370,79 @@
                     "type": "Int"
                 }
             ],
-            "class": "cloudkid.StateManager"
+            "class": "StateManager",
+            "module": "cloudkid"
         },
         {
             "file": "src/StateManager.js",
-            "line": 736,
+            "line": 744,
             "description": "Remove the state manager",
             "itemtype": "method",
             "name": "destroy",
-            "class": "cloudkid.StateManager"
+            "class": "StateManager",
+            "module": "cloudkid"
         }
     ],
     "warnings": [
         {
-            "message": "unknown tag: constructor0",
-            "line": " src/BaseState.js:8"
+            "message": "replacing incorrect tag: function with method",
+            "line": " src/BaseState.js:25"
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src/BaseState.js:22"
+            "line": " src/BaseState.js:34"
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src/BaseState.js:30"
+            "line": " src/BaseState.js:42"
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src/BaseState.js:37"
+            "line": " src/BaseState.js:49"
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src/BaseState.js:43"
+            "line": " src/BaseState.js:58"
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src/BaseState.js:51"
+            "line": " src/BaseState.js:159"
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src/BaseState.js:151"
+            "line": " src/BaseState.js:169"
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src/BaseState.js:161"
+            "line": " src/BaseState.js:180"
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src/BaseState.js:172"
+            "line": " src/BaseState.js:201"
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src/BaseState.js:193"
+            "line": " src/BaseState.js:208"
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src/BaseState.js:200"
+            "line": " src/BaseState.js:219"
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src/BaseState.js:211"
+            "line": " src/BaseState.js:226"
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src/BaseState.js:218"
+            "line": " src/BaseState.js:257"
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src/BaseState.js:249"
+            "line": " src/BaseState.js:282"
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src/BaseState.js:274"
-        },
-        {
-            "message": "replacing incorrect tag: function with method",
-            "line": " src/BaseState.js:297"
-        },
-        {
-            "message": "replacing incorrect tag: function with method",
-            "line": " src/BaseState.js:313"
+            "line": " src/BaseState.js:305"
         },
         {
             "message": "replacing incorrect tag: function with method",
@@ -1366,11 +1450,11 @@
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src/BaseState.js:328"
+            "line": " src/BaseState.js:329"
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src/BaseState.js:342"
+            "line": " src/BaseState.js:336"
         },
         {
             "message": "replacing incorrect tag: function with method",
@@ -1382,135 +1466,139 @@
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src/BaseState.js:369"
+            "line": " src/BaseState.js:366"
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src/BaseState.js:394"
+            "line": " src/BaseState.js:377"
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src/BaseState.js:420"
+            "line": " src/BaseState.js:402"
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src/BaseState.js:431"
+            "line": " src/BaseState.js:428"
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src/BaseState.js:442"
+            "line": " src/BaseState.js:439"
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src/BaseState.js:453"
+            "line": " src/BaseState.js:450"
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src/StateEvent.js:81"
+            "line": " src/BaseState.js:461"
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src/StateManager.js:36"
+            "line": " src/StateEvent.js:84"
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src/StateManager.js:44"
+            "line": " src/StateManager.js:39"
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src/StateManager.js:51"
+            "line": " src/StateManager.js:48"
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src/StateManager.js:57"
+            "line": " src/StateManager.js:56"
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src/StateManager.js:65"
+            "line": " src/StateManager.js:63"
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src/StateManager.js:255"
+            "line": " src/StateManager.js:72"
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src/StateManager.js:284"
+            "line": " src/StateManager.js:263"
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src/StateManager.js:311"
+            "line": " src/StateManager.js:292"
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src/StateManager.js:326"
+            "line": " src/StateManager.js:319"
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src/StateManager.js:337"
+            "line": " src/StateManager.js:334"
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src/StateManager.js:348"
+            "line": " src/StateManager.js:345"
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src/StateManager.js:361"
+            "line": " src/StateManager.js:356"
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src/StateManager.js:372"
+            "line": " src/StateManager.js:369"
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src/StateManager.js:391"
+            "line": " src/StateManager.js:380"
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src/StateManager.js:405"
+            "line": " src/StateManager.js:399"
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src/StateManager.js:430"
+            "line": " src/StateManager.js:413"
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src/StateManager.js:452"
+            "line": " src/StateManager.js:438"
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src/StateManager.js:464"
+            "line": " src/StateManager.js:460"
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src/StateManager.js:552"
+            "line": " src/StateManager.js:472"
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src/StateManager.js:593"
+            "line": " src/StateManager.js:560"
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src/StateManager.js:615"
+            "line": " src/StateManager.js:601"
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src/StateManager.js:653"
+            "line": " src/StateManager.js:623"
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src/StateManager.js:673"
+            "line": " src/StateManager.js:661"
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src/StateManager.js:685"
+            "line": " src/StateManager.js:681"
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src/StateManager.js:722"
+            "line": " src/StateManager.js:693"
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src/StateManager.js:736"
+            "line": " src/StateManager.js:730"
+        },
+        {
+            "message": "replacing incorrect tag: function with method",
+            "line": " src/StateManager.js:744"
         }
     ]
 }

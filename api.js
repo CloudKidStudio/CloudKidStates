@@ -1,11 +1,19 @@
 YUI.add("yuidoc-meta", function(Y) {
    Y.YUIDoc = { meta: {
     "classes": [
-        "cloudkid.BaseState",
-        "cloudkid.StateEvent",
-        "cloudkid.StateManager"
+        "BaseState",
+        "StateEvent",
+        "StateManager"
     ],
-    "modules": [],
-    "allModules": []
+    "modules": [
+        "cloudkid"
+    ],
+    "allModules": [
+        {
+            "displayName": "cloudkid",
+            "name": "cloudkid",
+            "description": "Defines the base functionality for a state used by the state manager"
+        }
+    ]
 } };
 });
