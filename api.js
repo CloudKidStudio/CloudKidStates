@@ -11,8 +11,7 @@ YUI.add("yuidoc-meta", function(Y) {
     "allModules": [
         {
             "displayName": "cloudkid",
-            "name": "cloudkid",
-            "description": "Defines the base functionality for a state used by the state manager"
+            "name": "cloudkid"
         }
     ]
 } };
