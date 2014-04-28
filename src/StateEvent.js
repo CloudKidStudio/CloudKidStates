@@ -1,3 +1,6 @@
+/**
+*  @module cloudkid
+*/
 (function(undefined){
 	
 	"use strict";
@@ -5,7 +8,6 @@
 	/**
 	*   A state-related event used by the State Manager
 	*   
-	*   @module cloudkid
 	*   @class StateEvent
 	*   @constructor
 	*   @param {String} type See createjs.Event

@@ -1,3 +1,6 @@
+/**
+*  @module cloudkid
+*/
 (function(){
 	
 	"use strict";
@@ -10,7 +13,6 @@
 	/**
 	*  Defines the base functionality for a state used by the state manager
 	*
-	*  @module cloudkid
 	*  @class BaseState
 	*  @constructor
 	*  @param {createjs.MovieClip|PIXI.DisplayObjectContainer} panel The panel to associate with this panel

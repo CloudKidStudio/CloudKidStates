@@ -1,3 +1,6 @@
+/**
+*  @module cloudkid
+*/
 (function(undefined){
 	
 	"use strict";
@@ -21,7 +24,6 @@
 	/**
 	*  The State Manager used for manaing the different states of a game or site
 	*  
-	*  @module cloudkid
 	*  @class StateManager
 	*  @constructor
 	*  @param {createjs.MovieClip|PIXI.MovieClip|PIXI.Spine} transition The transition MovieClip to play between transitions
