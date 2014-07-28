@@ -616,8 +616,7 @@
 	*  @param {object} audio Data object with aliases and start times (seconds) for transition in, loop and out sounds: {in:{alias:"myAlias", start:0.2}}.
 	*		These objects are in the format for Animator or PixiAnimator from CloudKidAnimation, so they can be the alias instead of an object.
 	*/
-
-	StateManager = function(transition, audio)
+	var StateManager = function(transition, audio)
 	{
 		this.initialize(transition, audio);
 	};

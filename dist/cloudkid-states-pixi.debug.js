@@ -29,12 +29,13 @@
         this._enabled = !1, this._active = !0, this._canceled = !1, this._onEnterStateProceed = proceed, 
         this.enterState(), this._onEnterStateProceed && (this._onEnterStateProceed(), this._onEnterStateProceed = null);
     }, p.loadingStart = function() {
-        return this._isLoading ? void Debug.warn("loadingStart() was called while we're already loading") : (this._isLoading = !0, 
-        this.manager.loadingStart(), this._onLoadingComplete = this._onEnterStateProceed, 
-        void (this._onEnterStateProceed = null));
+        return this._isLoading ? (Debug.warn("loadingStart() was called while we're already loading"), 
+        void 0) : (this._isLoading = !0, this.manager.loadingStart(), this._onLoadingComplete = this._onEnterStateProceed, 
+        this._onEnterStateProceed = null, void 0);
     }, p.loadingDone = function() {
-        return this._isLoading ? (this._isLoading = !1, this.manager.loadingDone(), void (this._onLoadingComplete && (this._onLoadingComplete(), 
-        this._onLoadingComplete = null))) : void Debug.warn("loadingDone() was called without a load started, call loadingStart() first");
+        return this._isLoading ? (this._isLoading = !1, this.manager.loadingDone(), this._onLoadingComplete && (this._onLoadingComplete(), 
+        this._onLoadingComplete = null), void 0) : (Debug.warn("loadingDone() was called without a load started, call loadingStart() first"), 
+        void 0);
     }, p._internalCancel = function() {
         this._active = !1, this._canceled = !0, this._isLoading = !1, this._internalExitState(), 
         this.cancel();
@@ -79,11 +80,9 @@
 }(), function(undefined) {
     "use strict";
     var Audio = cloudkid.Audio || cloudkid.Sound, OS = cloudkid.OS, BaseState = (cloudkid.Animator, 
-    cloudkid.BaseState), PixiAnimator = cloudkid.PixiAnimator, StateEvent = cloudkid.StateEvent, EventDispatcher = createjs.EventDispatcher;
-    StateManager = function(transition, audio) {
+    cloudkid.BaseState), PixiAnimator = cloudkid.PixiAnimator, StateEvent = cloudkid.StateEvent, EventDispatcher = createjs.EventDispatcher, StateManager = function(transition, audio) {
         this.initialize(transition, audio);
-    };
-    var p = StateManager.prototype;
+    }, p = StateManager.prototype;
     p.addEventListener = null, p.removeEventListener = null, p.removeAllEventListeners = null, 
     p.dispatchEvent = null, p.hasEventListener = null, p._listeners = null, EventDispatcher && EventDispatcher.initialize(p), 
     StateManager.VERSION = "1.1.3", p._transition = null, p._transitionSounds = null, 
@@ -125,7 +124,7 @@
         Debug.assert(!!this._state, "No current state to refresh!"), this.setState(this._stateId);
     }, p.setState = function(id) {
         if (Debug.assert(this._states[id] !== undefined, "No current state mattching id '" + id + "'"), 
-        this._isTransitioning) return void (this._queueStateId = id);
+        this._isTransitioning) return this._queueStateId = id, void 0;
         this._stateId = id, this.showBlocker(), this._oldState = this._state, this._state = this._states[id];
         var sm;
         this._oldState ? this._isLoading ? (this._oldState._internalCancel(), this._isLoading = !1, 
