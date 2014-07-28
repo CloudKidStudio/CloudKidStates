@@ -1,5 +1,10 @@
+/**
+*  @module cloudkid
+*/
 (function(){
 	
+	"use strict";
+
 	// Imports
 	var Animator = cloudkid.Animator,
 		PixiAnimator = cloudkid.PixiAnimator,
@@ -7,9 +12,9 @@
 	
 	/**
 	*  Defines the base functionality for a state used by the state manager
-	*  
-	*  @class cloudkid.BaseState
-	*  @constructor0.
+	*
+	*  @class BaseState
+	*  @constructor
 	*  @param {createjs.MovieClip|PIXI.DisplayObjectContainer} panel The panel to associate with this panel
 	*/
 	var BaseState = function(panel)
@@ -27,6 +32,7 @@
 	* @return {function|object} Returns the listener for chaining or assignment
 	*/
 	p.addEventListener = null;
+
 	/**
 	* Removes the specified event listener
 	* @function removeEventListener
@@ -34,12 +40,14 @@
 	* @param {function|object} listener The listener function or object
 	*/
 	p.removeEventListener = null;
+
 	/**
 	* Removes all listeners for the specified type, or all listeners of all types
 	* @function removeAllEventListeners
 	* @param {String} type The string type of the event. If omitted, all listeners for all types will be removed.
 	*/
 	p.removeAllEventListeners = null;
+
 	/**
 	* Dispatches the specified event
 	* @function dispatchEvent
@@ -48,6 +56,7 @@
 	* @return {bool} Returns true if any listener returned true
 	*/
 	p.dispatchEvent = null;
+
 	/**
 	* Indicates whether there is at least one listener for the specified event type
 	* @function hasEventListener
@@ -55,6 +64,7 @@
 	* @return {bool} Returns true if there is at least one listener for the specified event
 	*/
 	p.hasEventListener = null;
+
 	/**
 	* Createjs EventDispatcher method
 	* @property {Array} _listeners description
@@ -75,7 +85,7 @@
 	/**
 	* A reference to the state manager
 	* 
-	* @property {cloudkid.StateManager} manager
+	* @property {StateManager} manager
 	*/
 	p.manager = null;
 	
@@ -382,7 +392,7 @@
 		
 		animator.play(
 			this.panel, 
-			cloudkid.StateManager.TRANSITION_IN,
+			StateManager.TRANSITION_IN,
 			function()
 			{
 				s._isTransitioning = false;
@@ -408,7 +418,7 @@
 		
 		animator.play(
 			this.panel, 
-			cloudkid.StateManager.TRANSITION_OUT,
+			StateManager.TRANSITION_OUT,
 			function()
 			{
 				s._isTransitioning = false;
@@ -469,16 +479,21 @@
 	// Add to the name space
 	namespace('cloudkid').BaseState = BaseState;
 }());
+/**
+*  @module cloudkid
+*/
 (function(undefined){
 	
+	"use strict";
+
 	/**
-	*   A gamestate-related event
+	*   A state-related event used by the State Manager
 	*   
-	*   @class cloudkid.StateEvent
+	*   @class StateEvent
 	*   @constructor
-	*   @param {String} type See flash.events.Event
-	*   @param {cloudkid.BaseState} currentState The currentState of the state manager
-	*   @param {cloudkid.BaseState} visibleState The current state being transitioned or changing visibility, default to currentState
+	*   @param {String} type See createjs.Event
+	*   @param {BaseState} currentState The currentState of the state manager
+	*   @param {BaseState} visibleState The current state being transitioned or changing visibility, default to currentState
 	*/
 	var StateEvent = function(type, currentState, visibleState)
 	{
@@ -532,14 +547,14 @@
 	/**
 	* A reference to the current state of the state manager
 	* 
-	* @property {cloudkid.BaseState} currentState
+	* @property {BaseState} currentState
 	*/
 	p.currentState = null;
 	
 	/**
 	* A reference to the state who's actually being transitioned or being changed
 	* 
-	* @property {cloudkid.BaseState} visibleState
+	* @property {BaseState} visibleState
 	*/
 	p.visibleState = null;
 	
@@ -554,8 +569,8 @@
 	*  
 	*  @function initialize
 	*  @param {String} type The type of event
-	*  @param {cloudkid.BaseState} currentState The currentState of the state manager
-	*  @param {cloudkid.BaseState} visibleState The current state being transitioned or changing visibility
+	*  @param {BaseState} currentState The currentState of the state manager
+	*  @param {BaseState} visibleState The current state being transitioned or changing visibility
 	*/
 	p.initialize = function(type, currentState, visibleState)
 	{
@@ -569,8 +584,13 @@
 	namespace('cloudkid').StateEvent = StateEvent;
 	
 }());
+/**
+*  @module cloudkid
+*/
 (function(undefined){
 	
+	"use strict";
+
 	// Imports
 	var Audio = cloudkid.Audio || cloudkid.Sound,
 		OS = cloudkid.OS,
@@ -590,7 +610,7 @@
 	/**
 	*  The State Manager used for manaing the different states of a game or site
 	*  
-	*  @class cloudkid.StateManager
+	*  @class StateManager
 	*  @constructor
 	*  @param {createjs.MovieClip|PIXI.MovieClip|PIXI.Spine} transition The transition MovieClip to play between transitions
 	*  @param {object} audio Data object with aliases and start times (seconds) for transition in, loop and out sounds: {in:{alias:"myAlias", start:0.2}}.
@@ -612,6 +632,7 @@
 	* @return {function|object} Returns the listener for chaining or assignment
 	*/
 	p.addEventListener = null;
+
 	/**
 	* Removes the specified event listener
 	* @function removeEventListener
@@ -619,12 +640,14 @@
 	* @param {function|object} listener The listener function or object
 	*/
 	p.removeEventListener = null;
+
 	/**
 	* Removes all listeners for the specified type, or all listeners of all types
 	* @function removeAllEventListeners
 	* @param {String} type The string type of the event. If omitted, all listeners for all types will be removed.
 	*/
 	p.removeAllEventListeners = null;
+
 	/**
 	* Dispatches the specified event
 	* @function dispatchEvent
@@ -633,6 +656,7 @@
 	* @return {bool} Returns true if any listener returned true
 	*/
 	p.dispatchEvent = null;
+
 	/**
 	* Indicates whether there is at least one listener for the specified event type
 	* @function hasEventListener
@@ -640,6 +664,7 @@
 	* @return {bool} Returns true if there is at least one listener for the specified event
 	*/
 	p.hasEventListener = null;
+
 	/**
 	* Createjs EventDispatcher method
 	* @property {Array} _listeners description
@@ -686,7 +711,7 @@
 	/**
 	* The currently selected state
 	* 
-	* @property {cloudkid.BaseState} _state
+	* @property {BaseState} _state
 	* @private
 	*/
 	p._state = null;
@@ -702,7 +727,7 @@
 	/**
 	* The old state
 	* 
-	* @property {cloudkid.BaseState} _oldState
+	* @property {BaseState} _oldState
 	* @private
 	*/
 	p._oldState = null;
@@ -857,7 +882,7 @@
 	*  
 	*  @function addState
 	*  @param {String} id The string alias for a state
-	*  @param {cloudkid.BaseState} state State object reference
+	*  @param {BaseState} state State object reference
 	*/
 	p.addState = function(id, state)
 	{
@@ -909,7 +934,7 @@
 	*   Get the current selected state (state object)
 	*   
 	*   @function getCurrentState
-	*   @return {cloudkid.BaseState} The Base State object
+	*   @return {BaseState} The Base State object
 	*/
 	p.getCurrentState = function()
 	{
@@ -921,7 +946,7 @@
 	*   
 	*   @function getStateById
 	*   @param {String} id State alias
-	*   @return {cloudkid.BaseState} The base State object
+	*   @return {BaseState} The base State object
 	*/
 	p.getStateById = function(id)
 	{
@@ -1106,6 +1131,8 @@
 								sm._oldState.panel.visible = false;
 								sm._oldState._internalExitState();
 								sm._oldState = null;
+
+								sm._loopTransition();//play the transition loop animation
 								
 								if (!sm._processQueue())
 								{

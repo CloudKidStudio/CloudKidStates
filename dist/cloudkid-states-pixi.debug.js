@@ -1,8 +1,8 @@
 !function() {
-    var PixiAnimator = (cloudkid.Animator, cloudkid.PixiAnimator), BaseState = (cloudkid.StateManager, 
-    function(panel) {
+    "use strict";
+    var PixiAnimator = (cloudkid.Animator, cloudkid.PixiAnimator), StateManager = cloudkid.StateManager, BaseState = function(panel) {
         this.initialize(panel);
-    }), p = BaseState.prototype;
+    }, p = BaseState.prototype;
     p.addEventListener = null, p.removeEventListener = null, p.removeAllEventListeners = null, 
     p.dispatchEvent = null, p.hasEventListener = null, p._listeners = null, createjs.EventDispatcher && createjs.EventDispatcher.initialize(p), 
     p.stateId = null, p.manager = null, p.panel = null, p._destroyed = !1, p._active = !1, 
@@ -45,13 +45,13 @@
     }, p.transitionIn = function(callback) {
         this._isTransitioning = !0;
         var s = this, animator = PixiAnimator.instance;
-        animator.play(this.panel, cloudkid.StateManager.TRANSITION_IN, function() {
+        animator.play(this.panel, StateManager.TRANSITION_IN, function() {
             s._isTransitioning = !1, callback();
         });
     }, p.transitionOut = function(callback) {
         this._enabled = !1, this._isTransitioning = !0;
         var s = this, animator = PixiAnimator.instance;
-        animator.play(this.panel, cloudkid.StateManager.TRANSITION_OUT, function() {
+        animator.play(this.panel, StateManager.TRANSITION_OUT, function() {
             s._isTransitioning = !1, callback();
         });
     }, p.getDestroyed = function() {
@@ -65,6 +65,7 @@
         this._onEnterStateProceed = null, this._onLoadingComplete = null;
     }, namespace("cloudkid").BaseState = BaseState;
 }(), function(undefined) {
+    "use strict";
     var StateEvent = function(type, currentState, visibleState) {
         this.initialize(type, currentState, visibleState);
     }, p = StateEvent.prototype;
@@ -76,6 +77,7 @@
         this.currentState = currentState;
     }, namespace("cloudkid").StateEvent = StateEvent;
 }(), function(undefined) {
+    "use strict";
     var Audio = cloudkid.Audio || cloudkid.Sound, OS = cloudkid.OS, BaseState = (cloudkid.Animator, 
     cloudkid.BaseState), PixiAnimator = cloudkid.PixiAnimator, StateEvent = cloudkid.StateEvent, EventDispatcher = createjs.EventDispatcher;
     StateManager = function(transition, audio) {
@@ -84,7 +86,7 @@
     var p = StateManager.prototype;
     p.addEventListener = null, p.removeEventListener = null, p.removeAllEventListeners = null, 
     p.dispatchEvent = null, p.hasEventListener = null, p._listeners = null, EventDispatcher && EventDispatcher.initialize(p), 
-    StateManager.VERSION = "1.1.2", p._transition = null, p._transitionSounds = null, 
+    StateManager.VERSION = "1.1.3", p._transition = null, p._transitionSounds = null, 
     p._states = null, p._state = null, p._stateId = null, p._oldState = null, p._isLoading = !1, 
     p._isTransitioning = !1, p._destroyed = !1, p._queueStateId = null, StateManager.TRANSITION_IN = "onTransitionIn", 
     StateManager.TRANSITION_IN_DONE = "onTransitionInDone", StateManager.TRANSITION_OUT = "onTransitionOut", 
@@ -134,7 +136,7 @@
             sm.dispatchEvent(StateManager.TRANSITION_OUT), sm._transitioning(StateManager.TRANSITION_OUT, function() {
                 sm.dispatchEvent(StateManager.TRANSITION_OUT_DONE), sm._isTransitioning = !1, sm.dispatchEvent(new StateEvent(StateEvent.HIDDEN, sm._state, sm._oldState)), 
                 sm._oldState.panel.visible = !1, sm._oldState._internalExitState(), sm._oldState = null, 
-                sm._processQueue() || (sm._isLoading = !0, sm._state._internalEnterState(sm._onStateLoaded.bind(sm)));
+                sm._loopTransition(), sm._processQueue() || (sm._isLoading = !0, sm._state._internalEnterState(sm._onStateLoaded.bind(sm)));
             });
         })) : (this._isTransitioning = !0, this._transition.visible = !0, sm = this, this._loopTransition(), 
         sm.dispatchEvent(StateManager.TRANSITION_INIT_DONE), sm._isLoading = !0, sm._state._internalEnterState(sm._onStateLoaded.bind(sm)));

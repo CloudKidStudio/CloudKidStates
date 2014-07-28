@@ -545,6 +545,8 @@
 								sm._oldState.panel.visible = false;
 								sm._oldState._internalExitState();
 								sm._oldState = null;
+
+								sm._loopTransition();//play the transition loop animation
 								
 								if (!sm._processQueue())
 								{
