@@ -1,6 +1,6 @@
 !function() {
     "use strict";
-    var PixiAnimator = (cloudkid.Animator, cloudkid.PixiAnimator), StateManager = cloudkid.StateManager, BaseState = function(panel) {
+    var PixiAnimator = (cloudkid.Animator, cloudkid.PixiAnimator), BaseState = function(panel) {
         this.initialize(panel);
     }, p = BaseState.prototype;
     p.addEventListener = null, p.removeEventListener = null, p.removeAllEventListeners = null, 
@@ -46,13 +46,13 @@
     }, p.transitionIn = function(callback) {
         this._isTransitioning = !0;
         var s = this, animator = PixiAnimator.instance;
-        animator.play(this.panel, StateManager.TRANSITION_IN, function() {
+        animator.play(this.panel, cloudkid.StateManager.TRANSITION_IN, function() {
             s._isTransitioning = !1, callback();
         });
     }, p.transitionOut = function(callback) {
         this._enabled = !1, this._isTransitioning = !0;
         var s = this, animator = PixiAnimator.instance;
-        animator.play(this.panel, StateManager.TRANSITION_OUT, function() {
+        animator.play(this.panel, cloudkid.StateManager.TRANSITION_OUT, function() {
             s._isTransitioning = !1, callback();
         });
     }, p.getDestroyed = function() {

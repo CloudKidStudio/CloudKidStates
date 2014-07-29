@@ -7,8 +7,7 @@
 
 	// Imports
 	var Animator = cloudkid.Animator,
-		PixiAnimator = cloudkid.PixiAnimator,
-		StateManager = cloudkid.StateManager;
+		PixiAnimator = cloudkid.PixiAnimator;
 	
 	/**
 	*  Defines the base functionality for a state used by the state manager
@@ -392,7 +391,7 @@
 		
 		animator.play(
 			this.panel, 
-			StateManager.TRANSITION_IN,
+			cloudkid.StateManager.TRANSITION_IN,
 			function()
 			{
 				s._isTransitioning = false;
@@ -418,7 +417,7 @@
 		
 		animator.play(
 			this.panel, 
-			StateManager.TRANSITION_OUT,
+			cloudkid.StateManager.TRANSITION_OUT,
 			function()
 			{
 				s._isTransitioning = false;

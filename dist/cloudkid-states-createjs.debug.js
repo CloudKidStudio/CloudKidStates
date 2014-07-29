@@ -1,8 +1,8 @@
 !function() {
     "use strict";
-    var Animator = cloudkid.Animator, StateManager = (cloudkid.PixiAnimator, cloudkid.StateManager), BaseState = function(panel) {
+    var Animator = cloudkid.Animator, BaseState = (cloudkid.PixiAnimator, function(panel) {
         this.initialize(panel);
-    }, p = BaseState.prototype;
+    }), p = BaseState.prototype;
     p.addEventListener = null, p.removeEventListener = null, p.removeAllEventListeners = null, 
     p.dispatchEvent = null, p.hasEventListener = null, p._listeners = null, createjs.EventDispatcher && createjs.EventDispatcher.initialize(p), 
     p.stateId = null, p.manager = null, p.panel = null, p._destroyed = !1, p._active = !1, 
@@ -46,13 +46,13 @@
     }, p.transitionIn = function(callback) {
         this._isTransitioning = !0;
         var s = this, animator = Animator;
-        animator.play(this.panel, StateManager.TRANSITION_IN, function() {
+        animator.play(this.panel, cloudkid.StateManager.TRANSITION_IN, function() {
             s._isTransitioning = !1, callback();
         });
     }, p.transitionOut = function(callback) {
         this._enabled = !1, this._isTransitioning = !0;
         var s = this, animator = Animator;
-        animator.play(this.panel, StateManager.TRANSITION_OUT, function() {
+        animator.play(this.panel, cloudkid.StateManager.TRANSITION_OUT, function() {
             s._isTransitioning = !1, callback();
         });
     }, p.getDestroyed = function() {
