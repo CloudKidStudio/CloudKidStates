@@ -3,7 +3,7 @@
 	// Imports
 	var BaseState = cloudkid.BaseState,
 		MediaLoader = cloudkid.MediaLoader,
-		OS = cloudkid.OS,
+		Application = cloudkid.Application,
 		Button = cloudkid.Button;
 	
 	var TestState = function(panel)
@@ -52,8 +52,8 @@
 			font: "20px Arial",
 			color: "#ffffff"
 		});
-		this.button.x = (OS.instance.stageWidth - this.button.width) / 2;
-		this.button.y = (OS.instance.stageHeight - this.button.height) / 2;
+		this.button.x = (Application.instance.display.width - this.button.width) / 2;
+		this.button.y = (Application.instance.display.height - this.button.height) / 2;
 		this.button.label.y -= 3;
 		this.button.addEventListener('click', this._nextState.bind(this));
 		this.button.visible = false;

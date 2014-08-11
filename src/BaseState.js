@@ -6,9 +6,7 @@
 	"use strict";
 
 	// Imports
-	var Animator = cloudkid.Animator,
-		PixiAnimator = cloudkid.PixiAnimator,
-		StateManager = cloudkid.StateManager;
+	var StateManager;
 	
 	/**
 	*  Defines the base functionality for a state used by the state manager
@@ -19,6 +17,7 @@
 	*/
 	var BaseState = function(panel)
 	{
+		StateManager = cloudkid.StateManager;
 		this.initialize(panel);
 	};
 	
@@ -191,8 +190,7 @@
 		{
 			this._isTransitioning = false;
 			
-			var animator = (CONFIG_CREATEJS) ? Animator : PixiAnimator.instance;
-			animator.stop(this.panel);
+			this.manager._display.Animator.stop(this.panel);
 		}
 		this._enabled = false;
 		this.panel.visible = false;
@@ -238,8 +236,7 @@
 		{
 			this._isTransitioning = false;
 			
-			var animator = (CONFIG_CREATEJS) ? Animator : PixiAnimator.instance;
-			animator.stop(this.panel);
+			this.manager._display.Animator.stop(this.panel);
 		}
 		this._enabled = false;
 		this._active = true;
@@ -358,14 +355,6 @@
 	p.enterStateDone = function(){};
 	
 	/**
-	*   StateManager updates the state
-	*   
-	*   @function update
-	*   @param {int} elasped The second since the last frame
-	*/
-	p.update = function(){};
-	
-	/**
 	*   Get if this is the active state
 	*   
 	*   @function getActive
@@ -388,9 +377,7 @@
 		
 		var s = this;
 		
-		var animator = (CONFIG_CREATEJS) ? Animator : PixiAnimator.instance;
-		
-		animator.play(
+		this.manager._display.Animator.play(
 			this.panel, 
 			StateManager.TRANSITION_IN,
 			function()
@@ -414,9 +401,7 @@
 		
 		var s = this;
 		
-		var animator = (CONFIG_CREATEJS) ? Animator : PixiAnimator.instance;
-		
-		animator.play(
+		this.manager._display.Animator.play(
 			this.panel, 
 			StateManager.TRANSITION_OUT,
 			function()

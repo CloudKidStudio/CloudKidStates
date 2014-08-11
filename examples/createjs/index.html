@@ -11,15 +11,15 @@
         <link rel="stylesheet" href="../shared/css/main.css">
 
         <script src="../shared/libs/jquery/dist/jquery.min.js"></script>
-		<script src="../shared/libs/tweenjs/lib/tweenjs-0.4.1.min.js"></script>
-		<script src="../shared/libs/preloadjs/lib/preloadjs-0.3.2.min.js"></script>
-		<script src="../shared/libs/easeljs/lib/easeljs-0.6.1.min.js"></script>
-		<script src="../shared/libs/easeljs/lib/movieclip-0.6.2.min.js"></script>
+		<script src="../shared/libs/tweenjs/lib/tweenjs.min.js"></script>
+		<script src="../shared/libs/preloadjs/lib/preloadjs.min.js"></script>
+		<script src="../shared/libs/easeljs/lib/easeljs.min.js"></script>
+		<script src="../shared/libs/easeljs/lib/movieclip.min.js"></script>
 		<script src="../shared/libs/cloudkid-namespace/namespace.js"></script>
-		<script src="../shared/libs/cloudkid-debug/Debug.js"></script>
-		<script src="../shared/libs/cloudkid-os/dist/cloudkid-os-createjs.min.js"></script>
-		<script src="../shared/libs/cloudkid-animation/dist/cloudkid-animation.min.js"></script>
-		<script src="../../dist/cloudkid-states-createjs.js"></script>
+		<script src="../shared/libs/cloudkid-debug/dist/cloudkid-debug.min.js"></script>
+		<script src="../shared/libs/cloudkid-framework/dist/cloudkid-framework.min.js"></script>
+		<script src="../shared/libs/cloudkid-createjs-display/dist/cloudkid-createjs-display.min.js"></script>
+		<script src="../../dist/cloudkid-states.js"></script>
 		
 		<script src="js/Chick.js"></script>
 		<script src="js/TestPanel.js"></script>
@@ -28,26 +28,19 @@
 		<script src="StatesApp.js"></script>
     </head>
     <body>
-		<header>
-			<a id="run_app">Run App</a>
-			<a id="exit_app">Exit App</a>
-		</header>
 		<div id="content">
 			<canvas id="stage" width="800" height="500" />
 			<script>
-				var os = cloudkid.OS.init("stage", {
-					showFramerate: true,
+				var app = new cloudkid.StatesApp({
 					fps: 60,
 					parseQueryString: true,
 					debug: true,
-					clearView: true
-				});
-				
-				$("#run_app").click(function(){
-					os.addApp(new cloudkid.StatesApp());
-				}).click();
-				$("#exit_app").click(function(){
-					os.removeApp();
+
+					canvasId: "stage",
+					display: cloudkid.CreateJSDisplay,
+					displayOptions: {
+						clearView: true
+					}
 				});
 			</script>
 		</div>

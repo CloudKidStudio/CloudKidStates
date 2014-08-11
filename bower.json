@@ -1,12 +1,11 @@
 {
     "name": "cloudkid-states",
     "version": "1.1.3",
-    "main": "dist/cloudkid-states-createjs.min.js",
+    "main": "dist/cloudkid-states.min.js",
     "dependencies": {
-        "cloudkid-os" : "*",
-        "cloudkid-animation" : "^2.0.0",
-        "cloudkid-audio" : "*",
-        "cloudkid-sound" : "*"
+        "cloudkid-framework" : "*",
+        "cloudkid-audio" : "#framework",
+        "cloudkid-sound" : "#framework"
     },
     "ignore": [
         ".svn",
@@ -16,7 +15,6 @@
         "docs",
         "libs",
         "src",
-        "src.pixi.order",
-        "src.createjs.order"
+        "src.order"
     ]
 }

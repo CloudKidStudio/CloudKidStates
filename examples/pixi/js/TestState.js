@@ -2,7 +2,7 @@
 	
 	// Imports
 	var BaseState = cloudkid.BaseState,
-		OS = cloudkid.OS,
+		Application = cloudkid.Application,
 		Texture = PIXI.Texture,
 		Button = cloudkid.Button;
 	
@@ -42,11 +42,8 @@
 			}
 		);
 		
-		// Adjust the text position
-		this.button.label.position.y -= 4;
-		
-		this.button.position.x = (OS.instance.stageWidth - this.button.width) / 2;
-		this.button.position.y = (OS.instance.stageHeight - this.button.height) / 2;
+		this.button.position.x = (Application.instance.display.width - this.button.width) / 2;
+		this.button.position.y = (Application.instance.display.height - this.button.height) / 2;
 		this.button.releaseCallback = this._nextState.bind(this);
 		this.button.visible = false;
 		

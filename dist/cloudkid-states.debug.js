@@ -1,7 +1,7 @@
 !function() {
     "use strict";
-    var Animator = cloudkid.Animator, StateManager = (cloudkid.PixiAnimator, cloudkid.StateManager), BaseState = function(panel) {
-        this.initialize(panel);
+    var StateManager, BaseState = function(panel) {
+        StateManager = cloudkid.StateManager, this.initialize(panel);
     }, p = BaseState.prototype;
     p.addEventListener = null, p.removeEventListener = null, p.removeAllEventListeners = null, 
     p.dispatchEvent = null, p.hasEventListener = null, p._listeners = null, createjs.EventDispatcher && createjs.EventDispatcher.initialize(p), 
@@ -12,20 +12,12 @@
     }, p.getCanceled = function() {
         return this._canceled;
     }, p._internalExitState = function() {
-        if (this._isTransitioning) {
-            this._isTransitioning = !1;
-            var animator = Animator;
-            animator.stop(this.panel);
-        }
+        this._isTransitioning && (this._isTransitioning = !1, this.manager._display.Animator.stop(this.panel)), 
         this._enabled = !1, this.panel.visible = !1, this._active = !1, this.exitState();
     }, p.exitState = function() {}, p._internalExitStateStart = function() {
         this.exitStateStart();
     }, p.exitStateStart = function() {}, p._internalEnterState = function(proceed) {
-        if (this._isTransitioning) {
-            this._isTransitioning = !1;
-            var animator = Animator;
-            animator.stop(this.panel);
-        }
+        this._isTransitioning && (this._isTransitioning = !1, this.manager._display.Animator.stop(this.panel)), 
         this._enabled = !1, this._active = !0, this._canceled = !1, this._onEnterStateProceed = proceed, 
         this.enterState(), this._onEnterStateProceed && (this._onEnterStateProceed(), this._onEnterStateProceed = null);
     }, p.loadingStart = function() {
@@ -40,18 +32,18 @@
         this.cancel();
     }, p.cancel = function() {}, p.enterState = function() {}, p._internalEnterStateDone = function() {
         this._canceled || (this.setEnabled(!0), this.enterStateDone());
-    }, p.enterStateDone = function() {}, p.update = function() {}, p.getActive = function() {
+    }, p.enterStateDone = function() {}, p.getActive = function() {
         return this._active;
     }, p.transitionIn = function(callback) {
         this._isTransitioning = !0;
-        var s = this, animator = Animator;
-        animator.play(this.panel, StateManager.TRANSITION_IN, function() {
+        var s = this;
+        this.manager._display.Animator.play(this.panel, StateManager.TRANSITION_IN, function() {
             s._isTransitioning = !1, callback();
         });
     }, p.transitionOut = function(callback) {
         this._enabled = !1, this._isTransitioning = !0;
-        var s = this, animator = Animator;
-        animator.play(this.panel, StateManager.TRANSITION_OUT, function() {
+        var s = this;
+        this.manager._display.Animator.play(this.panel, StateManager.TRANSITION_OUT, function() {
             s._isTransitioning = !1, callback();
         });
     }, p.getDestroyed = function() {
@@ -78,31 +70,25 @@
     }, namespace("cloudkid").StateEvent = StateEvent;
 }(), function(undefined) {
     "use strict";
-    var Audio = cloudkid.Audio || cloudkid.Sound, OS = cloudkid.OS, Animator = cloudkid.Animator, BaseState = cloudkid.BaseState, StateEvent = (cloudkid.PixiAnimator, 
-    cloudkid.StateEvent), EventDispatcher = createjs.EventDispatcher, MovieClip = createjs.MovieClip, Touch = createjs.Touch;
-    StateManager = function(transition, audio) {
-        this.initialize(transition, audio);
-    };
-    var p = StateManager.prototype;
+    var Audio = cloudkid.Audio || cloudkid.Sound, BaseState = cloudkid.BaseState, StateEvent = cloudkid.StateEvent, EventDispatcher = createjs.EventDispatcher, StateManager = function(display, transition, audio) {
+        this.initialize(display, transition, audio);
+    }, p = StateManager.prototype;
     p.addEventListener = null, p.removeEventListener = null, p.removeAllEventListeners = null, 
     p.dispatchEvent = null, p.hasEventListener = null, p._listeners = null, EventDispatcher && EventDispatcher.initialize(p), 
-    StateManager.VERSION = "1.1.3", p._transition = null, p._transitionSounds = null, 
+    StateManager.VERSION = "1.1.3", p._display = null, p._transition = null, p._transitionSounds = null, 
     p._states = null, p._state = null, p._stateId = null, p._oldState = null, p._isLoading = !1, 
     p._isTransitioning = !1, p._destroyed = !1, p._queueStateId = null, StateManager.TRANSITION_IN = "onTransitionIn", 
     StateManager.TRANSITION_IN_DONE = "onTransitionInDone", StateManager.TRANSITION_OUT = "onTransitionOut", 
-    StateManager.TRANSITION_OUT_DONE = "onTransitionOutDone", StateManager.DIALOG_SHOW = "onBlockerShow", 
-    StateManager.DIALOG_SHOW_DONE = "onBlockerShowDone", StateManager.DIALOG_HIDE = "onBlockerHide", 
-    StateManager.DIALOG_HIDE_DONE = "onBlockerHideDone", StateManager.TRANSITION_INIT = "onInit", 
-    StateManager.TRANSITION_INIT_DONE = "onInitDone", StateManager.LOADING_START = "onLoadingStart", 
-    StateManager.LOADING_DONE = "onLoadingDone", p.initialize = function(transition, transitionSounds) {
-        Debug.assert(transition instanceof MovieClip, "transition needs to subclass createjs.MovieClip"), 
-        this._transition = transition, this._transition.stop(), this.hideBlocker(), this._states = {}, 
-        this._transitionSounds = transitionSounds || null, this._loopTransition = this._loopTransition.bind(this);
+    StateManager.TRANSITION_OUT_DONE = "onTransitionOutDone", StateManager.TRANSITION_INIT_DONE = "onInitDone", 
+    StateManager.LOADING_START = "onLoadingStart", StateManager.LOADING_DONE = "onLoadingDone", 
+    p.initialize = function(display, transition, transitionSounds) {
+        this._display = display, this._transition = transition, this._transition.stop && this._transition.stop(), 
+        this.hideBlocker(), this._states = {}, this._transitionSounds = transitionSounds || null, 
+        this._loopTransition = this._loopTransition.bind(this);
     }, p.addState = function(id, state) {
         Debug.assert(state instanceof BaseState, "State (" + id + ") needs to subclass cloudkid.BaseState"), 
         this._states[id] = state, state.stateId = id, state.manager = this, state._internalExitState();
     }, p.changeTransition = function(clip) {
-        Debug.assert(clip instanceof MovieClip, "Transition needs to subclass createjs.MovieClip"), 
         this._transition = clip;
     }, p.getState = function() {
         return this._stateId;
@@ -114,15 +100,13 @@
     }, p.isBusy = function() {
         return this._isLoading || this._isTransitioning;
     }, p.loadingStart = function() {
-        this._destroyed || this.dispatchEvent(StateManager.LOADING_START);
+        this._destroyed || (this.dispatchEvent(StateManager.LOADING_START), this._loopTransition());
     }, p.loadingDone = function() {
         this._destroyed || this.dispatchEvent(StateManager.LOADING_DONE);
     }, p.showBlocker = function() {
-        var stage = OS.instance.stage;
-        stage.enableMouseOver(!1), stage.enableDOMEvents(!1), Touch.disable(stage);
+        this._display.enabled = !1;
     }, p.hideBlocker = function() {
-        var os = OS.instance, stage = os.stage;
-        stage.enableMouseOver(os.options.mouseOverRate), stage.enableDOMEvents(!0), Touch.enable(stage);
+        this._display.enabled = !0;
     }, p.refresh = function() {
         Debug.assert(!!this._state, "No current state to refresh!"), this.setState(this._stateId);
     }, p.setState = function(id) {
@@ -132,7 +116,7 @@
         var sm;
         this._oldState ? this._isLoading ? (this._oldState._internalCancel(), this._isLoading = !1, 
         this._state._internalEnterState(this._onStateLoaded)) : (this._isTransitioning = !0, 
-        this._oldState._internalExitStateStart(), sm = this, this.dispatchEvent(new StateEvent(StateEvent.TRANSITION_OUT, this._state, this._oldState)), 
+        this._oldState._internalExitStateStart(), this.showBlocker(), sm = this, this.dispatchEvent(new StateEvent(StateEvent.TRANSITION_OUT, this._state, this._oldState)), 
         this._oldState.transitionOut(function() {
             sm.dispatchEvent(new StateEvent(StateEvent.TRANSITION_OUT_DONE, sm._state, sm._oldState)), 
             sm.dispatchEvent(StateManager.TRANSITION_OUT), sm._transitioning(StateManager.TRANSITION_OUT, function() {
@@ -162,7 +146,10 @@
     }, p._loopTransition = function() {
         var audio;
         this._transitionSounds && (audio = this._transitionSounds.loop, Audio.instance.soundLoaded === !1 && (audio = null)), 
-        Animator.instanceHasAnimation(this._transition, "transitionLoop") && Animator.play(this._transition, "transitionLoop", this._loopTransition, null, null, null, audio);
+        this._display.Animator.instanceHasAnimation(this._transition, "transitionLoop") && this._display.Animator.play(this._transition, "transitionLoop", {
+            onComplete: this._loopTransition,
+            soundData: audio
+        });
     }, p.showTransitionOut = function(callback) {
         this.showBlocker();
         var sm = this, func = function() {
@@ -179,11 +166,12 @@
         clip.visible = !0;
         var audio;
         this._transitionSounds && (audio = event == StateManager.TRANSITION_IN ? this._transitionSounds.in : this._transitionSounds.out, 
-        Audio.instance.soundLoaded === !1 && (audio = null)), Animator.play(this._transition, event, callback, null, null, null, audio);
-    }, p.update = function(elapsed) {
-        this._state && this._state.update(elapsed);
+        Audio.instance.soundLoaded === !1 && (audio = null)), this._display.Animator.play(this._transition, event, {
+            onComplete: callback,
+            soundData: audio
+        });
     }, p.destroy = function() {
-        if (this._destroyed = !0, Animator.stop(this._transition), this._transition = null, 
+        if (this._destroyed = !0, this._display.Animator.stop(this._transition), this._transition = null, 
         this._state = null, this._oldState = null, this._states) for (var id in this._states) this._states[id].destroy(), 
         delete this._states[id];
         this._states = null;

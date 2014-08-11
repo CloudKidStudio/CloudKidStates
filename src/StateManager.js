@@ -7,33 +7,23 @@
 
 	// Imports
 	var Audio = cloudkid.Audio || cloudkid.Sound,
-		OS = cloudkid.OS,
-		Animator = cloudkid.Animator,
 		BaseState = cloudkid.BaseState,
-		PixiAnimator = cloudkid.PixiAnimator,
 		StateEvent = cloudkid.StateEvent,
 		EventDispatcher = createjs.EventDispatcher;
 	
-	// Create js only
-	if (CONFIG_CREATEJS)
-	{
-		var MovieClip = createjs.MovieClip,
-			Touch = createjs.Touch;
-	}
-	
 	/**
-	*  The State Manager used for manaing the different states of a game or site
+	*  The State Manager used for managing the different states of a game or site
 	*  
 	*  @class StateManager
 	*  @constructor
-	*  @param {createjs.MovieClip|PIXI.MovieClip|PIXI.Spine} transition The transition MovieClip to play between transitions
+	*  @param {cloudkid.CreateJSDisplay|cloudkid.PixiDisplay} display The display on which the transition animation is displayed.
+	*  @param {createjs.MovieClip|PIXI.Spine} transition The transition MovieClip to play between transitions
 	*  @param {object} audio Data object with aliases and start times (seconds) for transition in, loop and out sounds: {in:{alias:"myAlias", start:0.2}}.
-	*		These objects are in the format for Animator or PixiAnimator from CloudKidAnimation, so they can be the alias instead of an object.
+	*		These objects are in the format for Animator from CreateJSDisplay or PixiDisplay, so they can be the alias instead of an object.
 	*/
-
-	StateManager = function(transition, audio)
+	var StateManager = function(display, transition, audio)
 	{
-		this.initialize(transition, audio);
+		this.initialize(display, transition, audio);
 	};
 	
 	var p = StateManager.prototype;
@@ -97,11 +87,19 @@
 	* @final
 	*/
 	StateManager.VERSION = '${version}';
+
+	/**
+	* The display that holds the states this StateManager is managing.
+	* 
+	* @property {cloudkid.CreateJSDisplay|cloudkid.PixiDisplay} _display
+	* @private
+	*/
+	p._display = null;
 	
 	/**
 	* The click to play in between transitioning states
 	* 
-	* @property {createjs.MovieClip} _transition
+	* @property {createjs.MovieClip|PIXI.Spine} _transition
 	* @private
 	*/
 	p._transition = null;
@@ -207,41 +205,6 @@
 	StateManager.TRANSITION_OUT_DONE = "onTransitionOutDone";
 	
 	/**
-	* The name of the Animator label for showing the blocker
-	* 
-	* @event onBlockerShow
-	*/
-	StateManager.DIALOG_SHOW = "onBlockerShow";
-	
-	/**
-	* The name of the Animator label for showing the blocker
-	* 
-	* @event onBlockerShowDone
-	*/
-	StateManager.DIALOG_SHOW_DONE = "onBlockerShowDone";
-	
-	/**
-	* The name of the Animator label and event for hiding the blocker
-	* 
-	* @event onBlockerHide
-	*/
-	StateManager.DIALOG_HIDE = "onBlockerHide";
-	
-	/**
-	* The name of the Animator label and event for hiding the blocker
-	* 
-	* @event onBlockerHideDone
-	*/
-	StateManager.DIALOG_HIDE_DONE = "onBlockerHideDone";
-	
-	/** 
-	* The name of the Animator label and event for initializing
-	* 
-	* @event onInit
-	*/
-	StateManager.TRANSITION_INIT = "onInit";
-	
-	/**
 	* The name of the event for done with initializing
 	* 
 	* @event onInitDone
@@ -266,23 +229,18 @@
 	*  Initialize the State Manager
 	*  
 	*  @function intialize
-	*  @param {createjs.MovieClip|PIXI.MovieClip|PIXI.Spine} transition The transition MovieClip to play between transitions
+	*  @param {cloudkid.CreateJSDisplay|cloudkid.PixiDisplay} display The display on which the transition animation is displayed.
+	*  @param {createjs.MovieClip|PIXI.Spine} transition The transition MovieClip to play between transitions
 	*  @param {object} transitionSounds Data object with aliases and start times (seconds) for transition in, loop and out sounds: {in:{alias:"myAlias", start:0.2}}
 	*/
-	p.initialize = function(transition, transitionSounds)
+	p.initialize = function(display, transition, transitionSounds)
 	{
-		if(CONFIG_CREATEJS)
-		{
-			if (DEBUG) Debug.assert(transition instanceof MovieClip, "transition needs to subclass createjs.MovieClip");
-		}
-		
+		this._display = display;
 		this._transition = transition;
 		
-		if(CONFIG_CREATEJS) 
-		{
+		if(this._transition.stop)
 			this._transition.stop();
-		}
-		
+
 		this.hideBlocker();
 		this._states = {};
 		
@@ -322,14 +280,10 @@
 	*  Dynamically change the transition
 	*  
 	*  @function changeTransition
-	*  @param {createjs.MovieClip|PIXI.MovieClip|PIXI.Spine} Clip to swap for transition
+	*  @param {createjs.MovieClip|PIXI.Spine} Clip to swap for transition
 	*/
 	p.changeTransition = function(clip)
 	{
-		if(CONFIG_CREATEJS)
-		{
-			if (DEBUG) Debug.assert(clip instanceof MovieClip, "Transition needs to subclass createjs.MovieClip");
-		}
 		this._transition = clip;
 	};
 	
@@ -392,10 +346,7 @@
 		//this.showLoader();
 		this.dispatchEvent(StateManager.LOADING_START);
 		
-		if(CONFIG_PIXI)
-		{
-			this._loopTransition();
-		}
+		this._loopTransition();
 	};
 	
 	/**
@@ -419,21 +370,7 @@
 	*/
 	p.showBlocker = function()
 	{
-		var stage = OS.instance.stage;
-		
-		if(CONFIG_CREATEJS)
-		{
-			stage.enableMouseOver(false);
-			stage.enableDOMEvents(false);
-			Touch.disable(stage);
-		}
-		else if(CONFIG_PIXI)
-		{
-			stage.setInteractive(false);
-			// force an update that disables the whole stage (the stage doesn't 
-			// update the interaction manager if interaction is false)
-			stage.forceUpdateInteraction();
-		}
+		this._display.enabled = false;
 	};
 	
 	
@@ -444,19 +381,7 @@
 	*/
 	p.hideBlocker = function()
 	{
-		var os = OS.instance;
-		var stage = os.stage;
-		
-		if(CONFIG_CREATEJS) 
-		{
-			stage.enableMouseOver(os.options.mouseOverRate);
-			stage.enableDOMEvents(true);
-			Touch.enable(stage);
-		}
-		else if(CONFIG_PIXI) 
-		{
-			stage.setInteractive(true);
-		}
+		this._display.enabled = true;
 	};
 	
 	/**
@@ -523,7 +448,7 @@
 			{
 				this._isTransitioning = true;
 				this._oldState._internalExitStateStart();
-				if(CONFIG_PIXI) this.showBlocker();
+				this.showBlocker();
 				sm = this;
 								
 				this.dispatchEvent(new StateEvent(StateEvent.TRANSITION_OUT, this._state, this._oldState));
@@ -640,26 +565,8 @@
 			if(Audio.instance.soundLoaded === false)//if soundLoaded is defined and false, then the AudioSprite is not yet loaded
 				audio = null;
 		}
-		if(CONFIG_CREATEJS)
-		{
-			if(Animator.instanceHasAnimation(this._transition, "transitionLoop"))
-				Animator.play(this._transition, "transitionLoop", this._loopTransition, null, null, null, audio);
-		}
-		else if(CONFIG_PIXI)
-		{
-			if(PixiAnimator.instance.instanceHasAnimation(this._transition, "transitionLoop"))
-			{
-				PixiAnimator.instance.play(
-					this._transition,
-					"transitionLoop", 
-					this._loopTransition,
-					false,
-					1,
-					0,
-					audio
-				);
-			}
-		}
+		if(this._display.Animator.instanceHasAnimation(this._transition, "transitionLoop"))
+			this._display.Animator.play(this._transition, "transitionLoop", {onComplete: this._loopTransition, soundData:audio});
 	};
 	
 	/**
@@ -672,8 +579,8 @@
 	{
 		this.showBlocker();
 		var sm = this;
-		var func = function() {
-			
+		var func = function()
+		{
 			sm._loopTransition();
 
 			if(callback)
@@ -713,36 +620,7 @@
 			if(Audio.instance.soundLoaded === false)//if soundLoaded is defined and false, then the AudioSprite is not yet loaded
 				audio = null;
 		}
-		if(CONFIG_CREATEJS)
-		{
-			Animator.play(this._transition, event, callback, null, null, null, audio);
-		}
-		else if(CONFIG_PIXI)
-		{
-			PixiAnimator.instance.play(
-				clip,
-				event, 
-				callback,
-				false,
-				1,
-				0,
-				audio
-			);
-		}
-	};
-	
-	/**
-	*   The frame update function
-	*   
-	*   @function update
-	*   @param {int} elasped The ms since the last frame
-	*/
-	p.update = function(elapsed)
-	{
-		if (this._state)
-		{
-			this._state.update(elapsed);
-		}
+		this._display.Animator.play(this._transition, event, {onComplete: callback, soundData: audio});
 	};
 	
 	/**
@@ -754,10 +632,7 @@
 	{
 		this._destroyed = true;
 		
-		if(CONFIG_CREATEJS)
-			Animator.stop(this._transition);
-		else if(CONFIG_PIXI)
-			PixiAnimator.instance.stop(this._transition);
+		this._display.Animator.stop(this._transition);
 		
 		this._transition = null;
 		//this._loader = null;

@@ -3,18 +3,17 @@
 	// Imports
 	var Application = cloudkid.Application,
 		Touch = createjs.Touch,
-		OS = cloudkid.OS,
 		TestPanel = cloudkid.TestPanel,
 		TestState = cloudkid.TestState,
 		StateManager = cloudkid.StateManager;
 	
-	var StatesApp = function()
+	var StatesApp = function(options)
 	{
-		this.initialize();
+		Application.call(this, options);
 	}
 	
 	// Extend the createjs container
-	var p = StatesApp.prototype = new Application();
+	var p = StatesApp.prototype = Object.create(Application.prototype);
 	
 	// The name of this app
 	p.name = "StatesApp";
@@ -26,32 +25,28 @@
 	* @protected
 	*/
 	p.init = function()
-	{		
-		if (!Touch.isSupported())
-		{
-			OS.instance.stage.enableMouseOver();
-		}
-		
+	{
+		var stage = this.display.stage;
 		var transition = new lib.Chick();
-		this.addChild(transition);
 		transition.stop();
+		transition.x = (this.display.width - 120) / 2;
+		transition.y = (this.display.height - 250) / 2;
 		
-		transition.x = (OS.instance.stageWidth - 120) / 2;
-		transition.y = (OS.instance.stageHeight - 250) / 2;
-		
-		manager = new StateManager(transition);
+		manager = new StateManager(this.display, transition);
 		
 		var panel = new TestPanel();
-		this.addChild(panel);
+		stage.addChild(panel);
 		manager.addState("state1", new TestState(panel, "State1"));
 		
 		panel = new TestPanel();
-		this.addChild(panel);
+		stage.addChild(panel);
 		manager.addState("state2", new TestState(panel, "State2"));
 		
 		panel = new TestPanel();
-		this.addChild(panel);
+		stage.addChild(panel);
 		manager.addState("state3", new TestState(panel, "State3"));
+
+		stage.addChild(transition);
 		
 		manager.setState("state1");
 	}
@@ -61,7 +56,7 @@
 	*/
 	p.destroy = function()
 	{
-		this.removeAllChildren();
+		this.display.stage.removeAllChildren();
 		
 		manager.destroy();
 		manager = null;

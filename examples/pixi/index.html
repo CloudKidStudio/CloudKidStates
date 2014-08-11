@@ -11,42 +11,32 @@
         <link rel="stylesheet" href="../shared/css/main.css">
 
 		<script src="../shared/libs/jquery/dist/jquery.min.js"></script>
-		<script src="../shared/libs/tweenjs/lib/tweenjs-0.4.1.min.js"></script>
-		<script src="../shared/libs/preloadjs/lib/preloadjs-0.3.2.min.js"></script>
+		<script src="../shared/libs/preloadjs/lib/preloadjs.min.js"></script>
 		<script src="../shared/libs/pixi.js/bin/pixi.js"></script>
 		<script src="../shared/libs/cloudkid-namespace/namespace.js"></script>
-		<script src="../shared/libs/cloudkid-debug/Debug.js"></script>
-		<script src="../shared/libs/cloudkid-os/dist/cloudkid-os-pixi.min.js"></script>
-		<script src="../shared/libs/cloudkid-animation/dist/cloudkid-animation.min.js"></script>
-		<script src="../../dist/cloudkid-states-pixi.js"></script>
+		<script src="../shared/libs/cloudkid-debug/dist/cloudkid-debug.min.js"></script>
+		<script src="../shared/libs/cloudkid-framework/dist/cloudkid-framework.min.js"></script>
+		<script src="../shared/libs/cloudkid-pixi-display/dist/cloudkid-pixi-display.min.js"></script>
+		<script src="../../dist/cloudkid-states.js"></script>
 		
 		<script src="js/TestState.js"></script>
 		<script src="StatesApp.js"></script>
     </head>
     <body>
-		<header>
-			<a id="run_app">Run App</a>
-			<a id="exit_app">Exit App</a>
-		</header>
 		<div id="content">
-			<div id="stage"></div>
+			<canvas id="stage" width="800" height="500"></canvas>
 			<script>
-				var os = cloudkid.OS.init("stage", {
-					width:800,
-					height:500,
-					showFramerate: true,
+				var app = new cloudkid.StatesApp({
 					fps: 60,
 					parseQueryString: true,
 					debug: true,
-					clearView: true,
-					backgroundColor: 0xffffff
-				});
-				
-				$("#run_app").click(function(){
-					os.addApp(new cloudkid.StatesApp());
-				}).click();
-				$("#exit_app").click(function(){
-					os.removeApp();
+
+					canvasId: "stage",
+					display: cloudkid.PixiDisplay,
+					displayOptions: {
+						clearView: true,
+						transparent: true
+					}
 				});
 			</script>
 		</div>
