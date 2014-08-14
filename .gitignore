@@ -1,2 +1,4 @@
-/docs/*
-/examples/shared/libs/*
+docs
+examples/shared/libs
+node_modules
+.grunt
